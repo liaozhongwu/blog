@@ -18,14 +18,6 @@ var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _componentHeader = require("../component/Header");
-
-var _componentHeader2 = _interopRequireDefault(_componentHeader);
-
-var _componentFooter = require("../component/Footer");
-
-var _componentFooter2 = _interopRequireDefault(_componentFooter);
-
 var Index = (function (_React$Component) {
 	_inherits(Index, _React$Component);
 
@@ -71,7 +63,7 @@ var Index = (function (_React$Component) {
 		key: "getMeta",
 		value: function getMeta() {
 			return {
-				cssFile: ["/theme.css"],
+				cssFile: ["/css/theme.css"],
 				jsFile: ["/page/index.js"]
 			};
 		}

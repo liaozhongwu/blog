@@ -74,4 +74,13 @@ router.get("/about", function* (next) {
 	yield next;
 });
 
+router.get("/other", function* (next) {
+	var Other = require("../build/page/Other");
+	var content = React.renderToString(React.createElement(Other));
+	var Layout = require("../build/layout/Base");
+	var props = Lodash.assign({content: content}, Other.getMeta());
+	this.body = React.renderToString(React.createElement(Layout, props));
+	yield next;
+});
+
 module.exports = router;

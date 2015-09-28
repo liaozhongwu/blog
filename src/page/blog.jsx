@@ -1,13 +1,11 @@
 import React from "react";
 import Showdown from "showdown";
-import Header from "../component/Header";
-import Footer from "../component/Footer";
 var converter = new Showdown.Converter();
 
 export default class Blog extends React.Component {
 	static getMeta () {
 		return {
-			cssFile: [ "/theme.css" ],
+			cssFile: [ "/css/theme.css" ],
 			jsFile: [ "/page/blog.js" ]
 		}
 	}

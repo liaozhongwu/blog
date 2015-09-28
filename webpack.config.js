@@ -3,6 +3,8 @@ module.exports = {
         index: './src/entry/index.js',
         about: './src/entry/about.js',
         blog: './src/entry/blog.js', 
+        blogs: './src/entry/blogs.js', 
+        error: './src/entry/error.js', 
     },
     output: {
         path: __dirname,

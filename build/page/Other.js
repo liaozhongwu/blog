@@ -18,61 +18,35 @@ var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
-var Header = (function (_React$Component) {
-	_inherits(Header, _React$Component);
+var Other = (function (_React$Component) {
+	_inherits(Other, _React$Component);
 
-	function Header() {
-		_classCallCheck(this, Header);
+	function Other() {
+		_classCallCheck(this, Other);
 
-		_get(Object.getPrototypeOf(Header.prototype), "constructor", this).apply(this, arguments);
+		_get(Object.getPrototypeOf(Other.prototype), "constructor", this).apply(this, arguments);
 	}
 
-	_createClass(Header, [{
+	_createClass(Other, [{
 		key: "render",
 		value: function render() {
 			return _react2["default"].createElement(
-				"header",
-				{ className: "header" },
-				_react2["default"].createElement(
-					"nav",
-					{ className: "nav" },
-					_react2["default"].createElement(
-						"a",
-						{ href: "/" },
-						"首页"
-					),
-					_react2["default"].createElement(
-						"a",
-						{ href: "/blogs" },
-						"博客"
-					),
-					_react2["default"].createElement(
-						"a",
-						{ href: "/about" },
-						"关于"
-					),
-					_react2["default"].createElement(
-						"a",
-						{ href: "/other" },
-						"其它"
-					)
-				),
-				_react2["default"].createElement(
-					"div",
-					{ className: "motto" },
-					_react2["default"].createElement("img", { className: "avatar", src: "/img/avatar.jpg" }),
-					_react2["default"].createElement(
-						"p",
-						null,
-						"stay hungry, stay foolish"
-					)
-				)
+				"div",
+				{ className: "content" },
+				"the chat system will change to React soon"
 			);
+		}
+	}], [{
+		key: "getMeta",
+		value: function getMeta() {
+			return {
+				cssFile: ["/css/theme.css"]
+			};
 		}
 	}]);
 
-	return Header;
+	return Other;
 })(_react2["default"].Component);
 
-exports["default"] = Header;
+exports["default"] = Other;
 module.exports = exports["default"];

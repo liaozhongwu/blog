@@ -1,3 +1,4 @@
-import React from "react";
-import About from "../page/About";
-React.render(<About />, document.getElementById("main"));
+import React from 'react';
+import About from '../page/About';
+var props = window.APP_PROPS;
+React.render(<About {...props}/>, document.getElementById("main"));

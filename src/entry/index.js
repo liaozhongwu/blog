@@ -1,3 +1,4 @@
 import React from 'react';
 import Index from '../page/Index';
-React.render(<Index />, document.getElementById("main"));
+var props = window.APP_PROPS;
+React.render(<Index {...props}/>, document.getElementById("main"));

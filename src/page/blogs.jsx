@@ -1,11 +1,9 @@
 import React from "react";
-import Header from "../component/Header";
-import Footer from "../component/Footer";
 
 export default class Blogs extends React.Component {	
 	static getMeta () {
 		return {
-			cssFile: [ "/theme.css" ],
+			cssFile: [ "/css/theme.css" ],
 			jsFile: [ "/page/blogs.js" ]
 		}
 	}

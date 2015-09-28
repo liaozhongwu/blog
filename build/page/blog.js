@@ -22,14 +22,6 @@ var _showdown = require("showdown");
 
 var _showdown2 = _interopRequireDefault(_showdown);
 
-var _componentHeader = require("../component/Header");
-
-var _componentHeader2 = _interopRequireDefault(_componentHeader);
-
-var _componentFooter = require("../component/Footer");
-
-var _componentFooter2 = _interopRequireDefault(_componentFooter);
-
 var converter = new _showdown2["default"].Converter();
 
 var Blog = (function (_React$Component) {
@@ -77,7 +69,7 @@ var Blog = (function (_React$Component) {
 		key: "getMeta",
 		value: function getMeta() {
 			return {
-				cssFile: ["/theme.css"],
+				cssFile: ["/css/theme.css"],
 				jsFile: ["/page/blog.js"]
 			};
 		}

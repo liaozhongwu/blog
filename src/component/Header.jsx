@@ -11,7 +11,7 @@ export default class Header extends React.Component {
 				<a href="/other">其它</a>
 			</nav>
 			<div className="motto">
-				<img className="avatar" src="/avatar.jpg"/>
+				<img className="avatar" src="/img/avatar.jpg"/>
 				<p>stay hungry, stay foolish</p>
 			</div>
 		</header>
