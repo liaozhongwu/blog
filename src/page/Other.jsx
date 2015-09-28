@@ -9,7 +9,7 @@ export default class Other extends React.Component {
   	render() {
 	    return (
 	    	<div className="content">
-	    		the chat system move to <a href="liaozhongwu.cn:8000" target="_blank">chat</a>
+	    		the chat system move to <a href="http://liaozhongwu.cn:8000" target="_blank">chat</a>
 			</div>
 	    );
   	}	
