@@ -33,7 +33,12 @@ var Other = (function (_React$Component) {
 			return _react2["default"].createElement(
 				"div",
 				{ className: "content" },
-				"the chat system will change to React soon"
+				"the chat system move to ",
+				_react2["default"].createElement(
+					"a",
+					{ href: "liaozhongwu.cn:8000" },
+					"chat"
+				)
 			);
 		}
 	}], [{
