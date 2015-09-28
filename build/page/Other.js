@@ -36,7 +36,7 @@ var Other = (function (_React$Component) {
 				"the chat system move to ",
 				_react2["default"].createElement(
 					"a",
-					{ href: "liaozhongwu.cn:8000" },
+					{ href: "liaozhongwu.cn:8000", target: "_blank" },
 					"chat"
 				)
 			);
