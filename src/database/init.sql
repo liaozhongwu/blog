@@ -133,11 +133,11 @@ Promise.all(iterable) 接受一个可迭代对象参数，一般为promise数组
 insert into blog(title, content) values('V8 C++代码总结', '# Overview
 V8是由谷歌开发的开源高性能Javascript引擎，源码由C++编写而成，被谷歌用于chrome浏览器，也是node构建的Javascript引擎。
 
-官网：https://developers.google.com/v8/?hl=zh-CN
+官网：<https://developers.google.com/v8/?hl=zh-CN>
 
-github：https://github.com/v8/v8
+github：<https://github.com/v8/v8>
 
-官网好像没有提供详细的document，详细API可以参见http://izs.me/v8-docs/
+官网好像没有提供详细的document，详细API可以参见<http://izs.me/v8-docs/>
 
 # Features
 ## Isolate
