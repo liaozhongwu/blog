@@ -78,6 +78,7 @@ var Base = (function (_React$Component) {
 					"head",
 					null,
 					_react2["default"].createElement("meta", { chatSet: "utf-8" }),
+					_react2["default"].createElement("meta", { name: "viewport", content: "width=device-width, initial-scale=1.0, user-scalable=0" }),
 					this.renderCss()
 				),
 				_react2["default"].createElement(
