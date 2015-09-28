@@ -29,6 +29,8 @@ var About = (function (_React$Component) {
 
 	_createClass(About, [{
 		key: "renderList",
+
+		// jsFile: [ "/page/about.js" ]
 		value: function renderList() {
 			var abouts = this.props.data;
 			var html = [];
@@ -59,9 +61,7 @@ var About = (function (_React$Component) {
 		key: "getMeta",
 		value: function getMeta() {
 			return {
-				cssFile: ["/css/theme.css"],
-				jsFile: ["/page/about.js"]
-			};
+				cssFile: ["/css/theme.css"] };
 		}
 	}]);
 

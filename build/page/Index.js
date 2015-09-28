@@ -29,6 +29,8 @@ var Index = (function (_React$Component) {
 
 	_createClass(Index, [{
 		key: "renderList",
+
+		// jsFile: [ "/page/index.js" ]
 		value: function renderList() {
 			var notices = this.props.data;
 			var html = [];
@@ -63,9 +65,7 @@ var Index = (function (_React$Component) {
 		key: "getMeta",
 		value: function getMeta() {
 			return {
-				cssFile: ["/css/theme.css"],
-				jsFile: ["/page/index.js"]
-			};
+				cssFile: ["/css/theme.css"] };
 		}
 	}]);
 

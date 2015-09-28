@@ -6,7 +6,7 @@ export default class Blog extends React.Component {
 	static getMeta () {
 		return {
 			cssFile: [ "/css/theme.css" ],
-			jsFile: [ "/page/blog.js" ]
+			// jsFile: [ "/page/blog.js" ]
 		}
 	}
   	render() {

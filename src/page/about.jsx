@@ -4,7 +4,7 @@ export default class About extends React.Component {
 	static getMeta () {
 		return {
 			cssFile: [ "/css/theme.css" ],
-			jsFile: [ "/page/about.js" ]
+			// jsFile: [ "/page/about.js" ]
 		}
 	}
 	renderList () {

@@ -4,7 +4,7 @@ export default class Index extends React.Component {
 	static getMeta () {
 		return {
 			cssFile: [ "/css/theme.css" ],
-			jsFile: [ "/page/index.js" ]
+			// jsFile: [ "/page/index.js" ]
 		}
 	}
 	renderList () {

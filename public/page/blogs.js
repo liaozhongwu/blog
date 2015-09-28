@@ -18236,6 +18236,8 @@
 
 		_createClass(Blogs, [{
 			key: "renderList",
+
+			// jsFile: [ "/page/blogs.js" ]
 			value: function renderList() {
 				var blogs = this.props.data;
 				var html = [];
@@ -18284,9 +18286,7 @@
 			key: "getMeta",
 			value: function getMeta() {
 				return {
-					cssFile: ["/css/theme.css"],
-					jsFile: ["/page/blogs.js"]
-				};
+					cssFile: ["/css/theme.css"] };
 			}
 		}]);
 

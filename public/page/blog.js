@@ -18240,6 +18240,8 @@
 
 		_createClass(Blog, [{
 			key: "render",
+
+			// jsFile: [ "/page/blog.js" ]
 			value: function render() {
 				var title = this.props.data.title || "";
 				var content = this.props.data.content || "";
@@ -18274,9 +18276,7 @@
 			key: "getMeta",
 			value: function getMeta() {
 				return {
-					cssFile: ["/css/theme.css"],
-					jsFile: ["/page/blog.js"]
-				};
+					cssFile: ["/css/theme.css"] };
 			}
 		}]);
 
