@@ -1,0 +1,110 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+html,
+body{
+	width: 100%;
+	height: 100%;
+}
+.app {
+	position: relative;
+	width: 100%;
+	min-height: 100%;
+	box-sizing: border-box;
+	font-size: 14px;
+	color: #333;
+}
+a {
+	color: #37b;
+	text-decoration: none;
+}
+h1,h2,h3,h4,h5,h6 {
+	line-height: 24px;
+	margin: 10px 0 15px;
+}
+p {
+	line-height: 20px;
+	margin: 0 0 10px;
+}
+pre {
+	border: solid 1px #ddd;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    line-height: 20px;
+    color: #666;
+}
+.border-bottom {
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+	border-bottom: solid 1px #eee;
+}
+.header {
+	background: #fff;
+}
+.nav {
+	padding: 15px 20px;
+	line-height: 30px;
+	font-size: 14px;
+	text-align: center;
+}
+.nav a {
+	color: #666;
+	margin-left: 15px;
+	margin-right: 15px;
+}
+.nav a:hover {
+	color: #888;
+}
+.nav a:active {
+	color: #aaa;
+}
+.motto {
+	background: #f6f6f6;
+	height: 200px;
+	text-align: center;
+}
+.avatar {
+	width: 120px;
+	height: 120px;
+	margin: 20px;
+	border-radius: 50%;
+}
+.main {
+	max-width: 720px;
+	margin: 20px auto 0;
+	padding: 0 0 30px;
+}
+.main .list {
+	list-style: none;
+}
+.main .item {
+	padding: 5px 0;
+	margin-bottom: 5px; 
+}
+.footer {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+}
+.label {
+	display: inline-block;
+	width: 20%;
+	text-align: right;
+	margin-right: 10px;
+}
+.title {
+	font-weight: bold;
+	font-size: 24px;
+	line-height: 24px;
+	margin: 10px 0 20px;
+}
+.time {
+	font-size: 12px;
+	float: right;
+}	
