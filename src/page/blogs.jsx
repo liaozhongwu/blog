@@ -12,10 +12,12 @@ export default class Blogs extends React.Component {
 		var html = [];
 		blogs.map((blog, i) => {
 			html.push(<li className="item" key={i}>
-				<a href="/about">liaozhongwu</a>
-				发表了一篇博客
-				<a href={"/blog/" + blog.id}>{"《" + blog.title + "》"}</a>
 				<span className="time">{blog.createTime}</span>
+				<span>
+					<a href="/about">lzw</a>
+					发表了一篇博客
+					<a href={"/blog/" + blog.id}>{"《" + blog.title + "》"}</a>
+				</span>
 			</li>);
 		});
 		return html;

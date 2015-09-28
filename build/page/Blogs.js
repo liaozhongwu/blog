@@ -37,20 +37,24 @@ var Blogs = (function (_React$Component) {
 					"li",
 					{ className: "item", key: i },
 					_react2["default"].createElement(
-						"a",
-						{ href: "/about" },
-						"liaozhongwu"
-					),
-					"发表了一篇博客",
-					_react2["default"].createElement(
-						"a",
-						{ href: "/blog/" + blog.id },
-						"《" + blog.title + "》"
-					),
-					_react2["default"].createElement(
 						"span",
 						{ className: "time" },
 						blog.createTime
+					),
+					_react2["default"].createElement(
+						"span",
+						null,
+						_react2["default"].createElement(
+							"a",
+							{ href: "/about" },
+							"lzw"
+						),
+						"发表了一篇博客",
+						_react2["default"].createElement(
+							"a",
+							{ href: "/blog/" + blog.id },
+							"《" + blog.title + "》"
+						)
 					)
 				));
 			});

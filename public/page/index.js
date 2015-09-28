@@ -18244,12 +18244,12 @@
 					html.push(_react2["default"].createElement(
 						"li",
 						{ className: "item", key: i },
-						_react2["default"].createElement("span", { dangerouslySetInnerHTML: { __html: notice.title } }),
 						_react2["default"].createElement(
 							"span",
 							{ className: "time" },
 							notice.createTime
-						)
+						),
+						_react2["default"].createElement("span", { dangerouslySetInnerHTML: { __html: notice.title } })
 					));
 				});
 				return html;

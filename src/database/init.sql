@@ -227,9 +227,9 @@ NODE_SET_METHOD也是V8内建函数，用于给exports添加属性
 	var addon = require("bindings")("arithmetic");
 	console.log("the result of 5 add 5 is: "" + addon.add(5, 5));');
 
-insert into notice(title) values('<a href="/about">liaozhongwu</a>创建了这个网站');
-insert into notice(title) values('<a href="/about">liaozhongwu</a>发表了一篇博客<a href="/blog/1">《Promise的理解》</a>');
-insert into notice(title) values('<a href="/about">liaozhongwu</a>发表了一篇博客<a href="/blog/2">《V8 C++代码总结》</a>');
+insert into notice(title) values('<a href="/about">lzw</a>创建了这个网站');
+insert into notice(title) values('<a href="/about">lzw</a>发表了一篇博客<a href="/blog/1">《Promise的理解》</a>');
+insert into notice(title) values('<a href="/about">lzw</a>发表了一篇博客<a href="/blog/2">《V8 C++代码总结》</a>');
 insert into about(title, content) values("name:", "廖仲武");
 insert into about(title, content) values("birthday:", "1995-03-01");
 insert into about(title, content) values("education:", "NanJing University");

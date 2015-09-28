@@ -12,8 +12,8 @@ export default class Index extends React.Component {
 		var html = [];
 		notices.map((notice, i) => {
 			html.push(<li className="item" key={ i }>
-				<span dangerouslySetInnerHTML={{__html: notice.title}}></span>
 				<span className="time">{notice.createTime}</span>
+				<span dangerouslySetInnerHTML={{__html: notice.title}}></span>
 			</li>);
 		});
 		return html;
