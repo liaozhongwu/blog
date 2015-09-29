@@ -6,6 +6,15 @@ export default class Base extends React.Component {
 	constructor () {
 		super();
 	}
+	renderMeta () {
+		var html = [];
+		if (this.props.meta) {
+			this.props.meta.map((meta, i) => {
+				html.push(<meta key={ i } name={meta.name} content={meta.content} />);
+			});
+		}
+		return html;
+	}
 	renderCss () {
 		var html = [];
 		if (this.props.style) {
@@ -36,7 +45,12 @@ export default class Base extends React.Component {
 	    	<html>
 	    		<head>
 	    			<meta chatSet="utf-8"/>
+	    			<meta name="author" content="liaozhongwu<liaozhongwu95@163.com>"/>
+	    			<meta name="description" content="liaozhongwu's blog"/>
+	    			<meta name="keywords" content="Blog,FrontEnd,Node,Html,Css,Js"/>
 					<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0"/>
+	    			<meta name="baidu-site-verification" content="xAzLf0HKaT" />
+					{ this.renderMeta() }
 	    			{ this.renderCss() }
 	    		</head>
 	    		<body>

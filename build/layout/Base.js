@@ -36,6 +36,17 @@ var Base = (function (_React$Component) {
 	}
 
 	_createClass(Base, [{
+		key: "renderMeta",
+		value: function renderMeta() {
+			var html = [];
+			if (this.props.meta) {
+				this.props.meta.map(function (meta, i) {
+					html.push(_react2["default"].createElement("meta", { key: i, name: meta.name, content: meta.content }));
+				});
+			}
+			return html;
+		}
+	}, {
 		key: "renderCss",
 		value: function renderCss() {
 			var html = [];
@@ -78,7 +89,12 @@ var Base = (function (_React$Component) {
 					"head",
 					null,
 					_react2["default"].createElement("meta", { chatSet: "utf-8" }),
+					_react2["default"].createElement("meta", { name: "author", content: "liaozhongwu<liaozhongwu95@163.com>" }),
+					_react2["default"].createElement("meta", { name: "description", content: "liaozhongwu's blog" }),
+					_react2["default"].createElement("meta", { name: "keywords", content: "Blog,FrontEnd,Node,Html,Css,Js" }),
 					_react2["default"].createElement("meta", { name: "viewport", content: "width=device-width, initial-scale=1.0, user-scalable=0" }),
+					_react2["default"].createElement("meta", { name: "baidu-site-verification", content: "xAzLf0HKaT" }),
+					this.renderMeta(),
 					this.renderCss()
 				),
 				_react2["default"].createElement(
