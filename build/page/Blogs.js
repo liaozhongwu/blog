@@ -48,12 +48,6 @@ var Blogs = (function (_React$Component) {
 						null,
 						_react2["default"].createElement(
 							"a",
-							{ href: "/about" },
-							"lzw"
-						),
-						"发表了一篇博客",
-						_react2["default"].createElement(
-							"a",
 							{ href: "/blog/" + blog.id },
 							"《" + blog.title + "》"
 						)
