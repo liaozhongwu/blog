@@ -33,7 +33,7 @@ var Other = (function (_React$Component) {
 			return _react2["default"].createElement(
 				"div",
 				{ className: "content" },
-				"the chat system move to ",
+				"the chat system had moved to ",
 				_react2["default"].createElement(
 					"a",
 					{ href: "http://liaozhongwu.cn:8000", target: "_blank" },

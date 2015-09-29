@@ -12,7 +12,7 @@ export default class Header extends React.Component {
 			</nav>
 			<div className="motto">
 				<img className="avatar" src="/img/avatar.jpg"/>
-				<p>stay hungry, stay foolish</p>
+				<p>stay hungry. stay foolish.</p>
 			</div>
 		</header>
     );

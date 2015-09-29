@@ -46,7 +46,7 @@ var Blog = (function (_React$Component) {
 				{ className: "content" },
 				_react2["default"].createElement(
 					"div",
-					{ className: "border-bottom" },
+					null,
 					_react2["default"].createElement(
 						"p",
 						{ className: "title" },
@@ -64,7 +64,7 @@ var Blog = (function (_React$Component) {
 						createTime
 					)
 				),
-				_react2["default"].createElement("article", { dangerouslySetInnerHTML: { __html: converter.makeHtml(content) } })
+				_react2["default"].createElement("article", { className: "article", dangerouslySetInnerHTML: { __html: converter.makeHtml(content) } })
 			);
 		}
 	}], [{

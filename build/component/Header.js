@@ -64,7 +64,7 @@ var Header = (function (_React$Component) {
 					_react2["default"].createElement(
 						"p",
 						null,
-						"stay hungry, stay foolish"
+						"stay hungry. stay foolish."
 					)
 				)
 			);
