@@ -123,7 +123,7 @@ router.post("/blog/save", body, function* (next) {
 			this.redirect("/blog/" + id);
 		} else {
 			var id = yield blogDao.insert({title: title, content: content});
-			yield noticeDao.insert({title: '<a href="/about">lzw</a>发表了一篇博客<a href="/blog/' + id + '">《' + title + '》</a>'})
+			yield noticeDao.insert({title: '<a href="/about">lzw</a> published a blog <a href="/blog/' + id + '">《' + title + '》</a>'})
 			this.redirect("/blog/" + id);
 		}
 	} else {	

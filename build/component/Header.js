@@ -39,22 +39,22 @@ var Header = (function (_React$Component) {
 					_react2["default"].createElement(
 						"a",
 						{ href: "/" },
-						"首页"
+						"Home"
 					),
 					_react2["default"].createElement(
 						"a",
 						{ href: "/blogs" },
-						"博客"
+						"Blog"
 					),
 					_react2["default"].createElement(
 						"a",
 						{ href: "/about" },
-						"关于"
+						"About"
 					),
 					_react2["default"].createElement(
 						"a",
 						{ href: "/other" },
-						"其它"
+						"Other"
 					)
 				),
 				_react2["default"].createElement(
