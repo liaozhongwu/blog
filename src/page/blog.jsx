@@ -15,11 +15,10 @@ export default class Blog extends React.Component {
   		var createTime = this.props.data.createTime || "";
 	    return (
 	    	<div className="content">
-	    		<div>
-	    			<p className="title">{title}</p>
-	    			By <a href="/about">liaozhongwu</a>
-	    			<span className="time">{createTime}</span>
-	    		</div>
+    			<p className="title">
+    				{title}
+    				<span className="time">{createTime}</span>
+    			</p>
 				<article className="article" dangerouslySetInnerHTML={{__html: converter.makeHtml(content)}}></article>
 			</div>				
 	    );

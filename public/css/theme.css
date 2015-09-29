@@ -97,10 +97,10 @@ pre {
 }
 .item {
 	padding: 5px 0;
+	line-height: 20px;
 	margin-bottom: 5px; 
 }
 .article {
-	margin: 10px 0;
 	padding: 10px 0;
 	border-top: solid 1px #eee;
 	border-bottom: solid 1px #eee;
@@ -175,11 +175,10 @@ pre {
 	font-weight: bold;
 	font-size: 24px;
 	line-height: 24px;
-	margin: 10px 0 20px;
+	margin: 10px 0 15px;
 }
 .time {
-	font-size: 12px;
 	float: right;
-	line-height: 14px;
+	font-size: 12px;
 	margin-left: 10px;
-}	
+}

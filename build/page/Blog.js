@@ -50,18 +50,12 @@ var Blog = (function (_React$Component) {
 					_react2["default"].createElement(
 						"p",
 						{ className: "title" },
-						title
-					),
-					"By ",
-					_react2["default"].createElement(
-						"a",
-						{ href: "/about" },
-						"liaozhongwu"
-					),
-					_react2["default"].createElement(
-						"span",
-						{ className: "time" },
-						createTime
+						title,
+						_react2["default"].createElement(
+							"span",
+							{ className: "time" },
+							createTime
+						)
 					)
 				),
 				_react2["default"].createElement("article", { className: "article", dangerouslySetInnerHTML: { __html: converter.makeHtml(content) } })
