@@ -49,7 +49,6 @@ export default class Base extends React.Component {
 	    			<meta name="description" content="liaozhongwu's blog"/>
 	    			<meta name="keywords" content="Blog,FrontEnd,Node,Html,Css,Js"/>
 					<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0"/>
-	    			<meta name="baidu-site-verification" content="xAzLf0HKaT" />
 					{ this.renderMeta() }
 	    			{ this.renderCss() }
 	    		</head>
