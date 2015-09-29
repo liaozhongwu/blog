@@ -9,7 +9,8 @@ export default class Error extends React.Component {
   	render() {
 	    return (
 	    	<div className="content">
-	    		Sorry, the page is not found.
+	    		<p>Sorry, The page is not found Or you have no permission</p>
+	    		<p>Click <a href="/">here</a> back to the home</p>
 			</div>
 	    );
   	}	

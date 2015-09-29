@@ -18,36 +18,70 @@ var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
-var Error = (function (_React$Component) {
-	_inherits(Error, _React$Component);
+var Admin = (function (_React$Component) {
+	_inherits(Admin, _React$Component);
 
-	function Error() {
-		_classCallCheck(this, Error);
+	function Admin() {
+		_classCallCheck(this, Admin);
 
-		_get(Object.getPrototypeOf(Error.prototype), "constructor", this).apply(this, arguments);
+		_get(Object.getPrototypeOf(Admin.prototype), "constructor", this).apply(this, arguments);
 	}
 
-	_createClass(Error, [{
+	_createClass(Admin, [{
+		key: "renderInput",
+		value: function renderInput() {
+			var blog = this.props.data;
+			var html = [];
+			if (blog) {
+				html.push(_react2["default"].createElement(
+					"div",
+					{ className: "form-group", key: "id" },
+					_react2["default"].createElement("input", { className: "input block-level", type: "text", name: "id", placeholder: "id", defaultValue: blog.id, readOnly: true })
+				));
+				html.push(_react2["default"].createElement(
+					"div",
+					{ className: "form-group", key: "title" },
+					_react2["default"].createElement("input", { className: "input block-level", type: "text", name: "title", placeholder: "title", defaultValue: blog.title })
+				));
+				html.push(_react2["default"].createElement(
+					"div",
+					{ className: "form-group", key: "content" },
+					_react2["default"].createElement("textarea", { className: "textarea block-level", name: "content", placeholder: "content", defaultValue: blog.content })
+				));
+			} else {
+				html.push(_react2["default"].createElement(
+					"div",
+					{ className: "form-group", key: "title" },
+					_react2["default"].createElement("input", { className: "input block-level", type: "text", name: "title", placeholder: "title" })
+				));
+				html.push(_react2["default"].createElement(
+					"div",
+					{ className: "form-group", key: "content" },
+					_react2["default"].createElement("textarea", { className: "textarea block-level", name: "content", placeholder: "content" })
+				));
+			}
+			return html;
+		}
+	}, {
 		key: "render",
 		value: function render() {
 			return _react2["default"].createElement(
 				"div",
 				{ className: "content" },
 				_react2["default"].createElement(
-					"p",
-					null,
-					"Sorry, The page is not found Or you have no permission"
-				),
-				_react2["default"].createElement(
-					"p",
-					null,
-					"Click ",
+					"form",
+					{ action: "/blog/save", method: "post" },
+					this.renderInput(),
 					_react2["default"].createElement(
-						"a",
-						{ href: "/" },
-						"here"
+						"div",
+						{ className: "form-group" },
+						_react2["default"].createElement("input", { className: "input", type: "password", name: "password", placeholder: "password" })
 					),
-					" back to the home"
+					_react2["default"].createElement(
+						"div",
+						{ className: "form-group" },
+						_react2["default"].createElement("input", { className: "btn", type: "submit", value: "保存" })
+					)
 				)
 			);
 		}
@@ -60,8 +94,8 @@ var Error = (function (_React$Component) {
 		}
 	}]);
 
-	return Error;
+	return Admin;
 })(_react2["default"].Component);
 
-exports["default"] = Error;
+exports["default"] = Admin;
 module.exports = exports["default"];

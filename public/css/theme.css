@@ -36,6 +36,66 @@ pre {
     color: #666;
     overflow: auto;
 }
+.form-group {
+	display: block;
+	margin: 0 0 10px;
+}
+.input {
+	display: inline-block;
+	vertical-align: top;
+	padding: 6px 8px;
+	border-radius: 5px;
+	border: solid 1px #ccc;
+	outline: none;
+	color: #333;
+	transition: box-shadow 0.3s;
+}
+.input:focus {
+	box-shadow: 0 0 2px 0 #3ce;
+}
+.input[readonly],
+.input[disabled] {
+	cursor: not-allowed;
+	background: #f2f2f2;
+}
+.textarea {
+	display: inline-block;
+	vertical-align: top;
+	height: 300px;
+	padding: 6px 8px;
+	border-radius: 5px;
+	border: solid 1px #ccc;
+	outline: none;
+	color: #333;
+	transition: box-shadow 0.3s;
+}
+.textarea:focus {
+	box-shadow: 0 0 2px 0 #3ce;
+}
+.btn {
+	display: inline-block;
+	vertical-align: top;
+	padding: 6px 12px;
+	border-radius: 5px;
+	border: solid 1px #ccc;
+	background: #ddd;
+	color: #333;
+	text-align: center;
+	cursor: pointer;
+	outline: none;
+}
+.btn:hover {
+	border-color: #bbb;
+	background: #ccc;
+}
+.btn:active {
+	border-color: #aaa;
+	background: #bbb;
+}
+.block-level {
+	display: block;
+	width: 100%;
+}
 .border-bottom {
 	margin-bottom: 10px;
 	padding-bottom: 10px;

@@ -1,5 +1,12 @@
 var db = require("../src/database/database");
 
+function insert (params) { 
+	return db.insert("insert into notice(title) values(?)", [params.title])
+	.then(function (id) {
+		return id;
+	});
+}
+
 function select (params) {
 	return db.select("select * from notice as n order by id desc", [])
 	.then(function (rows) {
@@ -15,4 +22,5 @@ function select (params) {
 	});
 }
 
+exports.insert = insert;
 exports.select = select;

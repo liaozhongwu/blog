@@ -3,12 +3,14 @@ var db = require("../src/database/database");
 function insert (params) { 
 	return db.insert("insert into blog(title, content) values(?, ?)", [params.title, params.content])
 	.then(function (id) {
-		var blog = {
-			id: id,
-			title: params.title,
-			content: params.content
-		};
-		return blog;
+		return id;
+	});
+}
+
+function update (params) { 
+	return db.update("update blog set title = ?, content = ? where id = ?", [params.title, params.content, params.id])
+	.then(function (data) {
+		return data;
 	});
 }
 
@@ -46,5 +48,6 @@ function select (params) {
 }
 
 exports.insert = insert;
+exports.update = update;
 exports.selectById = selectById;
 exports.select = select;
