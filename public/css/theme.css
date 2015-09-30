@@ -2,7 +2,7 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	word-break: break-word;
+	word-wrap: break-word;
 }
 html,
 body{
@@ -46,6 +46,9 @@ pre {
     line-height: 20px;
     color: #666;
     overflow: auto;
+}
+code {
+    word-wrap: normal;
 }
 .header {
 	background: #fff;
@@ -118,13 +121,13 @@ pre {
 .comment-label {
 	float: left;
 	width: 100px;
-	text-align: right;
-	padding-right: 10px;
+	text-align: left;
 }
 .comment-content {
 	display: block;
-	overflow: hidden;
 	text-align: left;
+	clear: both;
+	padding: 5px 0;
 }
 .article {
 	padding: 10px 0;
@@ -134,7 +137,6 @@ pre {
 .form {
 	position: relative;
 	margin: 10px 0;
-	overflow: auto;
 }
 .form-group {
 	display: block;
@@ -229,6 +231,7 @@ pre {
 }
 @media screen
 and (max-width : 640px) {
+
 	.input {
 		width: 180px;
 	}
