@@ -36,14 +36,18 @@ var About = (function (_React$Component) {
 			var html = [];
 			abouts.map(function (about, i) {
 				html.push(_react2["default"].createElement(
-					"p",
-					{ key: i },
+					"div",
+					{ className: "form-group", key: i },
 					_react2["default"].createElement(
 						"label",
 						{ className: "label" },
 						about.title
 					),
-					about.content
+					_react2["default"].createElement(
+						"span",
+						{ className: "form-static" },
+						about.content
+					)
 				));
 			});
 			return html;
@@ -54,7 +58,12 @@ var About = (function (_React$Component) {
 			return _react2["default"].createElement(
 				"div",
 				{ className: "content" },
-				this.renderList()
+				_react2["default"].createElement(
+					"form",
+					{ className: "form" },
+					this.renderList(),
+					_react2["default"].createElement("img", { className: "qrcode-weixin", src: "/img/weixin.png" })
+				)
 			);
 		}
 	}], [{

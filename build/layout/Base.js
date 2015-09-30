@@ -112,6 +112,7 @@ var Base = (function (_React$Component) {
 							dangerouslySetInnerHTML: { __html: this.props.content || "" } }),
 						_react2["default"].createElement(_componentFooter2["default"], null)
 					),
+					_react2["default"].createElement("script", { type: "text/javascript", src: "/js/jquery-2.1.4.min.js" }),
 					this.renderJs()
 				)
 			);

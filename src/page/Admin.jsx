@@ -42,7 +42,7 @@ export default class Admin extends React.Component {
   	render() {
 	    return (
 	    	<div className="content">
-	    		<form action="/blog/save" method="post">
+	    		<form className="form" action="/blog/save" method="post">
 	    			{ this.renderInput() }
 	    			<div className="form-group">
 	    				<input className="input" type="password" name="password" placeholder="password" />

@@ -1,7 +1,7 @@
 var db = require("../src/database/database");
 
-function select (params) {
-	return db.select("select * from about as a", [])
+function* select (params) {
+	return yield db.select("select * from about as a", [])
 	.then(function (rows) {
 		var abouts = [];
 		rows.map(function (row) {

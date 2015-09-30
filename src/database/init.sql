@@ -10,6 +10,17 @@ create table if not exists blog (
 	index(title)
 );
 
+create table if not exists comment (
+	id int primary key auto_increment,
+	blog_id int not null,
+	name varchar(64) not null,
+	phone varchar(16),
+	email varchar(32),
+	content text not null,
+	createTime timestamp default current_timestamp,
+	foreign key (blog_id) references blog(id) on delete restrict
+);
+
 create table if not exists notice (
 	id int primary key auto_increment,
 	title varchar(128) not null,
@@ -690,16 +701,13 @@ NODE_SET_METHOD也是V8内建函数，用于给exports添加属性
 
 	var addon = require("bindings")("arithmetic");
 	console.log("the result of 5 add 5 is: "" + addon.add(5, 5));');
+
 insert into notice(title) values('<a href="/about">lzw</a>create the site');
 insert into notice(title) values('<a href="/about">lzw</a>published a blog <a href="/blog/1">雪颂</a>');
 insert into notice(title) values('<a href="/about">lzw</a>published a blog <a href="/blog/2">Promise的理解</a>');
 insert into notice(title) values('<a href="/about">lzw</a>published a blog <a href="/blog/3">ESMAScript6笔记</a>');
 insert into notice(title) values('<a href="/about">lzw</a>published a blog <a href="/blog/4">Node Addon开发指南</a>');
 insert into notice(title) values('<a href="/about">lzw</a>published a blog <a href="/blog/5">V8 C++开发总结</a>');
-insert into notice(title) values('<a href="/about">lzw</a>create the site');
-insert into notice(title) values('<a href="/about">lzw</a>create the site');
-insert into notice(title) values('<a href="/about">lzw</a>create the site');
-insert into notice(title) values('<a href="/about">lzw</a>create the site');
 insert into about(title, content) values("name:", "廖仲武");
 insert into about(title, content) values("birthday:", "1995-03-01");
 insert into about(title, content) values("education:", "NanJing University");

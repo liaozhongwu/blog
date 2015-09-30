@@ -2,9 +2,10 @@ var React = require("react");
 var Lodash = require("lodash");
 var router = require("koa-router")();
 var body = require("koa-body")();
-var blogDao = require("../dao/blog");
-var noticeDao = require("../dao/notice");
 var aboutDao = require("../dao/about");
+var blogDao = require("../dao/blog");
+var commentDao = require("../dao/comment");
+var noticeDao = require("../dao/notice");
 var md5 = require("md5");
 
 router.get("/error", function* (next) {
@@ -123,12 +124,30 @@ router.post("/blog/save", body, function* (next) {
 			this.redirect("/blog/" + id);
 		} else {
 			var id = yield blogDao.insert({title: title, content: content});
-			yield noticeDao.insert({title: '<a href="/about">lzw</a> published a blog <a href="/blog/' + id + '">《' + title + '》</a>'})
+			yield noticeDao.insert({title: '<a href="/about">lzw</a> published a blog <a href="/blog/' + id + '">' + title + '</a>'})
 			this.redirect("/blog/" + id);
 		}
 	} else {	
 		this.redirect("/error");
 	}
+	yield next;
+});
+
+router.post("/comment/save", body, function* (next) {
+	var id = this.request.body.id;
+	var name = this.request.body.name;
+	var phone = this.request.body.phone;
+	var email = this.request.body.email;
+	var content = this.request.body.content;
+
+	var params = {
+		blog_id: id, 
+		name: name, 
+		phone: phone, 
+		email: email, 
+		content: content
+	};
+	this.body = yield commentDao.insert(params);
 	yield next;
 });
 

@@ -11,14 +11,20 @@ export default class About extends React.Component {
 		var abouts = this.props.data;
 		var html = [];
 		abouts.map((about, i) => {
-			html.push(<p key={ i }><label className="label">{about.title}</label>{about.content}</p>);
+			html.push(<div className="form-group" key={ i }>
+				<label className="label">{about.title}</label>
+				<span className="form-static">{about.content}</span>
+			</div>);
 		});
 		return html;
 	}
   	render () {
 	    return (
 	    	<div className="content">
-	    		{ this.renderList() }
+	    		<form className="form">
+	    			{ this.renderList() }
+	    			<img className="qrcode-weixin" src="/img/weixin.png"/>
+	    		</form>
 			</div>
 	    );
 	}

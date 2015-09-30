@@ -1,21 +1,23 @@
 var db = require("../src/database/database");
+var commentDao = require("./comment");
 
-function insert (params) { 
-	return db.insert("insert into blog(title, content) values(?, ?)", [params.title, params.content])
+function* insert (params) { 
+	var id = yield db.insert("insert into blog(title, content) values(?, ?)", [params.title, params.content])
 	.then(function (id) {
 		return id;
 	});
+	return yield selectById({id: id});
 }
 
-function update (params) { 
-	return db.update("update blog set title = ?, content = ? where id = ?", [params.title, params.content, params.id])
+function* update (params) { 
+	return yield db.update("update blog set title = ?, content = ? where id = ?", [params.title, params.content, params.id])
 	.then(function (data) {
 		return data;
 	});
 }
 
-function selectById (params) {
-	return db.select("select * from blog as b where id = ?", [params.id])
+function* selectById (params) {
+	var blog = yield db.select("select * from blog as b where id = ?", [params.id])
 	.then(function (rows) {
 		if (rows.length === 0) {
 			return null;
@@ -29,10 +31,12 @@ function selectById (params) {
 		}
 		return blog;
 	});
+	blog.comments = yield commentDao.selectByBlogId({blog_id: blog.id});
+	return blog;
 }
 
-function select (params) {
-	return db.select("select * from blog as b order by id desc", [])
+function* select (params) {
+	var blogs = yield db.select("select * from blog as b order by id desc", [])
 	.then(function (rows) {
 		var blogs = [];
 		rows.map(function (row) {
@@ -45,6 +49,10 @@ function select (params) {
 		});
 		return blogs;
 	});
+	blogs.map(function* (blog) {
+		blog.comments = yield commentDao.selectByBlogId({blog_id: blog.id});
+	});
+	return blogs;
 }
 
 exports.insert = insert;

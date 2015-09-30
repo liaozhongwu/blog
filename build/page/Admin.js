@@ -70,7 +70,7 @@ var Admin = (function (_React$Component) {
 				{ className: "content" },
 				_react2["default"].createElement(
 					"form",
-					{ action: "/blog/save", method: "post" },
+					{ className: "form", action: "/blog/save", method: "post" },
 					this.renderInput(),
 					_react2["default"].createElement(
 						"div",
