@@ -17,7 +17,7 @@ router.get("/error", function* (next) {
 });
 
 router.get("/", function* (next) {
-	var data = yield noticeDao.select();
+	var data = yield blogDao.selectById({id: 1});
 	if (data === null) {
 		this.redirect("/error");
 		yield next;

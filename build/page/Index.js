@@ -18,6 +18,12 @@ var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _showdown = require("showdown");
+
+var _showdown2 = _interopRequireDefault(_showdown);
+
+var converter = new _showdown2["default"].Converter();
+
 var Index = (function (_React$Component) {
 	_inherits(Index, _React$Component);
 
@@ -28,38 +34,12 @@ var Index = (function (_React$Component) {
 	}
 
 	_createClass(Index, [{
-		key: "renderList",
+		key: "render",
 
 		// jsFile: [ "/page/index.js" ]
-		value: function renderList() {
-			var notices = this.props.data;
-			var html = [];
-			notices.map(function (notice, i) {
-				html.push(_react2["default"].createElement(
-					"li",
-					{ className: "item", key: i },
-					_react2["default"].createElement(
-						"span",
-						{ className: "time" },
-						notice.createTime
-					),
-					_react2["default"].createElement("span", { dangerouslySetInnerHTML: { __html: notice.title } })
-				));
-			});
-			return html;
-		}
-	}, {
-		key: "render",
 		value: function render() {
-			return _react2["default"].createElement(
-				"div",
-				{ className: "content" },
-				_react2["default"].createElement(
-					"ul",
-					{ className: "list" },
-					this.renderList()
-				)
-			);
+			var content = this.props.data.content || "";
+			return _react2["default"].createElement("div", { className: "content", dangerouslySetInnerHTML: { __html: converter.makeHtml(content) } });
 		}
 	}], [{
 		key: "getMeta",

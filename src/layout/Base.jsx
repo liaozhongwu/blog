@@ -44,6 +44,7 @@ export default class Base extends React.Component {
 	    return (
 	    	<html>
 	    		<head>
+	    			<title>Blog</title>
 	    			<meta chatSet="utf-8"/>
 	    			<meta name="author" content="liaozhongwu<liaozhongwu95@163.com>"/>
 	    			<meta name="description" content="liaozhongwu's blog"/>

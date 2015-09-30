@@ -88,6 +88,11 @@ var Base = (function (_React$Component) {
 				_react2["default"].createElement(
 					"head",
 					null,
+					_react2["default"].createElement(
+						"title",
+						null,
+						"Blog"
+					),
 					_react2["default"].createElement("meta", { chatSet: "utf-8" }),
 					_react2["default"].createElement("meta", { name: "author", content: "liaozhongwu<liaozhongwu95@163.com>" }),
 					_react2["default"].createElement("meta", { name: "description", content: "liaozhongwu's blog" }),
