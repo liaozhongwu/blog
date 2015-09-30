@@ -18252,12 +18252,12 @@
 					_react2["default"].createElement(
 						"p",
 						{ className: "title" },
-						title,
 						_react2["default"].createElement(
 							"span",
 							{ className: "time" },
 							createTime
-						)
+						),
+						title
 					),
 					_react2["default"].createElement("article", { className: "article", dangerouslySetInnerHTML: { __html: converter.makeHtml(content) } })
 				);

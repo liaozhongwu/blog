@@ -16,8 +16,8 @@ export default class Blog extends React.Component {
 	    return (
 	    	<div className="content">
     			<p className="title">
-    				{title}
     				<span className="time">{createTime}</span>
+    				{title}
     			</p>
 				<article className="article" dangerouslySetInnerHTML={{__html: converter.makeHtml(content)}}></article>
 			</div>				

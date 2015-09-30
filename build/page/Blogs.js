@@ -44,13 +44,9 @@ var Blogs = (function (_React$Component) {
 						blog.createTime
 					),
 					_react2["default"].createElement(
-						"span",
-						null,
-						_react2["default"].createElement(
-							"a",
-							{ href: "/blog/" + blog.id },
-							"《" + blog.title + "》"
-						)
+						"a",
+						{ href: "/blog/" + blog.id },
+						blog.title
 					)
 				));
 			});

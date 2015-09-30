@@ -25,7 +25,8 @@ create table if not exists about (
 	index(title)
 );
 
-insert into blog(title, content) values("雪颂", '雪花肆意飘洒
+insert into blog(title, content) values("雪颂", 
+'雪花肆意飘洒
 大地银装素裹
 世界变得纯净而寂寞
 
@@ -81,7 +82,8 @@ insert into blog(title, content) values("雪颂", '雪花肆意飘洒
 
 感谢倾情陪伴
 直到生命终结');
-insert into blog(title, content) values("Promise的理解", '## Overview
+insert into blog(title, content) values("Promise的理解", 
+'## Overview
 
 在Promise产生之前，由于JS的异步特性，一般的异步操作是通过回调来处理的
 
@@ -188,7 +190,8 @@ Promise.all(iterable) 接受一个可迭代对象参数，一般为promise数组
 
 综上所述，Promise至少有的闭包变量为：state状态、Value/Error值、onResolve/OnReject处理函数');
 
-insert into blog(title, content) values("ESMAScript6笔记", '## 1. let
+insert into blog(title, content) values("ESMAScript6笔记", 
+'## 1. let
 在ECMAScript5中变量是没有块级作用域的，函数体中所有用到的，也即变量提升，ECMAScript新增的let允许声明块级作用于，使得变量只在块级内生效
 
 	for (var i = 0; i < array.length; i++) {
@@ -302,7 +305,8 @@ ES6允许批量地从对象或者数组中提取值赋予一组变量
 		set y(y) {this.y = y;}
 		get y() {}
 	}');
-insert into blog(title, content) values('Node Addon开发指南', '#一. 技术支持
+insert into blog(title, content) values('Node Addon开发指南', 
+'#一. 技术支持
 Node实现跨平台和语言扩展的核心技术有：
 
 在0.8版本中，node决定采用一种跨平台效果明显的项目生成器 - GYP(generate your project)，可以帮助开发者生成各个平台下的项目文件，node源码就是用GYP编译的。
@@ -588,7 +592,9 @@ linux和windows以及node版本较低的情况请参考
 <https://github.com/nodejs/node-addon-examples>
 
 <https://github.com/node-ffi/node-ffi/tree/master/example/factorial>');
-insert into blog(title, content) values('V8 C++开发总结', '# 一. Overview
+
+insert into blog(title, content) values('V8 C++开发总结', 
+'# 一. Overview
 V8是由谷歌开发的开源高性能Javascript引擎，源码由C++编写而成，被谷歌用于chrome浏览器，也是node构建的Javascript引擎。
 
 官网：<https://developers.google.com/v8/?hl=zh-CN>
