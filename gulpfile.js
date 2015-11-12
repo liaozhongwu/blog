@@ -26,7 +26,12 @@ gulp.task("layout", function () {
 });
 
 gulp.task("webpack", function () {
-	webpack(webpack_config, function (err, stat) {});
+	webpack(webpack_config, function (err, stat) {
+		if (err) {
+			console.error(err);
+			return;
+		}
+	});
 })
 
 gulp.task("default", ["page", "component", "layout", "webpack"]);

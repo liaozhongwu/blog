@@ -116,7 +116,7 @@ router.post("/blog/save", body, function* (next) {
 	var content = this.request.body.content;
 	var password = this.request.body.password;
 
-	// I'm lazy to save in databse
+	// I'm lazy to save in database
 	// if you are searching for the password, please try to decode
 	if (md5(password).toLowerCase() === "ea6ddfe6ed0a06f5837aeba4f984db1e") {
 		if (id) {

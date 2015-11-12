@@ -52,12 +52,12 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _pageAbout = __webpack_require__(157);
+	var _pageError = __webpack_require__(161);
 
-	var _pageAbout2 = _interopRequireDefault(_pageAbout);
+	var _pageError2 = _interopRequireDefault(_pageError);
 
 	var props = window.APP_PROPS;
-	_react2['default'].render(_react2['default'].createElement(_pageAbout2['default'], props), document.getElementById("main"));
+	_react2['default'].render(_react2['default'].createElement(_pageError2['default'], props), document.getElementById("main"));
 
 /***/ },
 /* 1 */
@@ -18199,7 +18199,11 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 157 */
+/* 157 */,
+/* 158 */,
+/* 159 */,
+/* 160 */,
+/* 161 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -18222,51 +18226,36 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var About = (function (_React$Component) {
-		_inherits(About, _React$Component);
+	var Error = (function (_React$Component) {
+		_inherits(Error, _React$Component);
 
-		function About() {
-			_classCallCheck(this, About);
+		function Error() {
+			_classCallCheck(this, Error);
 
-			_get(Object.getPrototypeOf(About.prototype), "constructor", this).apply(this, arguments);
+			_get(Object.getPrototypeOf(Error.prototype), "constructor", this).apply(this, arguments);
 		}
 
-		_createClass(About, [{
-			key: "renderList",
-
-			// jsFile: [ "/page/about.js" ]
-			value: function renderList() {
-				var abouts = this.props.data;
-				var html = [];
-				abouts.map(function (about, i) {
-					html.push(_react2["default"].createElement(
-						"div",
-						{ className: "form-group", key: i },
-						_react2["default"].createElement(
-							"label",
-							{ className: "label" },
-							about.title
-						),
-						_react2["default"].createElement(
-							"span",
-							{ className: "form-static" },
-							about.content
-						)
-					));
-				});
-				return html;
-			}
-		}, {
+		_createClass(Error, [{
 			key: "render",
 			value: function render() {
 				return _react2["default"].createElement(
 					"div",
 					{ className: "content" },
 					_react2["default"].createElement(
-						"form",
-						{ className: "form" },
-						this.renderList(),
-						_react2["default"].createElement("img", { className: "qrcode-weixin", src: "/img/weixin.png" })
+						"p",
+						null,
+						"Sorry, The page is not found Or you have no permission"
+					),
+					_react2["default"].createElement(
+						"p",
+						null,
+						"Click ",
+						_react2["default"].createElement(
+							"a",
+							{ href: "/" },
+							"here"
+						),
+						" back to the home"
 					)
 				);
 			}
@@ -18274,14 +18263,15 @@
 			key: "getMeta",
 			value: function getMeta() {
 				return {
-					cssFile: ["/css/theme.css"] };
+					cssFile: ["/css/theme.css"]
+				};
 			}
 		}]);
 
-		return About;
+		return Error;
 	})(_react2["default"].Component);
 
-	exports["default"] = About;
+	exports["default"] = Error;
 	module.exports = exports["default"];
 
 /***/ }
