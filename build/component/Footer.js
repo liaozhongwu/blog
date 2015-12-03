@@ -33,13 +33,27 @@ var Footer = (function (_React$Component) {
       return _react2["default"].createElement(
         "footer",
         { className: "footer" },
-        "@author<",
         _react2["default"].createElement(
-          "a",
-          { href: "mailto:liaozhongwu95@163.com" },
-          "liaozhongwu95@163.com"
+          "p",
+          null,
+          "Friend Link: ",
+          _react2["default"].createElement(
+            "a",
+            { href: "http://guoyuchen.net", target: "_blank" },
+            "黑辰的窝"
+          )
         ),
-        ">"
+        _react2["default"].createElement(
+          "p",
+          null,
+          "@author<",
+          _react2["default"].createElement(
+            "a",
+            { href: "mailto:liaozhongwu95@163.com" },
+            "liaozhongwu95@163.com"
+          ),
+          ">"
+        )
       );
     }
   }]);
