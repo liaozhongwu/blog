@@ -36,16 +36,6 @@ var Footer = (function (_React$Component) {
         _react2["default"].createElement(
           "p",
           null,
-          "Friend Link: ",
-          _react2["default"].createElement(
-            "a",
-            { href: "http://guoyuchen.net", target: "_blank" },
-            "黑辰的窝"
-          )
-        ),
-        _react2["default"].createElement(
-          "p",
-          null,
           "@author<",
           _react2["default"].createElement(
             "a",
@@ -53,6 +43,16 @@ var Footer = (function (_React$Component) {
             "liaozhongwu95@163.com"
           ),
           ">"
+        ),
+        _react2["default"].createElement(
+          "p",
+          null,
+          "Friend Link: ",
+          _react2["default"].createElement(
+            "a",
+            { href: "http://guoyuchen.net", target: "_blank" },
+            "黑辰的窝"
+          )
         )
       );
     }
