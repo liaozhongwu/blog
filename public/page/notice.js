@@ -19720,7 +19720,7 @@
 					"div",
 					{ className: "content" },
 					notices.map(function (notice, i) {
-						return _react2["default"].createElement("p", { key: i, className: "notice", dangerouslySetInnerHTML: { __html: notice } });
+						return _react2["default"].createElement("p", { key: i, className: "notice", dangerouslySetInnerHTML: { __html: notice.title } });
 					})
 				);
 			}

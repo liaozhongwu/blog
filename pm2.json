@@ -21,11 +21,11 @@
     "exec_mode"          : "cluster_mode",
     "instances"          : 0,
     "log_date_format"    : "YYYY-MM-DD HH:mm Z",
-    "max_memory_restart" : "700M",
+    "max_memory_restart" : "500M",
     "merge_logs"         : true,
-    "error_file"         : "/var/logs/lgc/error.log",
-    "out_file"           : "/var/logs/lgc/out.log",
-    "pid_file"           : "/var/logs/lgc/lgc.pid",
+    "error_file"         : "/var/logs/blog/error.log",
+    "out_file"           : "/var/logs/blog/out.log",
+    "pid_file"           : "/var/logs/blog/lgc.pid",
     "watch"              : false
   }]
 }
