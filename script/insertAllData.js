@@ -1,5 +1,5 @@
 'use strict'
-var Model = require("../Model")
+var Model = require("../model")
 , data = require("../data.json")
 , ps = []
 

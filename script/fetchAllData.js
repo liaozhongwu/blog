@@ -1,5 +1,5 @@
 'use strict'
-let Model = require("../Model")
+let Model = require("../model")
 ,	fs = require("fs")
 require("../lib/date")
 
