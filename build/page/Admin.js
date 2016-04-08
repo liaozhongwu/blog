@@ -30,7 +30,8 @@ var Admin = (function (_React$Component) {
 	_createClass(Admin, [{
 		key: "renderInput",
 		value: function renderInput() {
-			var blog = this.props.data;
+			var blog = this.props.blog;
+
 			var html = [];
 			if (blog) {
 				html.push(_react2["default"].createElement(

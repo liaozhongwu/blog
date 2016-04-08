@@ -104,14 +104,10 @@ var Base = (function (_React$Component) {
 				_react2["default"].createElement(
 					"body",
 					null,
-					_react2["default"].createElement(
-						"div",
-						{ className: "app", id: "app" },
-						_react2["default"].createElement(_componentHeader2["default"], null),
-						_react2["default"].createElement("div", { className: "main", id: "main",
-							dangerouslySetInnerHTML: { __html: this.props.content || "" } }),
-						_react2["default"].createElement(_componentFooter2["default"], null)
-					),
+					_react2["default"].createElement(_componentHeader2["default"], null),
+					_react2["default"].createElement("div", { className: "app", id: "app",
+						dangerouslySetInnerHTML: { __html: this.props.content || "" } }),
+					_react2["default"].createElement(_componentFooter2["default"], null),
 					_react2["default"].createElement("script", { type: "text/javascript", src: "/js/jquery-2.1.4.min.js" }),
 					this.renderJs()
 				)

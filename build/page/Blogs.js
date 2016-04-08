@@ -18,6 +18,8 @@ var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
+require("../../lib/date");
+
 var Blogs = (function (_React$Component) {
 	_inherits(Blogs, _React$Component);
 
@@ -32,7 +34,8 @@ var Blogs = (function (_React$Component) {
 
 		// jsFile: [ "/page/blogs.js" ]
 		value: function renderList() {
-			var blogs = this.props.data;
+			var blogs = this.props.blogs;
+
 			var html = [];
 			blogs.map(function (blog, i) {
 				html.push(_react2["default"].createElement(
@@ -41,7 +44,7 @@ var Blogs = (function (_React$Component) {
 					_react2["default"].createElement(
 						"span",
 						{ className: "time" },
-						blog.createTime
+						blog.createTime.toString()
 					),
 					_react2["default"].createElement(
 						"a",

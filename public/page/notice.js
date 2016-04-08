@@ -56,12 +56,12 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _pageAbout = __webpack_require__(159);
+	var _pageNotice = __webpack_require__(166);
 
-	var _pageAbout2 = _interopRequireDefault(_pageAbout);
+	var _pageNotice2 = _interopRequireDefault(_pageNotice);
 
 	var props = window.APP_PROPS;
-	_reactDom2['default'].render(_react2['default'].createElement(_pageAbout2['default'], props), document.getElementById("app"));
+	_reactDom2['default'].render(_react2['default'].createElement(_pageNotice2['default'], props), document.getElementById("main"));
 
 /***/ },
 /* 1 */
@@ -19672,7 +19672,14 @@
 	module.exports = __webpack_require__(3);
 
 /***/ },
-/* 159 */
+/* 159 */,
+/* 160 */,
+/* 161 */,
+/* 162 */,
+/* 163 */,
+/* 164 */,
+/* 165 */,
+/* 166 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -19695,67 +19702,41 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var About = (function (_React$Component) {
-		_inherits(About, _React$Component);
+	var Notice = (function (_React$Component) {
+		_inherits(Notice, _React$Component);
 
-		function About() {
-			_classCallCheck(this, About);
+		function Notice() {
+			_classCallCheck(this, Notice);
 
-			_get(Object.getPrototypeOf(About.prototype), "constructor", this).apply(this, arguments);
+			_get(Object.getPrototypeOf(Notice.prototype), "constructor", this).apply(this, arguments);
 		}
 
-		_createClass(About, [{
-			key: "renderList",
-
-			// jsFile: [ "/page/about.js" ]
-			value: function renderList() {
-				var abouts = this.props.abouts;
-
-				var html = [];
-				abouts.map(function (about, i) {
-					html.push(_react2["default"].createElement(
-						"div",
-						{ className: "form-group", key: i },
-						_react2["default"].createElement(
-							"label",
-							{ className: "label" },
-							about.title
-						),
-						_react2["default"].createElement(
-							"span",
-							{ className: "form-static" },
-							about.content
-						)
-					));
-				});
-				return html;
-			}
-		}, {
+		_createClass(Notice, [{
 			key: "render",
 			value: function render() {
+				var notices = this.props.notices;
+
 				return _react2["default"].createElement(
 					"div",
 					{ className: "content" },
-					_react2["default"].createElement(
-						"form",
-						{ className: "form" },
-						this.renderList(),
-						_react2["default"].createElement("img", { className: "qrcode-weixin", src: "/img/weixin.png" })
-					)
+					notices.map(function (notice, i) {
+						return _react2["default"].createElement("p", { key: i, className: "notice", dangerouslySetInnerHTML: { __html: notice } });
+					})
 				);
 			}
 		}], [{
 			key: "getMeta",
 			value: function getMeta() {
 				return {
-					cssFile: ["/css/theme.css"] };
+					cssFile: ["/css/theme.css"]
+				};
 			}
 		}]);
 
-		return About;
+		return Notice;
 	})(_react2["default"].Component);
 
-	exports["default"] = About;
+	exports["default"] = Notice;
 	module.exports = exports["default"];
 
 /***/ }

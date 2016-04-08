@@ -38,11 +38,6 @@ var Header = (function (_React$Component) {
 					{ className: "nav" },
 					_react2["default"].createElement(
 						"a",
-						{ href: "/" },
-						"Home"
-					),
-					_react2["default"].createElement(
-						"a",
 						{ href: "/blogs" },
 						"Blog"
 					),
@@ -53,7 +48,7 @@ var Header = (function (_React$Component) {
 					),
 					_react2["default"].createElement(
 						"a",
-						{ href: "/other" },
+						{ href: "/notice" },
 						"Other"
 					)
 				),

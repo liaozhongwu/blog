@@ -1,9 +1,14 @@
-var React = require("react");
-var app = require("koa")();
-var _static = require("koa-static");
-var router = require("./router/router");
-var fs = require("./util/fs-promise");
+var React = require("react")
+,	app = require("koa")()
+,	_static = require("koa-static")
+,	router = require("./router")
+, config = require("config")
+, port = config.port || 80
 
 app.use(router.routes());
 app.use(_static("public"));
-app.listen(80);
+app.listen(port, () => {
+  console.log('========================')
+  console.log('App is listening to ' + port)
+  console.log('========================')
+})

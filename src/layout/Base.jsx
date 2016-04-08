@@ -54,13 +54,11 @@ export default class Base extends React.Component {
 	    			{ this.renderCss() }
 	    		</head>
 	    		<body>
-	    			<div className="app" id="app">
-	    				<Header />
-	    					<div className="main" id="main"
-	    						dangerouslySetInnerHTML={{__html: this.props.content || ""}}>
-	    					</div>
-	    				<Footer />
-	    			</div>
+    				<Header />
+  					<div className="app" id="app"
+  						dangerouslySetInnerHTML={{__html: this.props.content || ""}}>
+  					</div>
+    				<Footer />
 	    			<script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>
 					{ this.renderJs() }
 				</body>

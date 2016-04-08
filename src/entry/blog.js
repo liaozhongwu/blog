@@ -1,4 +1,5 @@
-import React from 'react';
-import Blog from '../page/Blog';
-var props = window.APP_PROPS;
-React.render(<Blog {...props}/>, document.getElementById("main"));
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Blog from '../page/Blog'
+var props = window.APP_PROPS
+ReactDOM.render(<Blog {...props}/>, document.getElementById("app"))

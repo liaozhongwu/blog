@@ -32,7 +32,8 @@ var About = (function (_React$Component) {
 
 		// jsFile: [ "/page/about.js" ]
 		value: function renderList() {
-			var abouts = this.props.data;
+			var abouts = this.props.abouts;
+
 			var html = [];
 			abouts.map(function (about, i) {
 				html.push(_react2["default"].createElement(

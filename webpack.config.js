@@ -1,10 +1,11 @@
 module.exports = {
     entry: {
-        index: './src/entry/index.js',
         about: './src/entry/about.js',
+        admin: './src/entry/admin.js',
         blog: './src/entry/blog.js', 
         blogs: './src/entry/blogs.js', 
         error: './src/entry/error.js', 
+        notice: './src/entry/notice.js'
     },
     output: {
         path: __dirname,

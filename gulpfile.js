@@ -34,4 +34,9 @@ gulp.task("webpack", function () {
 	});
 })
 
+gulp.task('watch', function () {
+  gulp.watch('./src/**/*.js', ['page', 'component', 'layout', 'webpack']);
+  gulp.watch('./src/**/*.jsx', ['page', 'component', 'layout', 'webpack']);
+});
+
 gulp.task("default", ["page", "component", "layout", "webpack"]);

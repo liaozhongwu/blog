@@ -1,6 +1,7 @@
-import React from "react";
-import Showdown from "showdown";
-var converter = new Showdown.Converter();
+import React from "react"
+import Showdown from "showdown"
+import "../../lib/date"
+let converter = new Showdown.Converter()
 
 export default class Blog extends React.Component {
 	static getMeta () {
@@ -12,7 +13,8 @@ export default class Blog extends React.Component {
 	constructor (props) {
 		super();
 		this.state = {
-			data: props.data,
+			blog: props.blog,
+			comments: props.comments,
 			comment: {
 				name: "",
 				phone: "",
@@ -23,41 +25,41 @@ export default class Blog extends React.Component {
 		}
 	}
 	handleSubmit () {
-		var self = this;
-		if (!this.state.comment.name) {
+		let {blog, comments, comment} = this.state
+
+		if (!comment.name) {
 			this.setState({
 				commentMsg: "please input your name"
 			});
 			return;
 		}
-		if (!this.state.comment.content) {
+		if (!comment.content) {
 			this.setState({
 				commentMsg: "please input your content"
 			});
 			return;
 		}
-		var params = {
-			id: this.state.data.id,
-			name: this.state.comment.name,
-			phone: this.state.comment.phone,
-			email: this.state.comment.email,
-			content: this.state.comment.content
-		};
+
 		$.ajax({
 			url: "/comment/save", 
 			type: "post",
-			data: params, 
+			data: {
+				bid: blog._id,
+				name: comment.name,
+				phone: comment.phone,
+				email: comment.email,
+				content: comment.content
+			}, 
 			datatype: "json",
-			beforeSend: function () {
-				self.setState({
+			beforeSend: () => {
+				this.setState({
 					commentMsg: "submiting...",
 				});
 			},
-			success: function (result) {
-				var data = self.state.data;
-				data.comments.push(result);
-				self.setState({
-					data: data,
+			success: (result) => {
+				comments.push(result);
+				this.setState({
+					comments: comments,
 					comment: {
 						name: "",
 						phone: "",
@@ -67,14 +69,14 @@ export default class Blog extends React.Component {
 					commentMsg: "submit success",
 				});
 			},
-			error: function () {
-				self.setState({
+			error: () => {
+				this.setState({
 					commentMsg: "submit failure",
 				});
 			},
-			complete: function () {
-				setTimeout(function () {
-					self.setState({
+			complete: () => {
+				setTimeout(() => {
+					this.setState({
 						commentMsg: "",
 					});
 				}, 2000);
@@ -82,51 +84,51 @@ export default class Blog extends React.Component {
 		});	
 	}
 	handleCommentValueChange (key, value) {
-		var comment = this.state.comment;
+		let {comment} = this.state;
 		comment[key] = value;
 		this.setState({
 			comment: comment
 		});
 	}
 	renderComments () {
-		var comments = this.state.data.comments || [];
-		var html = [];
+		let {comments, comment, commentMsg} = this.state
+		let html = []
 		comments.map(function (comment, i) {
 			html.push(
 				<li className="item comment" key={i}>
 					<span className="comment-label">{comment.name}:</span>
-					<span className="time">{comment.createTime}</span>
+					<span className="time">{comment.createTime.toString()}</span>
 					<span className="comment-content">{comment.content}</span>
 				</li>
-			);
-		});
+			)
+		})
 		html.push(
 			<li className="item" key="add">
 				<form className="form">
 					<div className="form-group">
 						<label className="label">name*:</label>
 						<input className="input" type="text" name="name" placeholder="name" required
-							value={this.state.comment.name} onChange={(e) => {this.handleCommentValueChange("name", e.target.value)}}/>
+							value={comment.name} onChange={e => this.handleCommentValueChange("name", e.target.value)}/>
 					</div>
 					<div className="form-group">
 						<label className="label">phone:</label>
 						<input className="input" type="text" name="phone" placeholder="phone"
-							value={this.state.comment.phone} onChange={(e) => {this.handleCommentValueChange("phone", e.target.value)}}/>
+							value={comment.phone} onChange={e => this.handleCommentValueChange("phone", e.target.value)}/>
 					</div>
 					<div className="form-group">
 						<label className="label">email:</label>
 						<input className="input" type="text" name="email" placeholder="email"
-							value={this.state.comment.email} onChange={(e) => {this.handleCommentValueChange("email", e.target.value)}}/>
+							value={comment.email} onChange={e => this.handleCommentValueChange("email", e.target.value)}/>
 					</div>
 					<div className="form-group">
 						<label className="label">content*:</label>
 						<textarea className="textarea" name="content" placeholder="content" required
-							value={this.state.comment.content} onChange={(e) => {this.handleCommentValueChange("content", e.target.value)}}></textarea>
+							value={comment.content} onChange={e => this.handleCommentValueChange("content", e.target.value)}></textarea>
 					</div>
 	    			<div className="form-group">
 						<label className="label"></label>
-	    				<input className="btn" type="button" value="提交评论" onClick={ (e) => {this.handleSubmit()}}/>
-	    				<span className="msg-btn">{ this.state.commentMsg }</span>
+	    				<input className="btn" type="button" value="提交评论" onClick={e => this.handleSubmit()}/>
+	    				<span className="msg-btn">{ commentMsg }</span>
 	    			</div>
 				</form>
 			</li>
@@ -134,16 +136,14 @@ export default class Blog extends React.Component {
 		return html;
 	}
   	render() {
-  		var title = this.state.data.title || "";
-  		var content = this.state.data.content || "";
-  		var createTime = this.state.data.createTime || "";
+  		let {blog} = this.state
 	    return (
 	    	<div className="content">
     			<p className="title">
-    				<span className="time">{createTime}</span>
-    				{title}
+    				<span className="time">{blog.createTime.toLocaleString()}</span>
+    				{blog.title}
     			</p>
-				<article className="article" dangerouslySetInnerHTML={{__html: converter.makeHtml(content)}}></article>
+				<article className="article" dangerouslySetInnerHTML={{__html: converter.makeHtml(blog.content)}}></article>
 				<ul className="list">
 					{ this.renderComments() }
 				</ul>

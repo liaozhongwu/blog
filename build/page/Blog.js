@@ -22,6 +22,8 @@ var _showdown = require("showdown");
 
 var _showdown2 = _interopRequireDefault(_showdown);
 
+require("../../lib/date");
+
 var converter = new _showdown2["default"].Converter();
 
 var Blog = (function (_React$Component) {
@@ -42,7 +44,8 @@ var Blog = (function (_React$Component) {
 
 		_get(Object.getPrototypeOf(Blog.prototype), "constructor", this).call(this);
 		this.state = {
-			data: props.data,
+			blog: props.blog,
+			comments: props.comments,
 			comment: {
 				name: "",
 				phone: "",
@@ -56,41 +59,46 @@ var Blog = (function (_React$Component) {
 	_createClass(Blog, [{
 		key: "handleSubmit",
 		value: function handleSubmit() {
-			var self = this;
-			if (!this.state.comment.name) {
+			var _this = this;
+
+			var _state = this.state;
+			var blog = _state.blog;
+			var comments = _state.comments;
+			var comment = _state.comment;
+
+			if (!comment.name) {
 				this.setState({
 					commentMsg: "please input your name"
 				});
 				return;
 			}
-			if (!this.state.comment.content) {
+			if (!comment.content) {
 				this.setState({
 					commentMsg: "please input your content"
 				});
 				return;
 			}
-			var params = {
-				id: this.state.data.id,
-				name: this.state.comment.name,
-				phone: this.state.comment.phone,
-				email: this.state.comment.email,
-				content: this.state.comment.content
-			};
+
 			$.ajax({
 				url: "/comment/save",
 				type: "post",
-				data: params,
+				data: {
+					bid: blog._id,
+					name: comment.name,
+					phone: comment.phone,
+					email: comment.email,
+					content: comment.content
+				},
 				datatype: "json",
 				beforeSend: function beforeSend() {
-					self.setState({
+					_this.setState({
 						commentMsg: "submiting..."
 					});
 				},
 				success: function success(result) {
-					var data = self.state.data;
-					data.comments.push(result);
-					self.setState({
-						data: data,
+					comments.push(result);
+					_this.setState({
+						comments: comments,
 						comment: {
 							name: "",
 							phone: "",
@@ -101,13 +109,13 @@ var Blog = (function (_React$Component) {
 					});
 				},
 				error: function error() {
-					self.setState({
+					_this.setState({
 						commentMsg: "submit failure"
 					});
 				},
 				complete: function complete() {
 					setTimeout(function () {
-						self.setState({
+						_this.setState({
 							commentMsg: ""
 						});
 					}, 2000);
@@ -118,6 +126,7 @@ var Blog = (function (_React$Component) {
 		key: "handleCommentValueChange",
 		value: function handleCommentValueChange(key, value) {
 			var comment = this.state.comment;
+
 			comment[key] = value;
 			this.setState({
 				comment: comment
@@ -126,9 +135,13 @@ var Blog = (function (_React$Component) {
 	}, {
 		key: "renderComments",
 		value: function renderComments() {
-			var _this = this;
+			var _this2 = this;
 
-			var comments = this.state.data.comments || [];
+			var _state2 = this.state;
+			var comments = _state2.comments;
+			var comment = _state2.comment;
+			var commentMsg = _state2.commentMsg;
+
 			var html = [];
 			comments.map(function (comment, i) {
 				html.push(_react2["default"].createElement(
@@ -143,7 +156,7 @@ var Blog = (function (_React$Component) {
 					_react2["default"].createElement(
 						"span",
 						{ className: "time" },
-						comment.createTime
+						comment.createTime.toString()
 					),
 					_react2["default"].createElement(
 						"span",
@@ -167,8 +180,8 @@ var Blog = (function (_React$Component) {
 							"name*:"
 						),
 						_react2["default"].createElement("input", { className: "input", type: "text", name: "name", placeholder: "name", required: true,
-							value: this.state.comment.name, onChange: function (e) {
-								_this.handleCommentValueChange("name", e.target.value);
+							value: comment.name, onChange: function (e) {
+								return _this2.handleCommentValueChange("name", e.target.value);
 							} })
 					),
 					_react2["default"].createElement(
@@ -180,8 +193,8 @@ var Blog = (function (_React$Component) {
 							"phone:"
 						),
 						_react2["default"].createElement("input", { className: "input", type: "text", name: "phone", placeholder: "phone",
-							value: this.state.comment.phone, onChange: function (e) {
-								_this.handleCommentValueChange("phone", e.target.value);
+							value: comment.phone, onChange: function (e) {
+								return _this2.handleCommentValueChange("phone", e.target.value);
 							} })
 					),
 					_react2["default"].createElement(
@@ -193,8 +206,8 @@ var Blog = (function (_React$Component) {
 							"email:"
 						),
 						_react2["default"].createElement("input", { className: "input", type: "text", name: "email", placeholder: "email",
-							value: this.state.comment.email, onChange: function (e) {
-								_this.handleCommentValueChange("email", e.target.value);
+							value: comment.email, onChange: function (e) {
+								return _this2.handleCommentValueChange("email", e.target.value);
 							} })
 					),
 					_react2["default"].createElement(
@@ -206,8 +219,8 @@ var Blog = (function (_React$Component) {
 							"content*:"
 						),
 						_react2["default"].createElement("textarea", { className: "textarea", name: "content", placeholder: "content", required: true,
-							value: this.state.comment.content, onChange: function (e) {
-								_this.handleCommentValueChange("content", e.target.value);
+							value: comment.content, onChange: function (e) {
+								return _this2.handleCommentValueChange("content", e.target.value);
 							} })
 					),
 					_react2["default"].createElement(
@@ -215,12 +228,12 @@ var Blog = (function (_React$Component) {
 						{ className: "form-group" },
 						_react2["default"].createElement("label", { className: "label" }),
 						_react2["default"].createElement("input", { className: "btn", type: "button", value: "提交评论", onClick: function (e) {
-								_this.handleSubmit();
+								return _this2.handleSubmit();
 							} }),
 						_react2["default"].createElement(
 							"span",
 							{ className: "msg-btn" },
-							this.state.commentMsg
+							commentMsg
 						)
 					)
 				)
@@ -230,9 +243,8 @@ var Blog = (function (_React$Component) {
 	}, {
 		key: "render",
 		value: function render() {
-			var title = this.state.data.title || "";
-			var content = this.state.data.content || "";
-			var createTime = this.state.data.createTime || "";
+			var blog = this.state.blog;
+
 			return _react2["default"].createElement(
 				"div",
 				{ className: "content" },
@@ -242,11 +254,11 @@ var Blog = (function (_React$Component) {
 					_react2["default"].createElement(
 						"span",
 						{ className: "time" },
-						createTime
+						blog.createTime.toLocaleString()
 					),
-					title
+					blog.title
 				),
-				_react2["default"].createElement("article", { className: "article", dangerouslySetInnerHTML: { __html: converter.makeHtml(content) } }),
+				_react2["default"].createElement("article", { className: "article", dangerouslySetInnerHTML: { __html: converter.makeHtml(blog.content) } }),
 				_react2["default"].createElement(
 					"ul",
 					{ className: "list" },

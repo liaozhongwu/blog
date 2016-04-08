@@ -18,39 +18,39 @@ var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _showdown = require("showdown");
+var Notice = (function (_React$Component) {
+	_inherits(Notice, _React$Component);
 
-var _showdown2 = _interopRequireDefault(_showdown);
+	function Notice() {
+		_classCallCheck(this, Notice);
 
-var converter = new _showdown2["default"].Converter();
-
-var Index = (function (_React$Component) {
-	_inherits(Index, _React$Component);
-
-	function Index() {
-		_classCallCheck(this, Index);
-
-		_get(Object.getPrototypeOf(Index.prototype), "constructor", this).apply(this, arguments);
+		_get(Object.getPrototypeOf(Notice.prototype), "constructor", this).apply(this, arguments);
 	}
 
-	_createClass(Index, [{
+	_createClass(Notice, [{
 		key: "render",
-
-		// jsFile: [ "/page/index.js" ]
 		value: function render() {
-			var content = this.props.data.content || "";
-			return _react2["default"].createElement("div", { className: "content", dangerouslySetInnerHTML: { __html: converter.makeHtml(content) } });
+			var notices = this.props.notices;
+
+			return _react2["default"].createElement(
+				"div",
+				{ className: "content" },
+				notices.map(function (notice, i) {
+					return _react2["default"].createElement("p", { key: i, className: "notice", dangerouslySetInnerHTML: { __html: notice } });
+				})
+			);
 		}
 	}], [{
 		key: "getMeta",
 		value: function getMeta() {
 			return {
-				cssFile: ["/css/theme.css"] };
+				cssFile: ["/css/theme.css"]
+			};
 		}
 	}]);
 
-	return Index;
+	return Notice;
 })(_react2["default"].Component);
 
-exports["default"] = Index;
+exports["default"] = Notice;
 module.exports = exports["default"];

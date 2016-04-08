@@ -5,10 +5,9 @@ export default class Header extends React.Component {
     return (
 		<header className="header">
 			<nav className="nav">
-				<a href="/">Home</a>
 				<a href="/blogs">Blog</a>
 				<a href="/about">About</a>
-				<a href="/other">Other</a>
+				<a href="/notice">Other</a>
 			</nav>
 			<div className="motto">
 				<img className="avatar" src="/img/avatar.jpg"/>

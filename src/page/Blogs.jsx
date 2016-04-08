@@ -1,4 +1,5 @@
-import React from "react";
+import React from "react"
+import "../../lib/date"
 
 export default class Blogs extends React.Component {	
 	static getMeta () {
@@ -8,11 +9,11 @@ export default class Blogs extends React.Component {
 		}
 	}
 	renderList () {
-		var blogs = this.props.data;
+		var {blogs} = this.props;
 		var html = [];
 		blogs.map((blog, i) => {
 			html.push(<li className="item" key={i}>
-				<span className="time">{blog.createTime}</span>
+				<span className="time">{blog.createTime.toString()}</span>
 				<a href={"/blog/" + blog.id}>{blog.title}</a>
 			</li>);
 		});

@@ -8,7 +8,7 @@ export default class About extends React.Component {
 		}
 	}
 	renderList () {
-		var abouts = this.props.data;
+		var {abouts} = this.props;
 		var html = [];
 		abouts.map((about, i) => {
 			html.push(<div className="form-group" key={ i }>

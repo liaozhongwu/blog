@@ -56,12 +56,12 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _pageAbout = __webpack_require__(159);
+	var _pageAdmin = __webpack_require__(160);
 
-	var _pageAbout2 = _interopRequireDefault(_pageAbout);
+	var _pageAdmin2 = _interopRequireDefault(_pageAdmin);
 
 	var props = window.APP_PROPS;
-	_reactDom2['default'].render(_react2['default'].createElement(_pageAbout2['default'], props), document.getElementById("app"));
+	_reactDom2['default'].render(_react2['default'].createElement(_pageAdmin2['default'], props), document.getElementById("app"));
 
 /***/ },
 /* 1 */
@@ -19672,7 +19672,8 @@
 	module.exports = __webpack_require__(3);
 
 /***/ },
-/* 159 */
+/* 159 */,
+/* 160 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -19695,39 +19696,49 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var About = (function (_React$Component) {
-		_inherits(About, _React$Component);
+	var Admin = (function (_React$Component) {
+		_inherits(Admin, _React$Component);
 
-		function About() {
-			_classCallCheck(this, About);
+		function Admin() {
+			_classCallCheck(this, Admin);
 
-			_get(Object.getPrototypeOf(About.prototype), "constructor", this).apply(this, arguments);
+			_get(Object.getPrototypeOf(Admin.prototype), "constructor", this).apply(this, arguments);
 		}
 
-		_createClass(About, [{
-			key: "renderList",
-
-			// jsFile: [ "/page/about.js" ]
-			value: function renderList() {
-				var abouts = this.props.abouts;
+		_createClass(Admin, [{
+			key: "renderInput",
+			value: function renderInput() {
+				var blog = this.props.blog;
 
 				var html = [];
-				abouts.map(function (about, i) {
+				if (blog) {
 					html.push(_react2["default"].createElement(
 						"div",
-						{ className: "form-group", key: i },
-						_react2["default"].createElement(
-							"label",
-							{ className: "label" },
-							about.title
-						),
-						_react2["default"].createElement(
-							"span",
-							{ className: "form-static" },
-							about.content
-						)
+						{ className: "form-group", key: "id" },
+						_react2["default"].createElement("input", { className: "input block-level", type: "text", name: "id", placeholder: "id", defaultValue: blog.id, readOnly: true })
 					));
-				});
+					html.push(_react2["default"].createElement(
+						"div",
+						{ className: "form-group", key: "title" },
+						_react2["default"].createElement("input", { className: "input block-level", type: "text", name: "title", placeholder: "title", defaultValue: blog.title })
+					));
+					html.push(_react2["default"].createElement(
+						"div",
+						{ className: "form-group", key: "content" },
+						_react2["default"].createElement("textarea", { className: "textarea block-level", name: "content", placeholder: "content", defaultValue: blog.content })
+					));
+				} else {
+					html.push(_react2["default"].createElement(
+						"div",
+						{ className: "form-group", key: "title" },
+						_react2["default"].createElement("input", { className: "input block-level", type: "text", name: "title", placeholder: "title" })
+					));
+					html.push(_react2["default"].createElement(
+						"div",
+						{ className: "form-group", key: "content" },
+						_react2["default"].createElement("textarea", { className: "textarea block-level", name: "content", placeholder: "content" })
+					));
+				}
 				return html;
 			}
 		}, {
@@ -19738,9 +19749,18 @@
 					{ className: "content" },
 					_react2["default"].createElement(
 						"form",
-						{ className: "form" },
-						this.renderList(),
-						_react2["default"].createElement("img", { className: "qrcode-weixin", src: "/img/weixin.png" })
+						{ className: "form", action: "/blog/save", method: "post" },
+						this.renderInput(),
+						_react2["default"].createElement(
+							"div",
+							{ className: "form-group" },
+							_react2["default"].createElement("input", { className: "input", type: "password", name: "password", placeholder: "password" })
+						),
+						_react2["default"].createElement(
+							"div",
+							{ className: "form-group" },
+							_react2["default"].createElement("input", { className: "btn", type: "submit", value: "保存" })
+						)
 					)
 				);
 			}
@@ -19748,14 +19768,15 @@
 			key: "getMeta",
 			value: function getMeta() {
 				return {
-					cssFile: ["/css/theme.css"] };
+					cssFile: ["/css/theme.css"]
+				};
 			}
 		}]);
 
-		return About;
+		return Admin;
 	})(_react2["default"].Component);
 
-	exports["default"] = About;
+	exports["default"] = Admin;
 	module.exports = exports["default"];
 
 /***/ }
