@@ -99,7 +99,8 @@ var Base = (function (_React$Component) {
 					_react2["default"].createElement("meta", { name: "keywords", content: "Blog,FrontEnd,Node,Html,Css,Js" }),
 					_react2["default"].createElement("meta", { name: "viewport", content: "width=device-width, initial-scale=1.0, user-scalable=0" }),
 					this.renderMeta(),
-					this.renderCss()
+					this.renderCss(),
+					_react2["default"].createElement("script", { type: "text/javascript", src: "/js/ga.js" })
 				),
 				_react2["default"].createElement(
 					"body",
