@@ -257,7 +257,7 @@ var Blog = (function (_React$Component) {
 					_react2["default"].createElement(
 						"span",
 						{ className: "time" },
-						blog.createTime.toLocaleString()
+						blog.createTime.toString()
 					),
 					blog.title
 				),

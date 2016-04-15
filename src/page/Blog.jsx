@@ -140,7 +140,7 @@ export default class Blog extends React.Component {
     return (
     	<div className="content">
   			<p className="title">
-  				<span className="time">{blog.createTime.toLocaleString()}</span>
+  				<span className="time">{blog.createTime.toString()}</span>
   				{blog.title}
   			</p>
 				<article className="article" dangerouslySetInnerHTML={{__html: converter.makeHtml(blog.content)}}></article>

@@ -19936,7 +19936,7 @@
 						_react2["default"].createElement(
 							"span",
 							{ className: "time" },
-							blog.createTime.toLocaleString()
+							blog.createTime.toString()
 						),
 						blog.title
 					),

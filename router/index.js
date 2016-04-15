@@ -5,7 +5,6 @@ let React = require("react")
 , body = require("koa-body")()
 , md5 = require("md5")
 , Model = require("../model")
-require("../lib/date")
 
 router.get("/", function* (next) {
 	this.redirect("/blogs")
