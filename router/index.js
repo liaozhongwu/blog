@@ -7,7 +7,15 @@ let React = require("react")
 , Model = require("../model")
 
 router.get("/", function* (next) {
-	this.redirect("/blogs")
+	let blogs = yield Model.getBlogs()
+	,	APP_PROPS = {blogs}
+	,	Blogs = require("../build/page/Blogs")
+	, content = ReactDOMServer.renderToString(React.createElement(Blogs, APP_PROPS))
+	, Layout = require("../build/layout/Base")
+	, props = Object.assign({content, APP_PROPS}, Blogs.getMeta())
+
+	this.body = ReactDOMServer.renderToString(React.createElement(Layout, props))
+	yield next
 })
 
 router.get("/error", function* (next) {
