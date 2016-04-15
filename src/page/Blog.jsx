@@ -1,5 +1,6 @@
 import React from "react"
 import Showdown from "showdown"
+import ajax from "client-ajax"
 import "../../lib/date"
 let converter = new Showdown.Converter()
 
@@ -40,24 +41,23 @@ export default class Blog extends React.Component {
 			return;
 		}
 
-		$.ajax({
+		ajax({
 			url: "/comment/save", 
-			type: "post",
+			method: "post",
 			data: {
 				bid: blog._id,
 				name: comment.name,
 				phone: comment.phone,
 				email: comment.email,
 				content: comment.content
-			}, 
-			datatype: "json",
-			beforeSend: () => {
+			},
+			before: () => {
 				this.setState({
 					commentMsg: "submiting...",
 				});
 			},
-			success: (result) => {
-				comments.push(result);
+			success: (resp) => {
+				comments.push(resp.body);
 				this.setState({
 					comments: comments,
 					comment: {
@@ -135,19 +135,19 @@ export default class Blog extends React.Component {
 		);
 		return html;
 	}
-  	render() {
-  		let {blog} = this.state
-	    return (
-	    	<div className="content">
-    			<p className="title">
-    				<span className="time">{blog.createTime.toLocaleString()}</span>
-    				{blog.title}
-    			</p>
+	render() {
+		let {blog} = this.state
+    return (
+    	<div className="content">
+  			<p className="title">
+  				<span className="time">{blog.createTime.toLocaleString()}</span>
+  				{blog.title}
+  			</p>
 				<article className="article" dangerouslySetInnerHTML={{__html: converter.makeHtml(blog.content)}}></article>
 				<ul className="list">
 					{ this.renderComments() }
 				</ul>
 			</div>				
-	    );
+    );
 	}
 }

@@ -24,6 +24,7 @@
     "webpack": "^1.12.2"
   },
   "dependencies": {
+    "client-ajax": "^0.1.4",
     "config": "^1.20.0",
     "koa": "^1.2.0",
     "koa-body": "^1.4.0",

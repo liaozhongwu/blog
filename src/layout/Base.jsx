@@ -49,8 +49,8 @@ export default class Base extends React.Component {
 	    			<meta name="author" content="liaozhongwu<liaozhongwu95@163.com>"/>
 	    			<meta name="description" content="liaozhongwu's blog"/>
 	    			<meta name="keywords" content="Blog,FrontEnd,Node,Html,Css,Js"/>
-					<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0"/>
-					{ this.renderMeta() }
+						<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0"/>
+						{ this.renderMeta() }
 	    			{ this.renderCss() }
 	    		</head>
 	    		<body>
@@ -59,8 +59,7 @@ export default class Base extends React.Component {
   						dangerouslySetInnerHTML={{__html: this.props.content || ""}}>
   					</div>
     				<Footer />
-	    			<script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>
-					{ this.renderJs() }
+						{ this.renderJs() }
 				</body>
 			</html>
 	    );

@@ -22,6 +22,10 @@ var _showdown = require("showdown");
 
 var _showdown2 = _interopRequireDefault(_showdown);
 
+var _clientAjax = require("client-ajax");
+
+var _clientAjax2 = _interopRequireDefault(_clientAjax);
+
 require("../../lib/date");
 
 var converter = new _showdown2["default"].Converter();
@@ -79,9 +83,9 @@ var Blog = (function (_React$Component) {
 				return;
 			}
 
-			$.ajax({
+			(0, _clientAjax2["default"])({
 				url: "/comment/save",
-				type: "post",
+				method: "post",
 				data: {
 					bid: blog._id,
 					name: comment.name,
@@ -89,14 +93,13 @@ var Blog = (function (_React$Component) {
 					email: comment.email,
 					content: comment.content
 				},
-				datatype: "json",
-				beforeSend: function beforeSend() {
+				before: function before() {
 					_this.setState({
 						commentMsg: "submiting..."
 					});
 				},
-				success: function success(result) {
-					comments.push(result);
+				success: function success(resp) {
+					comments.push(resp.body);
 					_this.setState({
 						comments: comments,
 						comment: {

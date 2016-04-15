@@ -56,7 +56,7 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _pageNotice = __webpack_require__(166);
+	var _pageNotice = __webpack_require__(167);
 
 	var _pageNotice2 = _interopRequireDefault(_pageNotice);
 
@@ -19679,7 +19679,8 @@
 /* 163 */,
 /* 164 */,
 /* 165 */,
-/* 166 */
+/* 166 */,
+/* 167 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";

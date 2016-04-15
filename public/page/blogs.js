@@ -56,7 +56,7 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _pageBlogs = __webpack_require__(164);
+	var _pageBlogs = __webpack_require__(165);
 
 	var _pageBlogs2 = _interopRequireDefault(_pageBlogs);
 
@@ -19676,7 +19676,8 @@
 /* 160 */,
 /* 161 */,
 /* 162 */,
-/* 163 */
+/* 163 */,
+/* 164 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -19699,7 +19700,7 @@
 	Date.prototype.toJSON = getDateTime;
 
 /***/ },
-/* 164 */
+/* 165 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -19722,7 +19723,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	__webpack_require__(163);
+	__webpack_require__(164);
 
 	var Blogs = (function (_React$Component) {
 		_inherits(Blogs, _React$Component);
