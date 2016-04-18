@@ -47,7 +47,10 @@ router.get("/blog/:id", function* (next) {
 	,	Blog = require("../build/page/Blog")
 	,	content = ReactDOMServer.renderToString(React.createElement(Blog, APP_PROPS))
 	, Layout = require("../build/layout/Base")
-	,	props = Object.assign({content, APP_PROPS}, Blog.getMeta())
+	, meta = Blog.getMeta()
+	meta.title = blog.title + " - " + meta.title
+	meta.description = blog.title + " - " + meta.description
+	let	props = Object.assign({content, APP_PROPS}, meta)
 
 	this.body = ReactDOMServer.renderToString(React.createElement(Layout, props))
 	yield next

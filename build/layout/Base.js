@@ -36,6 +36,32 @@ var Base = (function (_React$Component) {
 	}
 
 	_createClass(Base, [{
+		key: "renderTitle",
+		value: function renderTitle() {
+			if (this.props.title) {
+				return _react2["default"].createElement(
+					"title",
+					null,
+					this.props.title
+				);
+			} else {
+				return _react2["default"].createElement(
+					"title",
+					null,
+					"廖仲武的个人网站 - Liaozhongwu's Personal Website"
+				);
+			}
+		}
+	}, {
+		key: "renderDescription",
+		value: function renderDescription() {
+			if (this.props.description) {
+				return _react2["default"].createElement("meta", { name: "description", content: this.props.description });
+			} else {
+				return _react2["default"].createElement("meta", { name: "description", content: "廖仲武的个人网站 - Liaozhongwu's Personal Website" });
+			}
+		}
+	}, {
 		key: "renderMeta",
 		value: function renderMeta() {
 			var html = [];
@@ -88,15 +114,11 @@ var Base = (function (_React$Component) {
 				_react2["default"].createElement(
 					"head",
 					null,
-					_react2["default"].createElement(
-						"title",
-						null,
-						"廖仲武的博客 - liaozhongwu's blog"
-					),
-					_react2["default"].createElement("meta", { chatSet: "utf-8" }),
+					this.renderTitle(),
+					_react2["default"].createElement("meta", { charSet: "utf-8" }),
 					_react2["default"].createElement("meta", { name: "author", content: "liaozhongwu<liaozhongwu95@163.com>" }),
-					_react2["default"].createElement("meta", { name: "description", content: "廖仲武的博客 - liaozhongwu's blog" }),
-					_react2["default"].createElement("meta", { name: "keywords", content: "廖仲武,博客,liaozhongwu,blog" }),
+					_react2["default"].createElement("meta", { name: "keywords", content: "廖仲武,个人网站,博客,liaozhongwu,blog" }),
+					this.renderDescription(),
 					_react2["default"].createElement("meta", { name: "viewport", content: "width=device-width, initial-scale=1.0, user-scalable=0" }),
 					this.renderMeta(),
 					this.renderCss(),

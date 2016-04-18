@@ -37,6 +37,8 @@ var Blog = (function (_React$Component) {
 		key: "getMeta",
 		value: function getMeta() {
 			return {
+				title: "廖仲武的博客 - Liaozhongwu's Blog",
+				description: "廖仲武的博客 - Liaozhongwu's Blog",
 				cssFile: ["/css/theme.css", "/css/blog.css"],
 				jsFile: ["/page/blog.js"]
 			};

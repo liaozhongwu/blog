@@ -29,8 +29,6 @@ var About = (function (_React$Component) {
 
 	_createClass(About, [{
 		key: "renderList",
-
-		// jsFile: [ "/page/about.js" ]
 		value: function renderList() {
 			var abouts = this.props.abouts;
 
@@ -71,7 +69,10 @@ var About = (function (_React$Component) {
 		key: "getMeta",
 		value: function getMeta() {
 			return {
-				cssFile: ["/css/theme.css", "/css/about.css"] };
+				title: "廖仲武的个人信息 - Liaozhongwu's Personal Infomation",
+				description: "廖仲武的个人信息 - Liaozhongwu's Personal Infomation",
+				cssFile: ["/css/theme.css", "/css/about.css"]
+			};
 		}
 	}]);
 

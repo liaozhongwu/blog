@@ -90,6 +90,8 @@ var Admin = (function (_React$Component) {
 		key: "getMeta",
 		value: function getMeta() {
 			return {
+				title: "编辑 - 廖仲武的博客 - Liaozhongwu's Blog",
+				description: "编辑 - 廖仲武的博客 - Liaozhongwu's Blog",
 				cssFile: ["/css/theme.css"]
 			};
 		}

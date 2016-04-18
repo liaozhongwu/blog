@@ -3,6 +3,8 @@ import React from "react";
 export default class Admin extends React.Component {	
 	static getMeta () {
 		return {
+			title: "编辑 - 廖仲武的博客 - Liaozhongwu's Blog",
+			description: "编辑 - 廖仲武的博客 - Liaozhongwu's Blog",
 			cssFile: [ "/css/theme.css" ]
 		}
 	}

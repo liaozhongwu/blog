@@ -6,6 +6,20 @@ export default class Base extends React.Component {
 	constructor () {
 		super();
 	}
+	renderTitle () {
+		if (this.props.title) {
+			return <title>{this.props.title}</title>
+		} else {
+	 		return <title>{"廖仲武的个人网站 - Liaozhongwu's Personal Website"}</title>
+		}
+	}
+	renderDescription () {
+		if (this.props.description) {
+			return <meta name="description" content={this.props.description} />
+		} else {
+	 		return <meta name="description" content="廖仲武的个人网站 - Liaozhongwu's Personal Website" />
+		}
+	}
 	renderMeta () {
 		var html = [];
 		if (this.props.meta) {
@@ -44,11 +58,11 @@ export default class Base extends React.Component {
 	    return (
 	    	<html>
 	    		<head>
-	    			<title>{"廖仲武的博客 - liaozhongwu's blog"}</title>
-	    			<meta chatSet="utf-8"/>
+	    			{ this.renderTitle() }
+	    			<meta charSet="utf-8"/>
 	    			<meta name="author" content="liaozhongwu<liaozhongwu95@163.com>"/>
-	    			<meta name="description" content="廖仲武的博客 - liaozhongwu's blog"/>
-	    			<meta name="keywords" content="廖仲武,博客,liaozhongwu,blog"/>
+	    			<meta name="keywords" content="廖仲武,个人网站,博客,liaozhongwu,blog"/>
+	    			{ this.renderDescription() }
 						<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0"/>
 						{ this.renderMeta() }
 	    			{ this.renderCss() }

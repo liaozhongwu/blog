@@ -31,8 +31,6 @@ var Blogs = (function (_React$Component) {
 
 	_createClass(Blogs, [{
 		key: "renderList",
-
-		// jsFile: [ "/page/blogs.js" ]
 		value: function renderList() {
 			var blogs = this.props.blogs;
 
@@ -77,7 +75,10 @@ var Blogs = (function (_React$Component) {
 		key: "getMeta",
 		value: function getMeta() {
 			return {
-				cssFile: ["/css/theme.css", "/css/blogs.css"] };
+				title: "廖仲武的博客 - Liaozhongwu's Blog",
+				description: "廖仲武的博客 - Liaozhongwu's Blog",
+				cssFile: ["/css/theme.css", "/css/blogs.css"]
+			};
 		}
 	}]);
 

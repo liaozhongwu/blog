@@ -4,8 +4,9 @@ import "../../lib/date"
 export default class Blogs extends React.Component {	
 	static getMeta () {
 		return {
-			cssFile: [ "/css/theme.css", "/css/blogs.css" ],
-			// jsFile: [ "/page/blogs.js" ]
+			title: "廖仲武的博客 - Liaozhongwu's Blog",
+			description: "廖仲武的博客 - Liaozhongwu's Blog",
+			cssFile: [ "/css/theme.css", "/css/blogs.css" ]
 		}
 	}
 	renderList () {
