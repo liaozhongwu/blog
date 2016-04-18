@@ -46,7 +46,7 @@ exports.addBlog = function (params) {
 	return new BlogModel(params).save()
 } 
 exports.updateBlog = function (params) {
-	return BlogModel.update(params)
+	return BlogModel.update({_id: params._id}, params)
 }
 exports.getComments = function () {
 	return CommentModel.find().sort({createTime: 1}).exec()
