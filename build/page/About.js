@@ -71,7 +71,7 @@ var About = (function (_React$Component) {
 		key: "getMeta",
 		value: function getMeta() {
 			return {
-				cssFile: ["/css/theme.css"] };
+				cssFile: ["/css/theme.css", "/css/about.css"] };
 		}
 	}]);
 

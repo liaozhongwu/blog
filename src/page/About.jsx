@@ -3,7 +3,7 @@ import React from "react";
 export default class About extends React.Component {
 	static getMeta () {
 		return {
-			cssFile: [ "/css/theme.css" ],
+			cssFile: [ "/css/theme.css", "/css/about.css" ],
 			// jsFile: [ "/page/about.js" ]
 		}
 	}

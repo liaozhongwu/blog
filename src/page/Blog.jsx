@@ -7,7 +7,7 @@ let converter = new Showdown.Converter()
 export default class Blog extends React.Component {
 	static getMeta () {
 		return {
-			cssFile: [ "/css/theme.css" ],
+			cssFile: [ "/css/theme.css", "/css/blog.css" ],
 			jsFile: [ "/page/blog.js" ]
 		}
 	}
@@ -140,8 +140,8 @@ export default class Blog extends React.Component {
     return (
     	<div className="content">
   			<p className="title">
-  				<span className="time">{blog.createTime.toString()}</span>
   				{blog.title}
+  				<span className="time">{blog.createTime.toString()}</span>
   			</p>
 				<article className="article" dangerouslySetInnerHTML={{__html: converter.makeHtml(blog.content)}}></article>
 				<ul className="list">

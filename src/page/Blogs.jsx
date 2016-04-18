@@ -4,7 +4,7 @@ import "../../lib/date"
 export default class Blogs extends React.Component {	
 	static getMeta () {
 		return {
-			cssFile: [ "/css/theme.css" ],
+			cssFile: [ "/css/theme.css", "/css/blogs.css" ],
 			// jsFile: [ "/page/blogs.js" ]
 		}
 	}
@@ -12,9 +12,12 @@ export default class Blogs extends React.Component {
 		var {blogs} = this.props;
 		var html = [];
 		blogs.map((blog, i) => {
-			html.push(<li className="item" key={i}>
+			html.push(<li className="item blog" key={i}>
+				<a className="blog-title" href={"/blog/" + blog.id}>{blog.title}</a>
 				<span className="time">{blog.createTime.toString()}</span>
-				<a href={"/blog/" + blog.id}>{blog.title}</a>
+				<div className="blog-preview">
+					{blog.content}
+				</div>
 			</li>);
 		});
 		return html;

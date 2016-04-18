@@ -31,7 +31,7 @@ var Header = (function (_React$Component) {
 		key: "render",
 		value: function render() {
 			return _react2["default"].createElement(
-				"header",
+				"div",
 				{ className: "header" },
 				_react2["default"].createElement(
 					"nav",

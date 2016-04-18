@@ -91,12 +91,12 @@ var Base = (function (_React$Component) {
 					_react2["default"].createElement(
 						"title",
 						null,
-						"Blog"
+						"廖仲武的博客 - liaozhongwu's blog"
 					),
 					_react2["default"].createElement("meta", { chatSet: "utf-8" }),
 					_react2["default"].createElement("meta", { name: "author", content: "liaozhongwu<liaozhongwu95@163.com>" }),
-					_react2["default"].createElement("meta", { name: "description", content: "liaozhongwu's blog" }),
-					_react2["default"].createElement("meta", { name: "keywords", content: "Blog,FrontEnd,Node,Html,Css,Js" }),
+					_react2["default"].createElement("meta", { name: "description", content: "廖仲武的博客 - liaozhongwu's blog" }),
+					_react2["default"].createElement("meta", { name: "keywords", content: "廖仲武,博客,liaozhongwu,blog" }),
 					_react2["default"].createElement("meta", { name: "viewport", content: "width=device-width, initial-scale=1.0, user-scalable=0" }),
 					this.renderMeta(),
 					this.renderCss(),

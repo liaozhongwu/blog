@@ -31,7 +31,7 @@ var Footer = (function (_React$Component) {
     key: "render",
     value: function render() {
       return _react2["default"].createElement(
-        "footer",
+        "div",
         { className: "footer" },
         _react2["default"].createElement(
           "p",

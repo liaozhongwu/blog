@@ -19716,7 +19716,7 @@
 			key: "getMeta",
 			value: function getMeta() {
 				return {
-					cssFile: ["/css/theme.css"],
+					cssFile: ["/css/theme.css", "/css/blog.css"],
 					jsFile: ["/page/blog.js"]
 				};
 			}
@@ -19933,12 +19933,12 @@
 					_react2["default"].createElement(
 						"p",
 						{ className: "title" },
+						blog.title,
 						_react2["default"].createElement(
 							"span",
 							{ className: "time" },
 							blog.createTime.toString()
-						),
-						blog.title
+						)
 					),
 					_react2["default"].createElement("article", { className: "article", dangerouslySetInnerHTML: { __html: converter.makeHtml(blog.content) } }),
 					_react2["default"].createElement(

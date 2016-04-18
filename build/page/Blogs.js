@@ -40,16 +40,21 @@ var Blogs = (function (_React$Component) {
 			blogs.map(function (blog, i) {
 				html.push(_react2["default"].createElement(
 					"li",
-					{ className: "item", key: i },
+					{ className: "item blog", key: i },
+					_react2["default"].createElement(
+						"a",
+						{ className: "blog-title", href: "/blog/" + blog.id },
+						blog.title
+					),
 					_react2["default"].createElement(
 						"span",
 						{ className: "time" },
 						blog.createTime.toString()
 					),
 					_react2["default"].createElement(
-						"a",
-						{ href: "/blog/" + blog.id },
-						blog.title
+						"div",
+						{ className: "blog-preview" },
+						blog.content
 					)
 				));
 			});
@@ -72,7 +77,7 @@ var Blogs = (function (_React$Component) {
 		key: "getMeta",
 		value: function getMeta() {
 			return {
-				cssFile: ["/css/theme.css"] };
+				cssFile: ["/css/theme.css", "/css/blogs.css"] };
 		}
 	}]);
 

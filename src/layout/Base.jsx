@@ -44,11 +44,11 @@ export default class Base extends React.Component {
 	    return (
 	    	<html>
 	    		<head>
-	    			<title>Blog</title>
+	    			<title>{"廖仲武的博客 - liaozhongwu's blog"}</title>
 	    			<meta chatSet="utf-8"/>
 	    			<meta name="author" content="liaozhongwu<liaozhongwu95@163.com>"/>
-	    			<meta name="description" content="liaozhongwu's blog"/>
-	    			<meta name="keywords" content="Blog,FrontEnd,Node,Html,Css,Js"/>
+	    			<meta name="description" content="廖仲武的博客 - liaozhongwu's blog"/>
+	    			<meta name="keywords" content="廖仲武,博客,liaozhongwu,blog"/>
 						<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0"/>
 						{ this.renderMeta() }
 	    			{ this.renderCss() }

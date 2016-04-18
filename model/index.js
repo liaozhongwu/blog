@@ -37,7 +37,7 @@ var	BlogModel = mongoose.model('blog', blogSchema)
 ,	AboutModel = mongoose.model('about', aboutSchema)
 
 exports.getBlogs = function () {
-	return BlogModel.find().exec()
+	return BlogModel.find().sort({createTime: -1}).exec()
 }
 exports.getBlog = function (_id) {
 	return BlogModel.findOne({_id}).exec()
@@ -49,7 +49,7 @@ exports.updateBlog = function (params) {
 	return BlogModel.update(params)
 }
 exports.getComments = function () {
-	return CommentModel.find().exec()
+	return CommentModel.find().sort({createTime: 1}).exec()
 }
 exports.getComment = function (_id) {
 	return CommentModel.findOne({_id}).exec()
@@ -67,7 +67,7 @@ exports.addAbout = function (params) {
 	return new AboutModel(params).save()
 }
 exports.getNotices = function () {
-	return NoticeModel.find().exec()
+	return NoticeModel.find().sort({createTime: 1}).exec()
 }
 exports.addNotice = function (params) {
 	return new NoticeModel(params).save()
