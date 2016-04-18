@@ -26,10 +26,10 @@ export default class Blogs extends React.Component {
   	render() {
 	    return (
 	    	<div className="content">
-				<ul className="list">
-					{ this.renderList() }
-				</ul>
-			</div>
+					<ul className="list">
+						{ this.renderList() }
+					</ul>
+				</div>
 	    );
   	}	
 }

@@ -53,7 +53,7 @@ export default class Admin extends React.Component {
 	    				<input className="btn" type="submit" value="保存"/>
 	    			</div>
 	    		</form>
-			</div>
+				</div>
 	    );
   	}	
 }

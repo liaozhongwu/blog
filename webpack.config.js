@@ -5,6 +5,7 @@ module.exports = {
         blog: './src/entry/blog.js', 
         blogs: './src/entry/blogs.js', 
         error: './src/entry/error.js', 
+        index: './src/entry/index.js', 
         notice: './src/entry/notice.js'
     },
     output: {

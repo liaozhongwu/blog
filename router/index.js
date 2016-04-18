@@ -7,12 +7,10 @@ let React = require("react")
 , Model = require("../model")
 
 router.get("/", function* (next) {
-	let blogs = yield Model.getBlogs()
-	,	APP_PROPS = {blogs}
-	,	Blogs = require("../build/page/Blogs")
-	, content = ReactDOMServer.renderToString(React.createElement(Blogs, APP_PROPS))
+	let Index = require("../build/page/Index")
+	, content = ReactDOMServer.renderToString(React.createElement(Index))
 	, Layout = require("../build/layout/Base")
-	, props = Object.assign({content, APP_PROPS}, Blogs.getMeta())
+	, props = Object.assign({content}, Index.getMeta())
 
 	this.body = ReactDOMServer.renderToString(React.createElement(Layout, props))
 	yield next

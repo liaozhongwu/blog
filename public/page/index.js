@@ -56,12 +56,12 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _pageNotice = __webpack_require__(175);
+	var _pageIndex = __webpack_require__(174);
 
-	var _pageNotice2 = _interopRequireDefault(_pageNotice);
+	var _pageIndex2 = _interopRequireDefault(_pageIndex);
 
 	var props = window.APP_PROPS;
-	_reactDom2['default'].render(_react2['default'].createElement(_pageNotice2['default'], props), document.getElementById("main"));
+	_reactDom2['default'].render(_react2['default'].createElement(_pageIndex2['default'], props), document.getElementById("main"));
 
 /***/ },
 /* 1 */
@@ -20039,14 +20039,13 @@
 /* 171 */,
 /* 172 */,
 /* 173 */,
-/* 174 */,
-/* 175 */
+/* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	  value: true
 	});
 
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -20064,37 +20063,80 @@
 	var _react2 = _interopRequireDefault(_react);
 
 	var Notice = (function (_React$Component) {
-		_inherits(Notice, _React$Component);
+	  _inherits(Notice, _React$Component);
 
-		function Notice() {
-			_classCallCheck(this, Notice);
+	  function Notice() {
+	    _classCallCheck(this, Notice);
 
-			_get(Object.getPrototypeOf(Notice.prototype), "constructor", this).apply(this, arguments);
-		}
+	    _get(Object.getPrototypeOf(Notice.prototype), "constructor", this).apply(this, arguments);
+	  }
 
-		_createClass(Notice, [{
-			key: "render",
-			value: function render() {
-				var notices = this.props.notices;
+	  _createClass(Notice, [{
+	    key: "render",
+	    value: function render() {
+	      var notices = this.props.notices;
 
-				return _react2["default"].createElement(
-					"div",
-					{ className: "content" },
-					notices.map(function (notice, i) {
-						return _react2["default"].createElement("p", { key: i, className: "notice", dangerouslySetInnerHTML: { __html: notice.title } });
-					})
-				);
-			}
-		}], [{
-			key: "getMeta",
-			value: function getMeta() {
-				return {
-					cssFile: ["/css/theme.css"]
-				};
-			}
-		}]);
+	      return _react2["default"].createElement(
+	        "div",
+	        { className: "content" },
+	        _react2["default"].createElement(
+	          "div",
+	          { className: "magic" },
+	          _react2["default"].createElement(
+	            "div",
+	            { className: "magic-block" },
+	            _react2["default"].createElement("img", { src: "/img/node.png", alt: "node", title: "node" })
+	          ),
+	          _react2["default"].createElement(
+	            "div",
+	            { className: "magic-block" },
+	            _react2["default"].createElement("img", { src: "/img/mongo.png", alt: "mongo", title: "mongo" })
+	          ),
+	          _react2["default"].createElement(
+	            "div",
+	            { className: "magic-block" },
+	            _react2["default"].createElement("img", { src: "/img/npm.png", alt: "npm", title: "npm" })
+	          ),
+	          _react2["default"].createElement(
+	            "div",
+	            { className: "magic-block" },
+	            _react2["default"].createElement("img", { src: "/img/react.png", alt: "react", title: "react" })
+	          ),
+	          _react2["default"].createElement(
+	            "div",
+	            { className: "magic-block" },
+	            _react2["default"].createElement("img", { src: "/img/gulp.png", alt: "gulp", title: "gulp" })
+	          ),
+	          _react2["default"].createElement(
+	            "div",
+	            { className: "magic-block" },
+	            _react2["default"].createElement("img", { src: "/img/webpack.png", alt: "webpack", title: "webpack" })
+	          ),
+	          _react2["default"].createElement(
+	            "div",
+	            { className: "magic-block" },
+	            _react2["default"].createElement("img", { src: "/img/html5.png", alt: "html5", title: "html5" })
+	          ),
+	          _react2["default"].createElement(
+	            "div",
+	            { className: "magic-block" },
+	            _react2["default"].createElement("img", { src: "/img/css3.png", alt: "css3", title: "css3" })
+	          )
+	        )
+	      );
+	    }
+	  }], [{
+	    key: "getMeta",
+	    value: function getMeta() {
+	      return {
+	        title: "廖仲武的个人网站 - Liaozhongwu's Personal Website",
+	        description: "廖仲武的个人网站 - Liaozhongwu's Personal Website",
+	        cssFile: ["/css/theme.css", "/css/index.css"]
+	      };
+	    }
+	  }]);
 
-		return Notice;
+	  return Notice;
 	})(_react2["default"].Component);
 
 	exports["default"] = Notice;

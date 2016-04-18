@@ -55,7 +55,11 @@ var Header = (function (_React$Component) {
 				_react2["default"].createElement(
 					"div",
 					{ className: "motto" },
-					_react2["default"].createElement("img", { className: "avatar", src: "/img/avatar.jpg" }),
+					_react2["default"].createElement(
+						"a",
+						{ href: "/" },
+						_react2["default"].createElement("img", { className: "avatar", src: "/img/avatar.jpg" })
+					),
 					_react2["default"].createElement(
 						"p",
 						null,

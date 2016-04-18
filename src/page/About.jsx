@@ -26,7 +26,7 @@ export default class About extends React.Component {
 	    			{ this.renderList() }
 	    			<img className="qrcode-weixin" src="/img/weixin.png"/>
 	    		</form>
-			</div>
+				</div>
 	    );
 	}
 }
