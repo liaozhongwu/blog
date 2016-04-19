@@ -1,8 +1,6 @@
 # Blog
-Front-End engineer works
+The Front-End engineer works ([www.liaozhongwu.cn](http://www.liaozhongwu.cn))
 
-The technology stack includes node & koa & mongodb & react
+The technology stack: [node, koa, mongodb, react]
 
-The package tool includes gulp & webpack
-
-The website is [http://www.liaozhongwu.cn](www.liaozhongwu.cn)
+The package tool: [gulp, webpack]
