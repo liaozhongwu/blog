@@ -11,15 +11,15 @@ module.exports = {
     entry: entry,
     output: {
         path: __dirname,
-        filename: './public/js/[name]/index.js'
+        filename: "./public/js/[name]/index.js"
     },
     resolve: {
-        extensions: ['', '.js', '.jsx']
+        extensions: ["", ".js", ".jsx"]
     },
     module: {
         loaders: [
-            { test: /\.js$/, loaders: ['babel'] },
-            { test: /\.jsx$/, loaders: ["babel"] }
+            { test: /\.js$/, exclude: /node_modules/, loaders: ["babel"] },
+            { test: /\.jsx$/, exclude: /node_modules/, loaders: ["babel"] }
         ]
     }
 }

@@ -10,9 +10,13 @@ var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _showdown = require("showdown");
+var _marked = require("marked");
 
-var _showdown2 = _interopRequireDefault(_showdown);
+var _marked2 = _interopRequireDefault(_marked);
+
+var _highlight = require("highlight.js");
+
+var _highlight2 = _interopRequireDefault(_highlight);
 
 var _clientAjax = require("client-ajax");
 
@@ -28,7 +32,11 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var converter = new _showdown2.default.Converter();
+_marked2.default.setOptions({
+	highlight: function highlight(code) {
+		return _highlight2.default.highlightAuto(code).value;
+	}
+});
 
 var Blog = function (_React$Component) {
 	_inherits(Blog, _React$Component);
@@ -39,7 +47,7 @@ var Blog = function (_React$Component) {
 			return {
 				title: "廖仲武的博客 - Liaozhongwu's Blog",
 				description: "廖仲武的博客 - Liaozhongwu's Blog",
-				cssFile: ["/css/theme.css", "/css/blog/index.css"],
+				cssFile: ["/css/theme.css", "/css/highlight.css", "/css/blog/index.css"],
 				jsFile: ["/js/blog/index.js"]
 			};
 		}
@@ -266,7 +274,7 @@ var Blog = function (_React$Component) {
 						blog.createTime.toString()
 					)
 				),
-				_react2.default.createElement("article", { className: "article", dangerouslySetInnerHTML: { __html: converter.makeHtml(blog.content) } }),
+				_react2.default.createElement("article", { className: "article", dangerouslySetInnerHTML: { __html: (0, _marked2.default)(blog.content) } }),
 				_react2.default.createElement(
 					"ul",
 					{ className: "list" },

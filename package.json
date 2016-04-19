@@ -33,6 +33,7 @@
   "dependencies": {
     "client-ajax": "^0.1.5",
     "config": "^1.20.1",
+    "highlight.js": "^9.3.0",
     "koa": "^1.2.0",
     "koa-body": "^1.4.0",
     "koa-router": "^5.4.0",
@@ -42,8 +43,7 @@
     "mongoose": "^4.4.12",
     "pm2": "^1.1.2",
     "react": "^15.0.1",
-    "react-dom": "^15.0.1",
-    "showdown": "^1.2.3"
+    "react-dom": "^15.0.1"
   },
   "scripts": {
     "develop": "NODE_ENV=develop node app.js",

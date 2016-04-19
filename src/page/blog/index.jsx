@@ -1,15 +1,21 @@
 import React from "react"
-import Showdown from "showdown"
+import marked from "marked"
+import hljs from "highlight.js"
 import ajax from "client-ajax"
 import "../../../lib/date"
-let converter = new Showdown.Converter()
+
+marked.setOptions({
+  highlight: function (code) {
+  	return hljs.highlightAuto(code).value
+  }
+})
 
 export default class Blog extends React.Component {
 	static getMeta () {
 		return {
 			title: "廖仲武的博客 - Liaozhongwu's Blog",
 			description: "廖仲武的博客 - Liaozhongwu's Blog",
-			cssFile: [ "/css/theme.css", "/css/blog/index.css" ],
+			cssFile: [ "/css/theme.css", "/css/highlight.css", "/css/blog/index.css" ],
 			jsFile: [ "/js/blog/index.js" ]
 		}
 	}
@@ -145,7 +151,7 @@ export default class Blog extends React.Component {
   				{blog.title}
   				<span className="time">{blog.createTime.toString()}</span>
   			</p>
-				<article className="article" dangerouslySetInnerHTML={{__html: converter.makeHtml(blog.content)}}></article>
+				<article className="article" dangerouslySetInnerHTML={{__html: marked(blog.content)}}></article>
 				<ul className="list">
 					{ this.renderComments() }
 				</ul>
