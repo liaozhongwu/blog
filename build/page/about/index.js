@@ -42,11 +42,7 @@ var About = function (_React$Component) {
 						{ className: "label" },
 						about.title
 					),
-					_react2.default.createElement(
-						"span",
-						{ className: "form-static" },
-						about.content
-					)
+					_react2.default.createElement("span", { className: "form-static", dangerouslySetInnerHTML: { __html: about.content } })
 				));
 			});
 			return html;

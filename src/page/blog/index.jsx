@@ -151,7 +151,7 @@ export default class Blog extends React.Component {
   				{blog.title}
   				<span className="time">{blog.createTime.toString()}</span>
   			</p>
-				<article className="article" dangerouslySetInnerHTML={{__html: marked(blog.content)}}></article>
+				<article className="article" dangerouslySetInnerHTML={{__html: marked(blog.content)}} />
 				<ul className="list">
 					{ this.renderComments() }
 				</ul>
