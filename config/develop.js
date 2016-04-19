@@ -1,3 +1,4 @@
 module.exports = {
-	port: 8020
+	port: 8020,
+	debug: true
 }

@@ -4,5 +4,6 @@ module.exports = {
 		user: "lzw",
 		pass: "lzw123"
 	},
-	port: 80
+	port: 80,
+	debug: false
 }

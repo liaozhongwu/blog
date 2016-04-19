@@ -3,9 +3,6 @@ var mongoose = require('mongoose')
 
 mongoose.Promise = global.Promise || mongoose.Promise
 mongoose.connect(config.db.url, {user: config.db.user, pass: config.db.pass})
-mongoose.connection.once('open', function () {
-	console.log(`connect to ${config.db.url} success`)
-})
 
 var Schema = mongoose.Schema
 ,	blogSchema = new Schema({

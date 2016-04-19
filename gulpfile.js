@@ -6,14 +6,17 @@ var gulp = require("gulp")
 , react = require("gulp-react")
 , webpack = require("webpack")
 , webpack_config = require("./webpack.config")
+, shelljs = require("shelljs")
 
 gulp.task("css", function () {
+	console.log("running task css")
 	return gulp.src("./src/css/*.css")
 		.pipe(postcss([autoprefixer({browsers: ['last 2 version']}), csswring]))
 		.pipe(gulp.dest("./public/css"))
 })
 
 gulp.task("page", function () {
+	console.log("running task page")
 	return gulp.src("./src/page/**/*.jsx")
 		.pipe(babel())
 		.pipe(react())
@@ -21,12 +24,14 @@ gulp.task("page", function () {
 })
 
 gulp.task("pagecss", function () {
+	console.log("running task pagecss")
 	return gulp.src("./src/page/**/*.css")
 		.pipe(postcss([autoprefixer({browsers: ['last 2 version']}), csswring]))
 		.pipe(gulp.dest("./public/css"))
 })
 
 gulp.task("component", function () {
+	console.log("running task component")
 	return gulp.src("./src/component/**/*.jsx")
 		.pipe(babel())
 		.pipe(react())
@@ -34,6 +39,7 @@ gulp.task("component", function () {
 })
 
 gulp.task("layout", function () {
+	console.log("running task layout")
 	return gulp.src("./src/layout/*.jsx")
 		.pipe(babel())
 		.pipe(react())
@@ -41,6 +47,7 @@ gulp.task("layout", function () {
 })
 
 gulp.task("webpack", function () {
+	console.log("running task webpack")
 	webpack(webpack_config, function (err, stat) {
 		if (err) {
 			console.error(err);
@@ -49,14 +56,25 @@ gulp.task("webpack", function () {
 	});
 })
 
+gulp.task("clean", function () {
+	console.log("running task clean")
+	shelljs.rm("-r", "./build")
+	shelljs.rm("-r", "./public/css")
+	shelljs.rm("-r", "./public/js")
+})
+
+function onChangeLog (e) {
+	console.log('File ' + e.path + " was " + e.type)
+}
 
 gulp.task('watch', function () {
-  gulp.watch('./src/css/*.css', ['css'])
-  gulp.watch('./src/page/**/*.jsx', ['page', 'webpack'])
-  gulp.watch('./src/page/**/*.css', ['pagecss'])
-  gulp.watch('./src/layout/*.jsx', ['layout', 'webpack'])
-  gulp.watch('./src/component/**/*.jsx', ['component', 'webpack'])
-  gulp.watch('./src/entry/*.js', ['webpack'])
+	console.log("gulp is watching now")
+  gulp.watch('./src/css/*.css', ['css']).on('change', onChangeLog)
+  gulp.watch('./src/page/**/*.jsx', ['page', 'webpack']).on('change', onChangeLog)
+  gulp.watch('./src/page/**/*.css', ['pagecss']).on('change', onChangeLog)
+  gulp.watch('./src/layout/*.jsx', ['layout', 'webpack']).on('change', onChangeLog)
+  gulp.watch('./src/component/**/*.jsx', ['component', 'webpack']).on('change', onChangeLog)
+  gulp.watch('./src/entry/*.js', ['webpack']).on('change', onChangeLog)
 });
 
-gulp.task("default", ["css", "page", "pagecss", "component", "layout", "webpack"]);
+gulp.task("default", ["clean", "css", "page", "pagecss", "component", "layout", "webpack"]);

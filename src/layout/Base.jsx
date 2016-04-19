@@ -66,7 +66,7 @@ export default class Base extends React.Component {
 						<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0"/>
 						{ this.renderMeta() }
 	    			{ this.renderCss() }
-	    			<script type="text/javascript" src="/js/ga.js"></script>
+	    			<script type="text/javascript" src="/vendor/ga.js"></script>
 	    		</head>
 	    		<body>
     				<Header />

@@ -5,19 +5,26 @@ let React = require("react")
 , body = require("koa-body")()
 , md5 = require("md5")
 , Model = require("../model")
-, Index = require("../build/page/index").default
-,	Blogs = require("../build/page/blogs").default
-,	Blog = require("../build/page/blog").default
-,	About = require("../build/page/about").default
-,	Notice = require("../build/page/notice").default
-, Admin = require("../build/page/admin").default
-, Error = require("../build/page/error").default
-, Layout = require("../build/layout/Base").default
+
+router.get("/*", function* (next) {
+	try {
+		yield next
+	} catch (err) {
+		console.log("router " + this.path + " errored")
+		console.error(err)
+		let Error = require("../build/page/error").default
+		, content = ReactDOMServer.renderToString(React.createElement(Error))
+		,	props = Object.assign({content}, Error.getMeta())
+		, Layout = require("../build/layout/Base").default
+		this.body = ReactDOMServer.renderToString(React.createElement(Layout, props))
+	}
+})
 
 router.get("/", function* (next) {
-	let content = ReactDOMServer.renderToString(React.createElement(Index))
+	let Index = require("../build/page/index").default
+	,	content = ReactDOMServer.renderToString(React.createElement(Index))
 	, props = Object.assign({content}, Index.getMeta())
-
+	, Layout = require("../build/layout/Base").default
 	this.body = ReactDOMServer.renderToString(React.createElement(Layout, props))
 	yield next
 })
@@ -25,9 +32,10 @@ router.get("/", function* (next) {
 router.get("/blogs", function* (next) {
 	let blogs = yield Model.getBlogs()
 	,	APP_PROPS = {blogs}
+	,	Blogs = require("../build/page/blogs").default
 	, content = ReactDOMServer.renderToString(React.createElement(Blogs, APP_PROPS))
 	, props = Object.assign({content, APP_PROPS}, Blogs.getMeta())
-
+	, Layout = require("../build/layout/Base").default
 	this.body = ReactDOMServer.renderToString(React.createElement(Layout, props))
 	yield next
 })
@@ -36,12 +44,13 @@ router.get("/blog/:id", function* (next) {
 	let blog = yield Model.getBlog(this.params.id)
 	,	comments = yield Model.getCommentsByBid(blog._id)
 	,	APP_PROPS = {blog, comments}
+	,	Blog = require("../build/page/blog").default
 	,	content = ReactDOMServer.renderToString(React.createElement(Blog, APP_PROPS))
 	, meta = Blog.getMeta()
 	meta.title = blog.title + " - " + meta.title
 	meta.description = blog.title + " - " + meta.description
 	let	props = Object.assign({content, APP_PROPS}, meta)
-
+	, Layout = require("../build/layout/Base").default
 	this.body = ReactDOMServer.renderToString(React.createElement(Layout, props))
 	yield next
 })
@@ -49,17 +58,19 @@ router.get("/blog/:id", function* (next) {
 router.get("/blog/:id/admin", function* (next) {
 	let blog = yield Model.getBlog(this.params.id)
 	, APP_PROPS = {blog}
+	, Admin = require("../build/page/admin").default
 	,	content = ReactDOMServer.renderToString(React.createElement(Admin, APP_PROPS))
 	,	props = Object.assign({content, APP_PROPS}, Admin.getMeta())
-
+	, Layout = require("../build/layout/Base").default
 	this.body = ReactDOMServer.renderToString(React.createElement(Layout, props))
 	yield next
 })
 
 router.get("/blogs/admin", function* (next) {
-	let content = ReactDOMServer.renderToString(React.createElement(Admin))
+	let Admin = require("../build/page/admin").default
+	, content = ReactDOMServer.renderToString(React.createElement(Admin))
 	,	props = Object.assign({content}, Admin.getMeta())
-
+	, Layout = require("../build/layout/Base").default
 	this.body = ReactDOMServer.renderToString(React.createElement(Layout, props))
 	yield next
 })
@@ -93,7 +104,6 @@ router.post("/comment/save", body, function* (next) {
 	,	phone = this.request.body.phone
 	,	email = this.request.body.email
 	,	content = this.request.body.content
-
 	this.body = yield Model.addComment({bid, name, phone, email, content})
 	yield next
 })
@@ -101,9 +111,10 @@ router.post("/comment/save", body, function* (next) {
 router.get("/about", function* (next) {
 	let abouts = yield Model.getAbouts()
 	,	APP_PROPS = {abouts}
+	,	About = require("../build/page/about").default
 	,	content = ReactDOMServer.renderToString(React.createElement(About, APP_PROPS))
 	,	props = Object.assign({content, APP_PROPS}, About.getMeta())
-
+	, Layout = require("../build/layout/Base").default
 	this.body = ReactDOMServer.renderToString(React.createElement(Layout, props))
 	yield next
 })
@@ -111,18 +122,32 @@ router.get("/about", function* (next) {
 router.get("/notice", function* (next) {
 	let notices = yield Model.getNotices()
 	, APP_PROPS = {notices}
+	,	Notice = require("../build/page/notice").default
 	,	content = ReactDOMServer.renderToString(React.createElement(Notice, APP_PROPS))
 	,	props = Object.assign({content, APP_PROPS}, Notice.getMeta())
-
+	, Layout = require("../build/layout/Base").default
 	this.body = ReactDOMServer.renderToString(React.createElement(Layout, props))
 	yield next
 })
 
 router.get("/error", function* (next) {
-	let content = ReactDOMServer.renderToString(React.createElement(Error))
+		let Error = require("../build/page/error").default
+	, content = ReactDOMServer.renderToString(React.createElement(Error))
 	,	props = Object.assign({content}, Error.getMeta())
-
+	, Layout = require("../build/layout/Base").default
 	this.body = ReactDOMServer.renderToString(React.createElement(Layout, props))
+	yield next
+})
+
+router.get("/*", function* (next) {
+	if (this.status === 404) {
+		console.log("router " + this.path + " was not found")
+		let Error = require("../build/page/error").default
+		, content = ReactDOMServer.renderToString(React.createElement(Error))
+		,	props = Object.assign({content}, Error.getMeta())
+		, Layout = require("../build/layout/Base").default
+		this.body = ReactDOMServer.renderToString(React.createElement(Layout, props))
+	}
 	yield next
 })
 
