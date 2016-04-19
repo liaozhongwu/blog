@@ -14,7 +14,7 @@ export default class About extends React.Component {
 		abouts.map((about, i) => {
 			html.push(<div className="form-group" key={ i }>
 				<label className="label">{about.title}</label>
-				<span className="form-static"  dangerouslySetInnerHTML={{__html: about.content}} />
+				<span className="form-static" dangerouslySetInnerHTML={{__html: about.content}} />
 			</div>);
 		});
 		return html;
