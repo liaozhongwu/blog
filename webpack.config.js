@@ -1,16 +1,17 @@
+var glob = require("glob")
+, entry = {}
+
+glob.sync("./src/entry/*.js")
+.forEach(function (path) {
+    var name = path.match(/^\.\/src\/entry\/(.*)\.js$/, '')[1]
+    entry[name] = path
+})
+
 module.exports = {
-    entry: {
-        about: './src/entry/about.js',
-        admin: './src/entry/admin.js',
-        blog: './src/entry/blog.js', 
-        blogs: './src/entry/blogs.js', 
-        error: './src/entry/error.js', 
-        index: './src/entry/index.js', 
-        notice: './src/entry/notice.js'
-    },
+    entry: entry,
     output: {
         path: __dirname,
-        filename: './public/page/[name].js'
+        filename: './public/js/[name]/index.js'
     },
     resolve: {
         extensions: ['', '.js', '.jsx']
