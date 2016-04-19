@@ -50,7 +50,6 @@ router.get("/blog/:id/admin", function* (next) {
 	let blog = yield Model.getBlog(this.params.id)
 	, APP_PROPS = {blog}
 	,	content = ReactDOMServer.renderToString(React.createElement(Admin, APP_PROPS))
-	,	Layout = require("../build/layout/Base")
 	,	props = Object.assign({content, APP_PROPS}, Admin.getMeta())
 
 	this.body = ReactDOMServer.renderToString(React.createElement(Layout, props))

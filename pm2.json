@@ -25,7 +25,7 @@
     "merge_logs"         : true,
     "error_file"         : "/var/logs/blog/error.log",
     "out_file"           : "/var/logs/blog/out.log",
-    "pid_file"           : "/var/logs/blog/lgc.pid",
+    "pid_file"           : "/var/logs/blog/blog.pid",
     "watch"              : false
   }]
 }
