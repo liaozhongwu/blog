@@ -50,8 +50,8 @@ var Footer = function (_React$Component) {
           "Friend Link: ",
           _react2.default.createElement(
             "a",
-            { href: "http://guoyuchen.net", target: "_blank" },
-            "黑辰的窝"
+            { href: "http://guoyc.com", target: "_blank" },
+            "Heychen"
           )
         )
       );

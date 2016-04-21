@@ -6,7 +6,7 @@ let React = require("react")
 , md5 = require("md5")
 , Model = require("../model")
 
-router.get("/*", function* (next) {
+router.use(function* (next) {
 	try {
 		yield next
 	} catch (err) {
@@ -139,7 +139,7 @@ router.get("/error", function* (next) {
 	yield next
 })
 
-router.get("/*", function* (next) {
+router.use(function* (next) {
 	if (this.status === 404) {
 		console.log("router " + this.path + " was not found")
 		let Error = require("../build/page/error").default
