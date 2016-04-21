@@ -8,9 +8,10 @@ let React = require("react")
 
 router.use(function* (next) {
 	try {
+		console.log(this.method + " " + this.href + " from " + this.ip)
 		yield next
 	} catch (err) {
-		console.log("router " + this.path + " errored")
+		console.log(this.method + " " + this.href + " errored")
 		console.error(err)
 		let Error = require("../build/page/error").default
 		, content = ReactDOMServer.renderToString(React.createElement(Error))
@@ -142,7 +143,7 @@ router.get("/error", function* (next) {
 
 router.all("/*", function* (next) {
 	if (this.status === 404) {
-		console.log("router " + this.path + " was not found")
+		console.log(this.method + " " + this.href + " was not found")
 		let Error = require("../build/page/error").default
 		, content = ReactDOMServer.renderToString(React.createElement(Error))
 		,	props = Object.assign({content}, Error.getMeta())
