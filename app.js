@@ -14,7 +14,7 @@ app
   console.log('App is listening to ' + port)
   console.log('========================')
 
-	if (!config.prod) {
+	if (!config.online) {
 		require("./gulpfile")
 		require("gulp").start("watch")
 	}
