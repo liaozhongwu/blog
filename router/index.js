@@ -3,6 +3,7 @@ let React = require("react")
 , ReactDOMServer = require('react-dom/server')
 , router = require("koa-router")()
 , body = require("koa-body")()
+, config = require("config")
 , md5 = require("md5")
 , Model = require("../model")
 
