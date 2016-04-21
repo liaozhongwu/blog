@@ -20247,7 +20247,7 @@
 						{ className: "item blog", key: i },
 						_react2.default.createElement(
 							"a",
-							{ className: "blog-title", href: "/blog/" + blog.id },
+							{ className: "blog-title", href: "/blog/" + blog.key },
 							blog.title
 						),
 						_react2.default.createElement(

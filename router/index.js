@@ -40,8 +40,8 @@ router.get("/blogs", function* (next) {
 	yield next
 })
 
-router.get("/blog/:id", function* (next) {
-	let blog = yield Model.getBlog(this.params.id)
+router.get("/blog/:key", function* (next) {
+	let blog = yield Model.getBlogByKey(this.params.key)
 	,	comments = yield Model.getCommentsByBid(blog._id)
 	,	APP_PROPS = {blog, comments}
 	,	Blog = require("../build/page/blog").default
@@ -55,8 +55,8 @@ router.get("/blog/:id", function* (next) {
 	yield next
 })
 
-router.get("/blog/:id/admin", function* (next) {
-	let blog = yield Model.getBlog(this.params.id)
+router.get("/blog/:key/admin", function* (next) {
+	let blog = yield Model.getBlogByKey(this.params.key)
 	, APP_PROPS = {blog}
 	, Admin = require("../build/page/admin").default
 	,	content = ReactDOMServer.renderToString(React.createElement(Admin, APP_PROPS))
@@ -131,7 +131,7 @@ router.get("/notice", function* (next) {
 })
 
 router.get("/error", function* (next) {
-		let Error = require("../build/page/error").default
+	let Error = require("../build/page/error").default
 	, content = ReactDOMServer.renderToString(React.createElement(Error))
 	,	props = Object.assign({content}, Error.getMeta())
 	, Layout = require("../build/layout/Base").default
@@ -139,7 +139,7 @@ router.get("/error", function* (next) {
 	yield next
 })
 
-router.use(function* (next) {
+router.all("/*", function* (next) {
 	if (this.status === 404) {
 		console.log("router " + this.path + " was not found")
 		let Error = require("../build/page/error").default

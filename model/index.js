@@ -7,6 +7,7 @@ mongoose.connect(config.db.url, {user: config.db.user, pass: config.db.pass})
 var Schema = mongoose.Schema
 ,	blogSchema = new Schema({
 	title: {type: String, index: true}
+	, key: {type: String}
 	,	content: {type: String}
 	,	createTime: {type: Date, default: Date.now}
 })
@@ -38,6 +39,9 @@ exports.getBlogs = function () {
 }
 exports.getBlog = function (_id) {
 	return BlogModel.findOne({_id}).exec()
+}
+exports.getBlogByKey = function (key) {
+	return BlogModel.findOne({key}).exec()
 }
 exports.addBlog = function (params) {
 	return new BlogModel(params).save()
