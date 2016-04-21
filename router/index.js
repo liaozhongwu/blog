@@ -10,11 +10,11 @@ let React = require("react")
 router.use(function* (next) {
 	try {
 		console.log(this.method + " " + this.href + " from " + this.ip)
-		if (config.online && /liaozhongwu\.cn/.test(this.hostname)) {
-			this.status = 301
-			this.redirect(this.href.replace(/liaozhongwu\.cn/, "liaozhongwu.com"))
-			return
-		}
+		// if (config.online && /liaozhongwu\.cn/.test(this.hostname)) {
+		// 	this.status = 301
+		// 	this.redirect(this.href.replace(/liaozhongwu\.cn/, "liaozhongwu.com"))
+		// 	return
+		// }
 		yield next
 	} catch (err) {
 		console.log(this.method + " " + this.href + " errored")
