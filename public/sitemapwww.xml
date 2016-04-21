@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>http://www.liaozhongwu.com</loc> 
+  </url>
+  <url>
+    <loc>http://www.liaozhongwu.com/blogs</loc> 
+  </url>
+  <url>
+    <loc>http://www.liaozhongwu.com/blog/5707ce034843cf0759639f2e</loc> 
+  </url>
+  <url>
+    <loc>http://www.liaozhongwu.com/blog/5707ce034843cf0759639f2f</loc> 
+  </url>
+  <url>
+    <loc>http://www.liaozhongwu.com/blog/5707ce034843cf0759639f30</loc> 
+  </url>
+  <url>
+    <loc>http://www.liaozhongwu.com/blog/5707ce034843cf0759639f31</loc> 
+  </url>
+  <url>
+    <loc>http://www.liaozhongwu.com/blog/5707ce034843cf0759639f32</loc> 
+  </url>
+  <url>
+    <loc>http://www.liaozhongwu.com/blog/571453368fb60740393d6bb4</loc> 
+  </url>
+  <url>
+    <loc>http://www.liaozhongwu.com/about</loc>
+    <image:image>
+       <image:loc>http://www.liaozhongwu.com/img/weixin.png</image:loc>
+       <image:caption>weixin qrcode</image:caption>
+    </image:image> 
+  </url>
+  <url>
+    <loc>http://www.liaozhongwu.com/notice</loc> 
+  </url>
+</urlset>
