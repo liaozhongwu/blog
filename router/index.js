@@ -77,6 +77,7 @@ router.get("/blogs/admin", function* (next) {
 
 router.post("/blog/save", body, function* (next) {
 	let id = this.request.body.id
+	,	key = this.request.body.key
 	,	title = this.request.body.title
 	,	content = this.request.body.content
 	, password = this.request.body.password
@@ -85,12 +86,12 @@ router.post("/blog/save", body, function* (next) {
 	// if you are searching for the password, please try to decode
 	if (md5(password).toLowerCase() === "ea6ddfe6ed0a06f5837aeba4f984db1e") {
 		if (id) {
-			yield Model.updateBlog({_id: id, title, content})
-			this.redirect("/blog/" + id)
+			yield Model.updateBlog({_id: id, key, title, content})
+			this.redirect("/blog/" + key)
 		} else {
-			let blog = yield Model.addBlog({title, content})
-			yield Model.addNotice({title: '<a href="/about">lzw</a> published a blog <a href="/blog/' + blog.id + '">' + blog.title + '</a>'})
-			this.redirect("/blog/" + blog.id)
+			let blog = yield Model.addBlog({key, title, content})
+			yield Model.addNotice({title: '<a href="/about">lzw</a> published a blog <a href="/blog/' + blog.key + '">' + blog.title + '</a>'})
+			this.redirect("/blog/" + blog.key)
 		}
 	} else {	
 		this.redirect("/error")

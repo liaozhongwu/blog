@@ -41,6 +41,11 @@ var Admin = function (_React$Component) {
 				));
 				html.push(_react2.default.createElement(
 					"div",
+					{ className: "form-group", key: "key" },
+					_react2.default.createElement("input", { className: "input block-level", type: "text", name: "key", placeholder: "key", defaultValue: blog.key })
+				));
+				html.push(_react2.default.createElement(
+					"div",
 					{ className: "form-group", key: "title" },
 					_react2.default.createElement("input", { className: "input block-level", type: "text", name: "title", placeholder: "title", defaultValue: blog.title })
 				));
@@ -50,6 +55,11 @@ var Admin = function (_React$Component) {
 					_react2.default.createElement("textarea", { className: "textarea block-level", name: "content", placeholder: "content", defaultValue: blog.content })
 				));
 			} else {
+				html.push(_react2.default.createElement(
+					"div",
+					{ className: "form-group", key: "key" },
+					_react2.default.createElement("input", { className: "input block-level", type: "text", name: "key", placeholder: "key" })
+				));
 				html.push(_react2.default.createElement(
 					"div",
 					{ className: "form-group", key: "title" },
