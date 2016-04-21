@@ -10,7 +10,7 @@ let React = require("react")
 router.use(function* (next) {
 	if (config.prod && /liaozhongwu\.cn/.test(this.hostname)) {
 		this.status = 301
-		this.response.headers["Location"] = this.href.replace(/liaozhongwu\.cn/, "liaozhongwu.com")
+		this.redirect(this.href.replace(/liaozhongwu\.cn/, "liaozhongwu.com"))
 		return
 	}
 	try {
