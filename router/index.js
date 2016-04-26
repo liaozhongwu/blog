@@ -42,8 +42,7 @@ router.get("/", function* (next) {
 		"/img/bg4.jpg",
 		"/img/bg5.jpg",
 		"/img/bg6.jpg",
-		"/img/bg7.jpg",
-		"/img/bg8.jpg"
+		"/img/bg7.jpg"
 	]
 	,	index = Math.floor(imgs.length * Math.random())
 	,	APP_PROPS = {imgs, index}
@@ -141,17 +140,6 @@ router.get("/about", function* (next) {
 	,	About = _require("../build/page/about").default
 	,	content = ReactDOMServer.renderToString(React.createElement(About, APP_PROPS))
 	,	props = Object.assign({content, APP_PROPS}, About.getMeta())
-	, Layout = _require("../build/layout/Base").default
-	this.body = ReactDOMServer.renderToString(React.createElement(Layout, props))
-	yield next
-})
-
-router.get("/notice", function* (next) {
-	let notices = yield Model.getNotices()
-	, APP_PROPS = {notices}
-	,	Notice = _require("../build/page/notice").default
-	,	content = ReactDOMServer.renderToString(React.createElement(Notice, APP_PROPS))
-	,	props = Object.assign({content, APP_PROPS}, Notice.getMeta())
 	, Layout = _require("../build/layout/Base").default
 	this.body = ReactDOMServer.renderToString(React.createElement(Layout, props))
 	yield next
