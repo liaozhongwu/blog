@@ -15,12 +15,6 @@ data.comments.forEach(comment => {
 		.then(comment => console.log(`insert comment ${comment._id} success`))
 	)
 })
-data.notices.forEach(notice => {
-	ps.push(
-		Model.addNotice(notice)
-		.then(notice => console.log(`insert notice ${notice._id} success`))
-	)
-})
 data.abouts.forEach(about => {
 	ps.push(
 		Model.addAbout(about)

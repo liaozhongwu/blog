@@ -38,6 +38,11 @@ var Header = function (_React$Component) {
 					{ className: "nav" },
 					_react2.default.createElement(
 						"a",
+						{ href: "/" },
+						"Home"
+					),
+					_react2.default.createElement(
+						"a",
 						{ href: "/blogs" },
 						"Blog"
 					),
@@ -45,21 +50,12 @@ var Header = function (_React$Component) {
 						"a",
 						{ href: "/about" },
 						"About"
-					),
-					_react2.default.createElement(
-						"a",
-						{ href: "/notice" },
-						"Other"
 					)
 				),
 				_react2.default.createElement(
 					"div",
 					{ className: "motto" },
-					_react2.default.createElement(
-						"a",
-						{ href: "/" },
-						_react2.default.createElement("img", { className: "avatar", src: "/img/avatar.jpg" })
-					),
+					_react2.default.createElement("img", { className: "avatar", src: "/img/avatar.png" }),
 					_react2.default.createElement(
 						"p",
 						null,

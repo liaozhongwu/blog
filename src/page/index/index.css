@@ -1,24 +1,62 @@
-.content {
-	margin: 0 14px;
-	overflow: hidden;
+body {
+	height: 100%;
 }
-.magic {
-	margin-top: 2px;
-	margin-bottom: 2px;
+
+.app {
+	max-width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.main {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+.background {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+}
+
+@keyframes fade-enter {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@keyframes fade-leave {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+.background-fade-enter {
+	animation-name: fade-enter;
+	animation-duration: .3s;
+	opacity: 1;
+}
+
+.background-fade-leave {
+	animation-name: fade-leave;
+	animation-duration: .3s;
+	opacity: 0;
+}
+
+.box {   
+	border-radius: 6px;
+	border: 1px solid #f6f6f6;
+	background: rgba(255, 255, 255, 0.8);
 	text-align: center;
-}
-.magic-block {
-	display: inline-block;
-	vertical-align: top;
-	width: 120px;
-	height: 120px;
-	padding: 20px;
-	border: 1px solid #ddd;
-	margin: 24px;
-	transform: rotate(45deg);
-}
-.magic-block img{
-	width: 80px;
-	height: 80px;
-	transform: rotate(-45deg);
 }

@@ -10,14 +10,6 @@ var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Header = require("../component/Header");
-
-var _Header2 = _interopRequireDefault(_Header);
-
-var _Footer = require("../component/Footer");
-
-var _Footer2 = _interopRequireDefault(_Footer);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -129,10 +121,8 @@ var Base = function (_React$Component) {
 				_react2.default.createElement(
 					"body",
 					null,
-					_react2.default.createElement(_Header2.default, null),
 					_react2.default.createElement("div", { className: "app", id: "app",
 						dangerouslySetInnerHTML: { __html: this.props.content || "" } }),
-					_react2.default.createElement(_Footer2.default, null),
 					this.renderJs()
 				)
 			);

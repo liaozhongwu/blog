@@ -21,74 +21,107 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Index = function (_React$Component) {
   _inherits(Index, _React$Component);
 
-  function Index() {
-    _classCallCheck(this, Index);
-
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(Index).apply(this, arguments));
-  }
-
-  _createClass(Index, [{
-    key: "render",
-    value: function render() {
-      var notices = this.props.notices;
-
-      return _react2.default.createElement(
-        "div",
-        { className: "content" },
-        _react2.default.createElement(
-          "div",
-          { className: "magic" },
-          _react2.default.createElement(
-            "div",
-            { className: "magic-block" },
-            _react2.default.createElement("img", { src: "/img/node.png", alt: "node", title: "node" })
-          ),
-          _react2.default.createElement(
-            "div",
-            { className: "magic-block" },
-            _react2.default.createElement("img", { src: "/img/mongo.png", alt: "mongo", title: "mongo" })
-          ),
-          _react2.default.createElement(
-            "div",
-            { className: "magic-block" },
-            _react2.default.createElement("img", { src: "/img/npm.png", alt: "npm", title: "npm" })
-          ),
-          _react2.default.createElement(
-            "div",
-            { className: "magic-block" },
-            _react2.default.createElement("img", { src: "/img/react.png", alt: "react", title: "react" })
-          ),
-          _react2.default.createElement(
-            "div",
-            { className: "magic-block" },
-            _react2.default.createElement("img", { src: "/img/gulp.png", alt: "gulp", title: "gulp" })
-          ),
-          _react2.default.createElement(
-            "div",
-            { className: "magic-block" },
-            _react2.default.createElement("img", { src: "/img/webpack.png", alt: "webpack", title: "webpack" })
-          ),
-          _react2.default.createElement(
-            "div",
-            { className: "magic-block" },
-            _react2.default.createElement("img", { src: "/img/html5.png", alt: "html5", title: "html5" })
-          ),
-          _react2.default.createElement(
-            "div",
-            { className: "magic-block" },
-            _react2.default.createElement("img", { src: "/img/css3.png", alt: "css3", title: "css3" })
-          )
-        )
-      );
-    }
-  }], [{
+  _createClass(Index, null, [{
     key: "getMeta",
     value: function getMeta() {
       return {
         title: "廖仲武的个人网站 - Liaozhongwu's Personal Website",
         description: "廖仲武的个人网站 - Liaozhongwu's Personal Website",
-        cssFile: ["/css/theme.css", "/css/index/index.css"]
+        cssFile: ["/css/theme.css", "/css/index/index.css"],
+        jsFile: ["/js/index/index.js"]
       };
+    }
+  }]);
+
+  function Index(props) {
+    _classCallCheck(this, Index);
+
+    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Index).call(this));
+
+    _this.state = {
+      index: props.index,
+      animationState: "enter"
+    };
+    return _this;
+  }
+
+  _createClass(Index, [{
+    key: "random",
+    value: function random() {
+      var imgs = this.props.imgs;
+      var index = this.state.index;
+
+      while (true) {
+        var tmp = Math.floor(imgs.length * Math.random());
+        if (tmp !== index) {
+          return tmp;
+        }
+      }
+    }
+  }, {
+    key: "onChange",
+    value: function onChange() {
+      var _this2 = this;
+
+      this.setState({
+        animationState: "leave"
+      }, function () {
+        setTimeout(function () {
+          _this2.setState({
+            index: _this2.random(),
+            animationState: "enter"
+          });
+        }, 300);
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      var imgs = this.props.imgs;
+      var _state = this.state;
+      var index = _state.index;
+      var animationState = _state.animationState;
+
+      return _react2.default.createElement(
+        "div",
+        { className: "main", onClick: function onClick(e) {
+            return _this3.onChange();
+          } },
+        _react2.default.createElement("img", { className: "background background-fade-" + animationState, src: imgs[index] }),
+        _react2.default.createElement(
+          "div",
+          { className: "box", onClick: function onClick(e) {
+              return e.stopPropagation();
+            } },
+          _react2.default.createElement("img", { className: "avatar", src: "/img/avatar.png" }),
+          _react2.default.createElement(
+            "p",
+            null,
+            "stay hungry. stay foolish."
+          ),
+          _react2.default.createElement(
+            "nav",
+            { className: "nav" },
+            _react2.default.createElement(
+              "a",
+              { href: "/" },
+              "Home"
+            ),
+            _react2.default.createElement(
+              "a",
+              { href: "/blogs" },
+              "Blog"
+            ),
+            _react2.default.createElement(
+              "a",
+              { href: "/about" },
+              "About"
+            )
+          )
+        )
+      );
     }
   }]);
 

@@ -5,40 +5,59 @@ export default class Index extends React.Component {
 		return {
 			title: "廖仲武的个人网站 - Liaozhongwu's Personal Website",
 			description: "廖仲武的个人网站 - Liaozhongwu's Personal Website",
-			cssFile: [ "/css/theme.css", "/css/index/index.css" ]
+			cssFile: [ "/css/theme.css", "/css/index/index.css" ],
+      jsFile: [ "/js/index/index.js" ]
 		}
 	}
+
+  constructor (props) {
+    super();
+    this.state = {
+      index: props.index,
+      animationState: "enter"
+    }
+  }
+
+  random () {
+    let {imgs} = this.props;
+    let {index} = this.state;
+    while (true) {
+      let tmp = Math.floor(imgs.length * Math.random());
+      if (tmp !== index) {
+        return tmp;
+      }
+    }
+  }
+
+  onChange () {
+    this.setState({
+      animationState: "leave"
+    }, () => {
+      setTimeout(() => {
+        this.setState({
+          index: this.random(),
+          animationState: "enter"
+        })
+      }, 300);
+    });
+  }
+
 	render() {
-		let {notices} = this.props
+    let {imgs} = this.props;
+    let {index, animationState} = this.state;
     return (
-    	<div className="content">
-    		<div className="magic">
-    			<div className="magic-block">
-    				<img src="/img/node.png" alt="node" title="node"/>
-    			</div>
-    			<div className="magic-block">
-    				<img src="/img/mongo.png" alt="mongo" title="mongo"/>
-    			</div>
-    			<div className="magic-block">
-    				<img src="/img/npm.png" alt="npm" title="npm"/>
-    			</div>
-    			<div className="magic-block">
-    				<img src="/img/react.png" alt="react" title="react"/>
-    			</div>
-    			<div className="magic-block">
-    				<img src="/img/gulp.png" alt="gulp" title="gulp"/>
-    			</div>
-    			<div className="magic-block">
-    				<img src="/img/webpack.png" alt="webpack" title="webpack"/>
-    			</div>
-    			<div className="magic-block">
-    				<img src="/img/html5.png" alt="html5" title="html5"/>
-    			</div>
-    			<div className="magic-block">
-    				<img src="/img/css3.png" alt="css3" title="css3"/>
-    			</div>
-    		</div>
-			</div>
+    	<div className="main" onClick={e => this.onChange()}>
+        <img className={"background background-fade-" + animationState} src={imgs[index]}/>
+        <div className="box" onClick={e => e.stopPropagation()}>
+          <img className="avatar" src="/img/avatar.png"/>
+          <p>stay hungry. stay foolish.</p>
+          <nav className="nav">
+            <a href="/">Home</a>
+            <a href="/blogs">Blog</a>
+            <a href="/about">About</a>
+          </nav>
+        </div>
+		  </div>
     );
 	}	
 }

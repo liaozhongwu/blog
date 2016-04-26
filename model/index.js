@@ -19,10 +19,6 @@ var Schema = mongoose.Schema
 	,	content: {type: String}
 	,	createTime: {type: Date, default: Date.now}
 })
-,	noticeSchema = new Schema({
-	title: {type: String}
-	,	createTime: {type: Date, default: Date.now}
-})
 ,	aboutSchema = new Schema({
 	title: {type: String}
 	, content: {type: String}
@@ -31,7 +27,6 @@ var Schema = mongoose.Schema
 
 var	BlogModel = mongoose.model('blog', blogSchema)
 ,	CommentModel = mongoose.model('comment', commentSchema)
-,	NoticeModel = mongoose.model('notice', noticeSchema)
 ,	AboutModel = mongoose.model('about', aboutSchema)
 
 exports.getBlogs = function () {
@@ -66,10 +61,4 @@ exports.getAbouts = function () {
 }
 exports.addAbout = function (params) {
 	return new AboutModel(params).save()
-}
-exports.getNotices = function () {
-	return NoticeModel.find().sort({createTime: 1}).exec()
-}
-exports.addNotice = function (params) {
-	return new NoticeModel(params).save()
 }

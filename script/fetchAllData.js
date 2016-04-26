@@ -7,9 +7,8 @@ Promise.all([
 	Model.getBlogs()
 	, Model.getComments()
 	, Model.getAbouts()
-	, Model.getNotices()
 ]).then(data => {
-	fs.writeFileSync("./data.json", JSON.stringify({blogs: data[0], comments: data[1], abouts: data[2], notices: data[3]}))
+	fs.writeFileSync("./data.json", JSON.stringify({blogs: data[0], comments: data[1], abouts: data[2]}))
 	console.log(`write to file data.json`)
 	process.exit(0)
 }).catch(err => {

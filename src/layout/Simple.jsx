@@ -1,6 +1,4 @@
 import React from "react";
-import Header from "../component/Header";
-import Footer from "../component/Footer";
 
 export default class Base extends React.Component {
 	constructor () {
@@ -71,11 +69,9 @@ export default class Base extends React.Component {
 	    			<script type="text/javascript" src="/vendor/ga.js"></script>
 	    		</head>
 	    		<body>
-    				<Header />
   					<div className="app" id="app"
   						dangerouslySetInnerHTML={{__html: this.props.content || ""}}>
   					</div>
-    				<Footer />
 						{ this.renderJs() }
 				</body>
 			</html>

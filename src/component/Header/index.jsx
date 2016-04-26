@@ -5,14 +5,12 @@ export default class Header extends React.Component {
     return (
 		<div className="header">
 			<nav className="nav">
+				<a href="/">Home</a>
 				<a href="/blogs">Blog</a>
 				<a href="/about">About</a>
-				<a href="/notice">Other</a>
 			</nav>
 			<div className="motto">
-				<a href="/">
-					<img className="avatar" src="/img/avatar.jpg"/>
-				</a>
+				<img className="avatar" src="/img/avatar.png"/>
 				<p>stay hungry. stay foolish.</p>
 			</div>
 		</div>
