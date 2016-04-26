@@ -41,8 +41,7 @@ router.get("/", function* (next) {
 		"/img/bg3.jpg",
 		"/img/bg4.jpg",
 		"/img/bg5.jpg",
-		"/img/bg6.jpg",
-		"/img/bg7.jpg"
+		"/img/bg6.jpg"
 	]
 	,	index = Math.floor(imgs.length * Math.random())
 	,	APP_PROPS = {imgs, index}
