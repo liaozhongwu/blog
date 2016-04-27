@@ -31,9 +31,9 @@ router.use(function* (next) {
 			console.error(err)
 		}
 		let Error = _require("../build/page/error").default
-		,	content = ReactDOMServer.renderToString(React.createElement(Error))
-		,	props = Object.assign({content}, Error.getMeta())
-		,	Layout = _require("../build/layout/Base").default
+		, content = ReactDOMServer.renderToString(React.createElement(Error))
+		, props = Object.assign({content}, Error.getMeta())
+		, Layout = _require("../build/layout/Base").default
 		this.body = ReactDOMServer.renderToString(React.createElement(Layout, props))
 	}
 })
@@ -163,7 +163,7 @@ router.all("/*", function* (next) {
 		}
 		let Error = _require("../build/page/error").default
 		, content = ReactDOMServer.renderToString(React.createElement(Error))
-		,	props = Object.assign({content}, Error.getMeta())
+		, props = Object.assign({content}, Error.getMeta())
 		, Layout = _require("../build/layout/Base").default
 		this.body = ReactDOMServer.renderToString(React.createElement(Layout, props))
 	}
