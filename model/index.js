@@ -8,21 +8,21 @@ var Schema = mongoose.Schema
 ,	blogSchema = new Schema({
 	title: {type: String, index: true}
 	, key: {type: String}
-	,	content: {type: String}
-	,	createTime: {type: Date, default: Date.now}
+	, content: {type: String}
+	, createTime: {type: Date, default: Date.now}
 })
 ,	commentSchema = new Schema({
 	bid: {type: String, index: true}
-	,	name: {type: String}
-	,	phone: {type: String}
-	,	email: {type: String}
-	,	content: {type: String}
-	,	createTime: {type: Date, default: Date.now}
+	, name: {type: String}
+	, phone: {type: String}
+	, email: {type: String}
+	, content: {type: String}
+	, createTime: {type: Date, default: Date.now}
 })
 ,	aboutSchema = new Schema({
 	title: {type: String}
 	, content: {type: String}
-	,	createTime: {type: Date, default: Date.now}
+	, createTime: {type: Date, default: Date.now}
 })
 
 var	BlogModel = mongoose.model('blog', blogSchema)
