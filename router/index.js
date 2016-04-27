@@ -11,25 +11,29 @@ function _require (module) {
 	if (!config.online) {
 		delete require.cache[require.resolve(module)]
 	}
-  return require(module)
+	return require(module)
 }
 
 router.use(function* (next) {
 	try {
-		console.log(this.method + " " + this.href + " from " + this.ip)
-		// if (config.online && /liaozhongwu\.cn/.test(this.hostname)) {
-		// 	this.status = 301
-		// 	this.redirect(this.href.replace(/liaozhongwu\.cn/, "liaozhongwu.com"))
-		// 	return
-		// }
+		if (config.online) {
+			console.log(this.method + " " + this.href + " from " + this.ip)
+			// if (/liaozhongwu\.cn/.test(this.hostname)) {
+			// 	this.status = 301
+			// 	this.redirect(this.href.replace(/liaozhongwu\.cn/, "liaozhongwu.com"))
+			// 	return
+			// }
+		}
 		yield next
 	} catch (err) {
-		console.log(this.method + " " + this.href + " errored")
-		console.error(err)
+		if (config.online) {
+			console.log(this.method + " " + this.href + " errored")
+			console.error(err)
+		}
 		let Error = _require("../build/page/error").default
-		, content = ReactDOMServer.renderToString(React.createElement(Error))
+		,	content = ReactDOMServer.renderToString(React.createElement(Error))
 		,	props = Object.assign({content}, Error.getMeta())
-		, Layout = _require("../build/layout/Base").default
+		,	Layout = _require("../build/layout/Base").default
 		this.body = ReactDOMServer.renderToString(React.createElement(Layout, props))
 	}
 })
@@ -47,8 +51,8 @@ router.get("/", function* (next) {
 	,	APP_PROPS = {imgs, index}
 	,	Index = _require("../build/page/index").default
 	,	content = ReactDOMServer.renderToString(React.createElement(Index, APP_PROPS))
-	, props = Object.assign({content, APP_PROPS}, Index.getMeta())
-	, Layout = _require("../build/layout/Simple").default
+	,	props = Object.assign({content, APP_PROPS}, Index.getMeta())
+	,	Layout = _require("../build/layout/Simple").default
 	this.body = ReactDOMServer.renderToString(React.createElement(Layout, props))
 	yield next
 })
@@ -57,9 +61,9 @@ router.get("/blogs", function* (next) {
 	let blogs = yield Model.getBlogs()
 	,	APP_PROPS = {blogs}
 	,	Blogs = _require("../build/page/blogs").default
-	, content = ReactDOMServer.renderToString(React.createElement(Blogs, APP_PROPS))
-	, props = Object.assign({content, APP_PROPS}, Blogs.getMeta())
-	, Layout = _require("../build/layout/Base").default
+	,	content = ReactDOMServer.renderToString(React.createElement(Blogs, APP_PROPS))
+	,	props = Object.assign({content, APP_PROPS}, Blogs.getMeta())
+	,	Layout = _require("../build/layout/Base").default
 	this.body = ReactDOMServer.renderToString(React.createElement(Layout, props))
 	yield next
 })
@@ -70,31 +74,31 @@ router.get("/blog/:key", function* (next) {
 	,	APP_PROPS = {blog, comments}
 	,	Blog = _require("../build/page/blog").default
 	,	content = ReactDOMServer.renderToString(React.createElement(Blog, APP_PROPS))
-	, meta = Blog.getMeta()
+	,	meta = Blog.getMeta()
 	meta.title = blog.title + " - " + meta.title
 	meta.description = blog.title + " - " + meta.description
 	let	props = Object.assign({content, APP_PROPS}, meta)
-	, Layout = _require("../build/layout/Base").default
+	,	Layout = _require("../build/layout/Base").default
 	this.body = ReactDOMServer.renderToString(React.createElement(Layout, props))
 	yield next
 })
 
 router.get("/blog/:key/admin", function* (next) {
 	let blog = yield Model.getBlogByKey(this.params.key)
-	, APP_PROPS = {blog}
-	, Admin = _require("../build/page/admin").default
+	,	APP_PROPS = {blog}
+	,	Admin = _require("../build/page/admin").default
 	,	content = ReactDOMServer.renderToString(React.createElement(Admin, APP_PROPS))
 	,	props = Object.assign({content, APP_PROPS}, Admin.getMeta())
-	, Layout = _require("../build/layout/Base").default
+	,	Layout = _require("../build/layout/Base").default
 	this.body = ReactDOMServer.renderToString(React.createElement(Layout, props))
 	yield next
 })
 
 router.get("/blogs/admin", function* (next) {
 	let Admin = _require("../build/page/admin").default
-	, content = ReactDOMServer.renderToString(React.createElement(Admin))
+	,	content = ReactDOMServer.renderToString(React.createElement(Admin))
 	,	props = Object.assign({content}, Admin.getMeta())
-	, Layout = _require("../build/layout/Base").default
+	,	Layout = _require("../build/layout/Base").default
 	this.body = ReactDOMServer.renderToString(React.createElement(Layout, props))
 	yield next
 })
@@ -104,7 +108,7 @@ router.post("/blog/save", body, function* (next) {
 	,	key = this.request.body.key
 	,	title = this.request.body.title
 	,	content = this.request.body.content
-	, password = this.request.body.password
+	,	password = this.request.body.password
 
 	// I'm lazy to save in database
 	// if you are searching for the password, please try to decode
@@ -114,7 +118,6 @@ router.post("/blog/save", body, function* (next) {
 			this.redirect("/blog/" + key)
 		} else {
 			let blog = yield Model.addBlog({key, title, content})
-			yield Model.addNotice({title: '<a href="/about">lzw</a> published a blog <a href="/blog/' + blog.key + '">' + blog.title + '</a>'})
 			this.redirect("/blog/" + blog.key)
 		}
 	} else {	
@@ -139,23 +142,25 @@ router.get("/about", function* (next) {
 	,	About = _require("../build/page/about").default
 	,	content = ReactDOMServer.renderToString(React.createElement(About, APP_PROPS))
 	,	props = Object.assign({content, APP_PROPS}, About.getMeta())
-	, Layout = _require("../build/layout/Base").default
+	,	Layout = _require("../build/layout/Base").default
 	this.body = ReactDOMServer.renderToString(React.createElement(Layout, props))
 	yield next
 })
 
 router.get("/error", function* (next) {
 	let Error = _require("../build/page/error").default
-	, content = ReactDOMServer.renderToString(React.createElement(Error))
+	,	content = ReactDOMServer.renderToString(React.createElement(Error))
 	,	props = Object.assign({content}, Error.getMeta())
-	, Layout = _require("../build/layout/Base").default
+	,	Layout = _require("../build/layout/Base").default
 	this.body = ReactDOMServer.renderToString(React.createElement(Layout, props))
 	yield next
 })
 
 router.all("/*", function* (next) {
 	if (this.status === 404) {
-		console.log(this.method + " " + this.href + " was not found")
+		if (config.online) {
+			console.log(this.method + " " + this.href + " was not found")
+		}
 		let Error = _require("../build/page/error").default
 		, content = ReactDOMServer.renderToString(React.createElement(Error))
 		,	props = Object.assign({content}, Error.getMeta())

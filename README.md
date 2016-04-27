@@ -1,5 +1,5 @@
 # Blog
-The Front-End engineer works: [www.liaozhongwu.cn](http://www.liaozhongwu.cn)
+The Front-End engineer works: [www.liaozhongwu.com](http://www.liaozhongwu.com)
 
 The technology stack: [node, koa, mongodb, react]
 
