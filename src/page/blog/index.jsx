@@ -1,14 +1,6 @@
 import React from "react"
-import marked from "marked"
-import hljs from "highlight.js"
 import ajax from "client-ajax"
 import "../../../lib/date"
-
-marked.setOptions({
-  highlight: function (code) {
-  	return hljs.highlightAuto(code).value
-  }
-})
 
 export default class Blog extends React.Component {
 	static getMeta () {
@@ -98,62 +90,54 @@ export default class Blog extends React.Component {
 			comment: comment
 		});
 	}
-	renderComments () {
-		let {comments, comment, commentMsg} = this.state
-		let html = []
-		comments.map(function (comment, i) {
-			html.push(
-				<li className="item comment" key={i}>
-					<span className="comment-label">{comment.name}:</span>
-					<span className="time">{comment.createTime.toString()}</span>
-					<span className="comment-content">{comment.content}</span>
-				</li>
-			)
-		})
-		html.push(
-			<li className="item" key="add">
-				<form className="form">
-					<div className="form-group">
-						<label className="label">name*:</label>
-						<input className="input" type="text" name="name" placeholder="name" required
-							value={comment.name} onChange={e => this.handleCommentValueChange("name", e.target.value)}/>
-					</div>
-					<div className="form-group">
-						<label className="label">phone:</label>
-						<input className="input" type="text" name="phone" placeholder="phone"
-							value={comment.phone} onChange={e => this.handleCommentValueChange("phone", e.target.value)}/>
-					</div>
-					<div className="form-group">
-						<label className="label">email:</label>
-						<input className="input" type="text" name="email" placeholder="email"
-							value={comment.email} onChange={e => this.handleCommentValueChange("email", e.target.value)}/>
-					</div>
-					<div className="form-group">
-						<label className="label">content*:</label>
-						<textarea className="textarea" name="content" placeholder="content" required
-							value={comment.content} onChange={e => this.handleCommentValueChange("content", e.target.value)}></textarea>
-					</div>
-	    			<div className="form-group">
-						<label className="label"></label>
-	    				<input className="btn" type="button" value="提交评论" onClick={e => this.handleSubmit()}/>
-	    				<span className="msg-btn">{ commentMsg }</span>
-	    			</div>
-				</form>
-			</li>
-		);
-		return html;
-	}
 	render() {
-		let {blog} = this.state
+		let {blog, comments, comment, commentMsg} = this.state
     return (
     	<div className="content">
   			<p className="title">
   				{blog.title}
   				<span className="time">{blog.createTime.toString()}</span>
   			</p>
-				<article className="article" dangerouslySetInnerHTML={{__html: marked(blog.content)}} />
+				<article className="article" dangerouslySetInnerHTML={{__html: blog.content}}/>
 				<ul className="list">
-					{ this.renderComments() }
+					{
+						comments.map( (comment, i) => (
+							<li className="item comment" key={i}>
+								<span className="comment-label">{comment.name}:</span>
+								<span className="time">{comment.createTime.toString()}</span>
+								<span className="comment-content" dangerouslySetInnerHTML={{__html: comment.content}} />
+							</li>
+						))
+					}
+					<li className="item">
+						<form className="form">
+							<div className="form-group">
+								<label className="label">name*:</label>
+								<input className="input" type="text" name="name" placeholder="name" required
+									value={comment.name} onChange={e => this.handleCommentValueChange("name", e.target.value)}/>
+							</div>
+							<div className="form-group">
+								<label className="label">phone:</label>
+								<input className="input" type="text" name="phone" placeholder="phone"
+									value={comment.phone} onChange={e => this.handleCommentValueChange("phone", e.target.value)}/>
+							</div>
+							<div className="form-group">
+								<label className="label">email:</label>
+								<input className="input" type="text" name="email" placeholder="email"
+									value={comment.email} onChange={e => this.handleCommentValueChange("email", e.target.value)}/>
+							</div>
+							<div className="form-group">
+								<label className="label">content*:</label>
+								<textarea className="textarea" name="content" placeholder="content" required
+									value={comment.content} onChange={e => this.handleCommentValueChange("content", e.target.value)}></textarea>
+							</div>
+			    			<div className="form-group">
+								<label className="label"></label>
+			    				<input className="btn" type="button" value="提交评论" onClick={e => this.handleSubmit()}/>
+			    				<span className="msg-btn">{ commentMsg }</span>
+			    			</div>
+						</form>
+					</li>
 				</ul>
 			</div>				
     );

@@ -10,14 +10,6 @@ var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _marked = require("marked");
-
-var _marked2 = _interopRequireDefault(_marked);
-
-var _highlight = require("highlight.js");
-
-var _highlight2 = _interopRequireDefault(_highlight);
-
 var _clientAjax = require("client-ajax");
 
 var _clientAjax2 = _interopRequireDefault(_clientAjax);
@@ -31,12 +23,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-_marked2.default.setOptions({
-	highlight: function highlight(code) {
-		return _highlight2.default.highlightAuto(code).value;
-	}
-});
 
 var Blog = function (_React$Component) {
 	_inherits(Blog, _React$Component);
@@ -149,117 +135,15 @@ var Blog = function (_React$Component) {
 			});
 		}
 	}, {
-		key: "renderComments",
-		value: function renderComments() {
+		key: "render",
+		value: function render() {
 			var _this3 = this;
 
 			var _state2 = this.state;
+			var blog = _state2.blog;
 			var comments = _state2.comments;
 			var comment = _state2.comment;
 			var commentMsg = _state2.commentMsg;
-
-			var html = [];
-			comments.map(function (comment, i) {
-				html.push(_react2.default.createElement(
-					"li",
-					{ className: "item comment", key: i },
-					_react2.default.createElement(
-						"span",
-						{ className: "comment-label" },
-						comment.name,
-						":"
-					),
-					_react2.default.createElement(
-						"span",
-						{ className: "time" },
-						comment.createTime.toString()
-					),
-					_react2.default.createElement(
-						"span",
-						{ className: "comment-content" },
-						comment.content
-					)
-				));
-			});
-			html.push(_react2.default.createElement(
-				"li",
-				{ className: "item", key: "add" },
-				_react2.default.createElement(
-					"form",
-					{ className: "form" },
-					_react2.default.createElement(
-						"div",
-						{ className: "form-group" },
-						_react2.default.createElement(
-							"label",
-							{ className: "label" },
-							"name*:"
-						),
-						_react2.default.createElement("input", { className: "input", type: "text", name: "name", placeholder: "name", required: true,
-							value: comment.name, onChange: function onChange(e) {
-								return _this3.handleCommentValueChange("name", e.target.value);
-							} })
-					),
-					_react2.default.createElement(
-						"div",
-						{ className: "form-group" },
-						_react2.default.createElement(
-							"label",
-							{ className: "label" },
-							"phone:"
-						),
-						_react2.default.createElement("input", { className: "input", type: "text", name: "phone", placeholder: "phone",
-							value: comment.phone, onChange: function onChange(e) {
-								return _this3.handleCommentValueChange("phone", e.target.value);
-							} })
-					),
-					_react2.default.createElement(
-						"div",
-						{ className: "form-group" },
-						_react2.default.createElement(
-							"label",
-							{ className: "label" },
-							"email:"
-						),
-						_react2.default.createElement("input", { className: "input", type: "text", name: "email", placeholder: "email",
-							value: comment.email, onChange: function onChange(e) {
-								return _this3.handleCommentValueChange("email", e.target.value);
-							} })
-					),
-					_react2.default.createElement(
-						"div",
-						{ className: "form-group" },
-						_react2.default.createElement(
-							"label",
-							{ className: "label" },
-							"content*:"
-						),
-						_react2.default.createElement("textarea", { className: "textarea", name: "content", placeholder: "content", required: true,
-							value: comment.content, onChange: function onChange(e) {
-								return _this3.handleCommentValueChange("content", e.target.value);
-							} })
-					),
-					_react2.default.createElement(
-						"div",
-						{ className: "form-group" },
-						_react2.default.createElement("label", { className: "label" }),
-						_react2.default.createElement("input", { className: "btn", type: "button", value: "提交评论", onClick: function onClick(e) {
-								return _this3.handleSubmit();
-							} }),
-						_react2.default.createElement(
-							"span",
-							{ className: "msg-btn" },
-							commentMsg
-						)
-					)
-				)
-			));
-			return html;
-		}
-	}, {
-		key: "render",
-		value: function render() {
-			var blog = this.state.blog;
 
 			return _react2.default.createElement(
 				"div",
@@ -274,11 +158,101 @@ var Blog = function (_React$Component) {
 						blog.createTime.toString()
 					)
 				),
-				_react2.default.createElement("article", { className: "article", dangerouslySetInnerHTML: { __html: (0, _marked2.default)(blog.content) } }),
+				_react2.default.createElement("article", { className: "article", dangerouslySetInnerHTML: { __html: blog.content } }),
 				_react2.default.createElement(
 					"ul",
 					{ className: "list" },
-					this.renderComments()
+					comments.map(function (comment, i) {
+						return _react2.default.createElement(
+							"li",
+							{ className: "item comment", key: i },
+							_react2.default.createElement(
+								"span",
+								{ className: "comment-label" },
+								comment.name,
+								":"
+							),
+							_react2.default.createElement(
+								"span",
+								{ className: "time" },
+								comment.createTime.toString()
+							),
+							_react2.default.createElement("span", { className: "comment-content", dangerouslySetInnerHTML: { __html: comment.content } })
+						);
+					}),
+					_react2.default.createElement(
+						"li",
+						{ className: "item" },
+						_react2.default.createElement(
+							"form",
+							{ className: "form" },
+							_react2.default.createElement(
+								"div",
+								{ className: "form-group" },
+								_react2.default.createElement(
+									"label",
+									{ className: "label" },
+									"name*:"
+								),
+								_react2.default.createElement("input", { className: "input", type: "text", name: "name", placeholder: "name", required: true,
+									value: comment.name, onChange: function onChange(e) {
+										return _this3.handleCommentValueChange("name", e.target.value);
+									} })
+							),
+							_react2.default.createElement(
+								"div",
+								{ className: "form-group" },
+								_react2.default.createElement(
+									"label",
+									{ className: "label" },
+									"phone:"
+								),
+								_react2.default.createElement("input", { className: "input", type: "text", name: "phone", placeholder: "phone",
+									value: comment.phone, onChange: function onChange(e) {
+										return _this3.handleCommentValueChange("phone", e.target.value);
+									} })
+							),
+							_react2.default.createElement(
+								"div",
+								{ className: "form-group" },
+								_react2.default.createElement(
+									"label",
+									{ className: "label" },
+									"email:"
+								),
+								_react2.default.createElement("input", { className: "input", type: "text", name: "email", placeholder: "email",
+									value: comment.email, onChange: function onChange(e) {
+										return _this3.handleCommentValueChange("email", e.target.value);
+									} })
+							),
+							_react2.default.createElement(
+								"div",
+								{ className: "form-group" },
+								_react2.default.createElement(
+									"label",
+									{ className: "label" },
+									"content*:"
+								),
+								_react2.default.createElement("textarea", { className: "textarea", name: "content", placeholder: "content", required: true,
+									value: comment.content, onChange: function onChange(e) {
+										return _this3.handleCommentValueChange("content", e.target.value);
+									} })
+							),
+							_react2.default.createElement(
+								"div",
+								{ className: "form-group" },
+								_react2.default.createElement("label", { className: "label" }),
+								_react2.default.createElement("input", { className: "btn", type: "button", value: "提交评论", onClick: function onClick(e) {
+										return _this3.handleSubmit();
+									} }),
+								_react2.default.createElement(
+									"span",
+									{ className: "msg-btn" },
+									commentMsg
+								)
+							)
+						)
+					)
 				)
 			);
 		}

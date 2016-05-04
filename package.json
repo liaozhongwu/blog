@@ -44,7 +44,8 @@
     "mongoose": "^4.4.12",
     "pm2": "^1.1.2",
     "react": "^15.0.1",
-    "react-dom": "^15.0.1"
+    "react-dom": "^15.0.1",
+    "remarkable": "^1.6.2"
   },
   "scripts": {
     "develop": "NODE_ENV=develop node app.js",

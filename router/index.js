@@ -6,6 +6,23 @@ let React = require("react")
 , config = require("config")
 , md5 = require("md5")
 , Model = require("../model")
+, Remarkable = require("remarkable")
+, hljs = require("highlight.js")
+
+let remarkable = new Remarkable({
+	highlight: function (str, lang) {
+		try {
+			if (lang && hljs.getLanguage(lang)) {
+	    	return hljs.highlight(lang, str).value
+			} else {
+				return hljs.highlightAuto(str).value
+			}
+		} catch (err) {
+			console.error(err)
+		}
+		return ""
+  }
+})
 
 function _require (module) {
 	if (!config.online) {
@@ -26,10 +43,8 @@ router.use(function* (next) {
 		}
 		yield next
 	} catch (err) {
-		if (config.online) {
-			console.log(this.method + " " + this.href + " errored")
-			console.error(err)
-		}
+		console.log(this.method + " " + this.href + " errored")
+		console.error(err)
 		let Error = _require("../build/page/error").default
 		, content = ReactDOMServer.renderToString(React.createElement(Error))
 		, props = Object.assign({content}, Error.getMeta())
@@ -71,7 +86,11 @@ router.get("/blogs", function* (next) {
 router.get("/blog/:key", function* (next) {
 	let blog = yield Model.getBlogByKey(this.params.key)
 	, comments = yield Model.getCommentsByBid(blog._id)
-	, APP_PROPS = {blog, comments}
+
+	blog.content = remarkable.render(blog.content)
+	comments.forEach(comment => comment.content = remarkable.render(comment.content))
+
+	let APP_PROPS = {blog, comments}
 	, Blog = _require("../build/page/blog").default
 	, content = ReactDOMServer.renderToString(React.createElement(Blog, APP_PROPS))
 	, meta = Blog.getMeta()
@@ -132,7 +151,10 @@ router.post("/comment/save", body, function* (next) {
 	, phone = this.request.body.phone
 	, email = this.request.body.email
 	, content = this.request.body.content
-	this.body = yield Model.addComment({bid, name, phone, email, content})
+	, comment = yield Model.addComment({bid, name, phone, email, content})
+
+	comment.content = remarkable.render(comment.content)
+	this.body = comment
 	yield next
 })
 
@@ -158,9 +180,7 @@ router.get("/error", function* (next) {
 
 router.all("/*", function* (next) {
 	if (this.status === 404) {
-		if (config.online) {
-			console.log(this.method + " " + this.href + " was not found")
-		}
+		console.log(this.method + " " + this.href + " was not found")
 		let Error = _require("../build/page/error").default
 		, content = ReactDOMServer.renderToString(React.createElement(Error))
 		, props = Object.assign({content}, Error.getMeta())
