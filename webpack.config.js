@@ -1,4 +1,5 @@
-var glob = require("glob")
+var webpack = require("webpack") 
+, glob = require("glob")
 , entry = {}
 
 glob.sync("./src/entry/*.js")
@@ -21,5 +22,12 @@ module.exports = {
             { test: /\.js$/, exclude: /node_modules/, loaders: ["babel"] },
             { test: /\.jsx$/, exclude: /node_modules/, loaders: ["babel"] }
         ]
-    }
+    },
+    externals: {
+        "react": "React",
+        "react-dom": "ReactDOM"
+    },
+    plugins: [
+        new webpack.optimize.UglifyJsPlugin({compress: {warnings: false}})
+    ]
 }

@@ -1,10 +1,11 @@
-var mongoose = require('mongoose')
+'use strict'
+let mongoose = require('mongoose')
 ,	config = require('config')
 
 mongoose.Promise = global.Promise || mongoose.Promise
 mongoose.connect(config.db.url, {user: config.db.user, pass: config.db.pass})
 
-var Schema = mongoose.Schema
+let Schema = mongoose.Schema
 ,	blogSchema = new Schema({
 	title: {type: String, index: true}
 	, key: {type: String}
@@ -25,40 +26,56 @@ var Schema = mongoose.Schema
 	, createTime: {type: Date, default: Date.now}
 })
 
-var	BlogModel = mongoose.model('blog', blogSchema)
+let	BlogModel = mongoose.model('blog', blogSchema)
 ,	CommentModel = mongoose.model('comment', commentSchema)
 ,	AboutModel = mongoose.model('about', aboutSchema)
 
+function toObject (doc) {
+	return doc.toObject()
+}
+
 exports.getBlogs = function () {
-	return BlogModel.find().sort({createTime: -1}).exec()
+	return BlogModel.find().sort({createTime: -1}).lean().exec()
 }
 exports.getBlog = function (_id) {
-	return BlogModel.findOne({_id}).exec()
+	return BlogModel.findOne({_id}).lean().exec()
 }
 exports.getBlogByKey = function (key) {
-	return BlogModel.findOne({key}).exec()
+	return BlogModel.findOne({key}).lean().exec()
 }
 exports.addBlog = function (params) {
-	return new BlogModel(params).save()
+	return new BlogModel(params).save().then(toObject)
 } 
 exports.updateBlog = function (params) {
 	return BlogModel.update({_id: params._id}, params)
 }
+exports.removeBlogs = function () {
+	return BlogModel.remove().exec()
+}
 exports.getComments = function () {
-	return CommentModel.find().sort({createTime: 1}).exec()
+	return CommentModel.find().sort({createTime: 1}).lean().exec()
 }
 exports.getComment = function (_id) {
-	return CommentModel.findOne({_id}).exec()
+	return CommentModel.findOne({_id}).lean().exec()
 }
 exports.getCommentsByBid = function (bid) {
-	return CommentModel.find({bid}).exec()
+	return CommentModel.find({bid}).lean().exec()
+}
+exports.countCommentsByBid = function (bid) {
+	return CommentModel.count({bid}).lean().exec()
 }
 exports.addComment = function (params) {
-	return new CommentModel(params).save()
+	return new CommentModel(params).save().then(toObject)
+}
+exports.removeComments = function () {
+	return CommentModel.remove().exec()
 }
 exports.getAbouts = function () {
-	return AboutModel.find().exec()
+	return AboutModel.find().lean().exec()
 }
 exports.addAbout = function (params) {
-	return new AboutModel(params).save()
+	return new AboutModel(params).save().then(toObject)
+}
+exports.removeAbouts = function () {
+	return AboutModel.remove().exec()
 }

@@ -25,7 +25,7 @@ data.abouts.forEach(about => {
 Promise
 .all(ps)
 .then(_ => {
-	console.log("insert over")
+	console.log("insert completed")
 	process.exit(0)
 })
 .catch(err => {

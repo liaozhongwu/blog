@@ -16,3 +16,12 @@
 	-webkit-box-orient: vertical;
 	clear: both;
 }
+.blog-count {
+	text-align: right;
+
+	.number {
+		margin-left: 3px;
+		margin-right: 5px;
+		vertical-align: middle;
+	}
+}

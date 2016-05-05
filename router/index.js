@@ -71,7 +71,15 @@ router.get("/", function* (next) {
 
 router.get("/blogs", function* (next) {
 	let blogs = yield Model.getBlogs()
-	, APP_PROPS = {blogs}
+	
+	for (let i = 0; i < blogs.length; ++i) {
+		let blog = blogs[i]
+		blog.counts = {
+			comment: yield Model.countCommentsByBid(blog._id)
+		}
+	}
+
+	let APP_PROPS = {blogs}
 	, Blogs = _require("../build/page/blogs").default
 	, content = ReactDOMServer.renderToString(React.createElement(Blogs, APP_PROPS))
 	, props = Object.assign({content, APP_PROPS}, Blogs.getMeta())
@@ -81,19 +89,19 @@ router.get("/blogs", function* (next) {
 })
 
 router.get("/blog/:key", function* (next) {
-	let blog = yield Model.getBlogByKey(this.params.key)
-	, comments = yield Model.getCommentsByBid(blog._id)
-
-	blog.content = remarkable.render(blog.content)
-	comments.forEach(comment => comment.content = remarkable.render(comment.content))
-
-	let APP_PROPS = {blog, comments}
+	let blog = yield Model.getBlogByKey(this.params.key).then(blog => {
+		blog.marked = remarkable.render(blog.content)
+		return blog
+	})
+	, comments = yield Model.getCommentsByBid(blog._id).then(comments => comments.map(comment => {
+		comment.marked = remarkable.render(comment.content)
+		return comment
+	}))
+	, APP_PROPS = {blog, comments}
 	, Blog = _require("../build/page/blog").default
 	, content = ReactDOMServer.renderToString(React.createElement(Blog, APP_PROPS))
 	, meta = Blog.getMeta()
-	meta.title = blog.title + " - " + meta.title
-	meta.description = blog.title + " - " + meta.description
-	let	props = Object.assign({content, APP_PROPS}, meta)
+	,	props = Object.assign({content, APP_PROPS}, Object.assign(meta, {title: blog.title + " - " + meta.title, description: blog.title + " - " + meta.description}))
 	, Layout = _require("../build/layout/Base").default
 	this.body = ReactDOMServer.renderToString(React.createElement(Layout, props))
 	yield next
@@ -148,9 +156,10 @@ router.post("/comment/save", body, function* (next) {
 	, phone = this.request.body.phone
 	, email = this.request.body.email
 	, content = this.request.body.content
-	, comment = yield Model.addComment({bid, name, phone, email, content})
-
-	comment.content = remarkable.render(comment.content)
+	, comment = yield Model.addComment({bid, name, phone, email, content}).then(comment => {
+		comment.marked = remarkable.render(comment.content)
+		return comment
+	})
 	this.body = comment
 	yield next
 })

@@ -6,12 +6,12 @@ export default class Error extends React.Component {
 			cssFile: [ "/css/theme.css" ]
 		}
 	}
-  	render() {
-	    return (
-	    	<div className="content">
-	    		<p>Sorry, The page is not found Or you have no permission</p>
-	    		<p>Click <a href="/">here</a> back to the home</p>
-				</div>
-	    );
-  	}	
+	render() {
+    return (
+    	<div className="content">
+    		<p>Sorry, The page is not found Or you have no permission</p>
+    		<p>Click <a href="/">here</a> back to the home</p>
+			</div>
+    );
+	}	
 }

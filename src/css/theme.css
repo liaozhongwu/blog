@@ -53,9 +53,10 @@ pre {
 }
 code {
   word-wrap: normal;
-}
-code span {
-	word-wrap: normal;
+
+  span {
+		word-wrap: normal;
+	}
 }
 .header {
 	background: #fff;
@@ -65,17 +66,19 @@ code span {
 	line-height: 30px;
 	font-size: 14px;
 	text-align: center;
-}
-.nav a {
-	color: #666;
-	padding-left: 15px;
-	padding-right: 15px;
-}
-.nav a:hover {
-	color: #888;
-}
-.nav a:active {
-	color: #aaa;
+
+	a {
+		color: #666;
+		padding-left: 15px;
+		padding-right: 15px;
+
+		&:hover {
+			color: #888;
+		}
+		&:active {
+			color: #aaa;
+		}
+	}
 }
 .motto {
 	background-color: #f6f6f6; 
@@ -104,11 +107,12 @@ code span {
 }
 .list {
 	list-style: none;
-}
-.item {
-	padding: 5px 0;
-	line-height: 20px;
-	margin-bottom: 5px; 
+
+	.item {
+		padding: 5px 0;
+		line-height: 20px;
+		margin-bottom: 5px; 
+	}
 }
 .input {
 	display: inline-block;
@@ -119,16 +123,18 @@ code span {
 	border: solid 1px #ccc;
 	outline: none;
 	color: #333;
+	-webkit-appearance: none;
 	transition: box-shadow 0.3s;
-}
-.input:focus {
-	border-color: #3ce;
-	box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(51,204,238,.6);
-}
-.input[readonly],
-.input[disabled] {
-	cursor: not-allowed;
-	background: #f2f2f2;
+
+	&:focus {
+		border-color: #3ce;
+		box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(51,204,238,.6);
+	}
+	&[readonly],
+	&[disabled] {
+		cursor: not-allowed;
+		background: #f2f2f2;
+	}
 }
 .textarea {
 	display: inline-block;
@@ -140,11 +146,13 @@ code span {
 	border: solid 1px #ccc;
 	outline: none;
 	color: #333;
+	-webkit-appearance: none;
 	transition: box-shadow 0.3s;
-}
-.textarea:focus {
-	border-color: #3ce;
-	box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(51,204,238,.6);
+
+	&:focus {
+		border-color: #3ce;
+		box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(51,204,238,.6);
+	}
 }
 .btn {
 	display: inline-block;
@@ -159,14 +167,15 @@ code span {
 	outline: none;
 	transition: 0.3s;
 	-webkit-appearance: none;
-}
-.btn:hover {
-	border-color: #adadad;
-	background: #e6e6e6;
-}
-.btn:active {
-	border-color: #a1a1a1;
-	background: #e1e1e1;
+
+	&:hover {
+		border-color: #adadad;
+		background: #e6e6e6;
+	}
+	&:active {
+		border-color: #a1a1a1;
+		background: #e1e1e1;
+	}
 }
 .msg-btn {
 	display: inline-block;
