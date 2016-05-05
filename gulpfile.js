@@ -1,5 +1,6 @@
 var gulp = require("gulp")
 , postcss = require("gulp-postcss")
+, _import = require("postcss-import")
 , nested = require("postcss-nested")
 , cssnext = require("postcss-cssnext")
 , csswring = require('csswring')
@@ -14,6 +15,7 @@ gulp.task("css", function () {
 	console.log("running task css")
 	return gulp.src("./src/css/*.css")
 		.pipe(postcss([
+			_import(),
 			nested(), 
 			cssnext(), 
 			csswring
@@ -34,6 +36,7 @@ gulp.task("pagecss", function () {
 	console.log("running task pagecss")
 	return gulp.src("./src/page/**/*.css")
 		.pipe(postcss([
+			_import(),
 			nested(), 
 			cssnext(), 
 			csswring
