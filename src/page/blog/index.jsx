@@ -28,15 +28,15 @@ export default class Blog extends React.Component {
 	handleSubmit () {
 		let {blog, comments, comment} = this.state
 
-		if (!comment.name) {
-			this.setState({
-				commentMsg: "please input your name"
-			});
-			return;
-		}
 		if (!comment.content) {
 			this.setState({
 				commentMsg: "please input your content"
+			});
+			return;
+		}
+		if (!comment.name) {
+			this.setState({
+				commentMsg: "please input your name"
 			});
 			return;
 		}
@@ -109,36 +109,44 @@ export default class Blog extends React.Component {
 							</li>
 						))
 					}
-					<li className="item">
-						<form className="form">
-							<div className="form-group">
-								<label className="label">name*:</label>
-								<input className="input" type="text" name="name" placeholder="name" required
-									value={comment.name} onChange={e => this.handleCommentValueChange("name", e.target.value)}/>
-							</div>
-							<div className="form-group">
-								<label className="label">phone:</label>
-								<input className="input" type="text" name="phone" placeholder="phone"
-									value={comment.phone} onChange={e => this.handleCommentValueChange("phone", e.target.value)}/>
-							</div>
-							<div className="form-group">
-								<label className="label">email:</label>
-								<input className="input" type="text" name="email" placeholder="email"
-									value={comment.email} onChange={e => this.handleCommentValueChange("email", e.target.value)}/>
-							</div>
-							<div className="form-group">
-								<label className="label">content*:</label>
-								<textarea className="textarea" name="content" placeholder="content" required
-									value={comment.content} onChange={e => this.handleCommentValueChange("content", e.target.value)}></textarea>
-							</div>
-			    			<div className="form-group">
-								<label className="label"></label>
-			    				<input className="btn" type="button" value="提交评论" onClick={e => this.handleSubmit()}/>
-			    				<span className="msg-btn">{ commentMsg }</span>
-			    			</div>
-						</form>
-					</li>
 				</ul>
+				<form className="form">
+					<div className="form-group">
+						<label className="label">content*:</label>
+						<div className="form-control">
+							<textarea className="textarea" name="content" placeholder="content" required
+								value={comment.content} onChange={e => this.handleCommentValueChange("content", e.target.value)}></textarea>
+						</div>
+					</div>
+					<div className="form-group">
+						<label className="label">name*:</label>
+						<div className="form-control">
+							<input className="input" type="text" name="name" placeholder="name" required
+								value={comment.name} onChange={e => this.handleCommentValueChange("name", e.target.value)}/>
+						</div>
+					</div>
+					<div className="form-group">
+						<label className="label">phone:</label>
+						<div className="form-control">
+							<input className="input" type="text" name="phone" placeholder="phone"
+								value={comment.phone} onChange={e => this.handleCommentValueChange("phone", e.target.value)}/>
+						</div>
+					</div>
+					<div className="form-group">
+						<label className="label">email:</label>
+						<div className="form-control">
+							<input className="input" type="text" name="email" placeholder="email"
+								value={comment.email} onChange={e => this.handleCommentValueChange("email", e.target.value)}/>
+						</div>
+					</div>
+	    		<div className="form-group">
+						<label className="label"></label>
+						<div className="form-control">
+	    				<input className="btn" type="button" value="提交评论" onClick={e => this.handleSubmit()}/>
+	    				<span className="msg-btn">{ commentMsg }</span>
+	    			</div>
+	    		</div>
+				</form>
 			</div>				
     );
 	}
