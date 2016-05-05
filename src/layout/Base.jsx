@@ -68,8 +68,8 @@ export default class Base extends React.Component {
 						{ this.renderMeta() }
 						<link rel="start" href="http://www.liaozhongwu.com" title="Home"/>
 	    			{ this.renderCss() }
-	    			<script type="text/javascript" src="https://cdn.bootcss.com/react/0.14.7/react.min.js"></script>
-	    			<script type="text/javascript" src="https://cdn.bootcss.com/react/0.14.7/react-dom.min.js"></script>
+	    			<script type="text/javascript" src="/vendor/react.min.js"></script>
+	    			<script type="text/javascript" src="/vendor/react-dom.min.js"></script>
 	    			<script type="text/javascript" src="/vendor/ga.js"></script>
 	    		</head>
 	    		<body>
