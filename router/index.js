@@ -46,7 +46,7 @@ router.use(function* (next) {
 		console.log(this.method + " " + this.href + " errored")
 		console.error(err)
 		this.status = 301
-		this.redirect("http://www.liaozhongwu.com")
+		this.redirect("/")
 	}
 })
 
@@ -179,7 +179,7 @@ router.all("/*", function* (next) {
 	if (this.status === 404) {
 		console.log(this.method + " " + this.href + " was not found")
 		this.status = 301
-		this.redirect("http://www.liaozhongwu.com")
+		this.redirect("/")
 	}
 	yield next
 })
