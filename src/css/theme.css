@@ -225,13 +225,3 @@ code {
 	font-size: 12px;
 	margin-left: 10px;
 }
-@media screen
-and (max-width : 640px) {
-
-	.input {
-		width: 180px;
-	}
-	.textarea {
-		width: 180px;
-	}
-}
