@@ -35,11 +35,11 @@ router.use(function* (next) {
 	try {
 		if (config.online) {
 			console.log(this.method + " " + this.href + " from " + this.ip)
-			if (/liaozhongwu\.cn/.test(this.hostname)) {
+			if ( !(/www\.liaozhongwu\.com/.test(this.host)) ) {
 				this.status = 301
-				this.redirect(this.href.replace(/liaozhongwu\.cn/, "liaozhongwu.com"))
+				this.redirect(this.href.replace(this.host, "www.liaozhongwu.com"))
 				return
-			}
+			}	
 		}
 		yield next
 	} catch (err) {
