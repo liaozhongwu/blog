@@ -23,7 +23,7 @@ export default class Blogs extends React.Component {
 									{blog.content}
 								</div>
 								<div className="blog-count">
-									<i className="fa fa-comment-o"/>
+									<i className="fa fa-commenting-o"/>
 									<span className="number">{blog.counts.comment}</span>
 								</div>
 							</li>
