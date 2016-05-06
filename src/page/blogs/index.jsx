@@ -17,8 +17,10 @@ export default class Blogs extends React.Component {
 					{ 
 						blogs.map((blog, i) => (
 							<li className="item blog" key={i}>
-								<a className="blog-title" href={"/blog/" + blog.key}>{blog.title}</a>
-								<span className="time">{blog.createTime.toString()}</span>
+								<p className="blog-title">
+									<a href={"/blog/" + blog.key}>{blog.title}</a>
+									<span className="time">{blog.createTime.toString()}</span>
+								</p>
 								<div className="blog-preview">
 									{blog.content}
 								</div>

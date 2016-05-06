@@ -2,6 +2,7 @@
 	border-bottom: 1px solid #eee;
 }
 .blog-title {
+	overflow: hidden;
 	font-size: 18px;
 	font-weight: bold;
 }
@@ -23,5 +24,35 @@
 		margin-left: 3px;
 		margin-right: 5px;
 		vertical-align: middle;
+	}
+}
+
+@media screen
+and (max-width : 640px) {
+	
+	.time {
+		float: left;
+		margin-top: 5px;
+		margin-left: 0;
+	}
+	.blog-title {
+		margin-bottom: 5px;
+		a {
+			display: block;
+		}
+	}
+	.blog-preview {
+		text-indent: 0;
+		margin: 5px 0;
+	}
+	.blog-count {
+		text-align: left;
+	}
+	.label {
+		display: block;
+		float: none;
+		width: 100%;
+		text-align: left;
+		min-height: 0;
 	}
 }

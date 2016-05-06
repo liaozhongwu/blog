@@ -1,5 +1,5 @@
 import React from "react"
-import CDN from "../../../lib/cdn"
+import CDN from "../../../lib/cdn";
 
 export default class Index extends React.Component {	
 	static getMeta () {
@@ -50,7 +50,7 @@ export default class Index extends React.Component {
     	<div className="main" onClick={e => this.onChange()}>
         <img className={"background background-fade-" + animationState} src={CDN(imgs[index])}/>
         <div className="box" onClick={e => e.stopPropagation()}>
-          <img className="avatar" src={CDN("/img/avatar.png")}/>
+          <div className="avatar"/>
           <p>stay hungry. stay foolish.</p>
           <nav className="nav">
             <a href="/">Home</a>

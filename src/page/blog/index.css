@@ -17,3 +17,19 @@
 	clear: both;
 	padding: 5px 0;
 }
+
+@media screen
+and (max-width : 640px) {
+	
+	.time {
+		float: left;
+		margin-left: 0;
+	}
+	.label {
+		display: block;
+		float: none;
+		width: 100%;
+		text-align: left;
+		min-height: 0;
+	}
+}

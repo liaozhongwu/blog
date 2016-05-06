@@ -3,6 +3,7 @@ var gulp = require("gulp")
 , _import = require("postcss-import")
 , nested = require("postcss-nested")
 , cssnext = require("postcss-cssnext")
+, url = require("postcss-url")
 , csswring = require('csswring')
 , babel = require("gulp-babel")
 , react = require("gulp-react")
@@ -10,12 +11,22 @@ var gulp = require("gulp")
 , webpack = require("webpack")
 , webpack_config = require("./webpack.config")
 , shelljs = require("shelljs")
+, CDN = require("./lib/cdn")
+
+function cdn () {
+	return url({url: CDN})
+}
+
+function onChangeLog (e) {
+	console.log('File ' + e.path + " was " + e.type)
+}
 
 gulp.task("css", function () {
 	console.log("running task css")
 	return gulp.src("./src/css/*.css")
 		.pipe(postcss([
 			_import(),
+			cdn(),
 			nested(), 
 			cssnext(), 
 			csswring
@@ -37,6 +48,7 @@ gulp.task("pagecss", function () {
 	return gulp.src("./src/page/**/*.css")
 		.pipe(postcss([
 			_import(),
+			cdn(),
 			nested(), 
 			cssnext(), 
 			csswring
@@ -78,10 +90,6 @@ gulp.task("clean", function () {
 	shelljs.rm("-r", "./public/css")
 	shelljs.rm("-r", "./public/js")
 })
-
-function onChangeLog (e) {
-	console.log('File ' + e.path + " was " + e.type)
-}
 
 gulp.task('watch', function () {
 	console.log("gulp is watching now")

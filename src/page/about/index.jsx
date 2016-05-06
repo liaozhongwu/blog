@@ -1,4 +1,5 @@
 import React from "react";
+import CDN from "../../../lib/cdn";
 
 export default class About extends React.Component {
 	static getMeta () {
@@ -24,7 +25,7 @@ export default class About extends React.Component {
 	    	<div className="content">
 	    		<form className="form">
 	    			{ this.renderList() }
-	    			<img className="qrcode-weixin" src="/img/weixin.png"/>
+	    			<img className="qrcode-weixin" src={CDN("/img/weixin.png")}/>
 	    		</form>
 				</div>
 	    );
