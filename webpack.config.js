@@ -1,4 +1,4 @@
-var webpack = require("webpack") 
+var webpack = require("webpack")
 , glob = require("glob")
 , entry = {}
 
@@ -11,8 +11,8 @@ glob.sync("./src/entry/*.js")
 module.exports = {
     entry: entry,
     output: {
-        path: __dirname,
-        filename: "./public/js/[name]/index.js"
+        path: __dirname + "/public/js",
+        filename: "/[name]/index.js"
     },
     resolve: {
         extensions: ["", ".js", ".jsx"]

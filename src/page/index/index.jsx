@@ -1,5 +1,5 @@
 import React from "react"
-import CDN from "../../../lib/cdn";
+import CDN from "../../../lib/cdn"
 
 export default class Index extends React.Component {	
 	static getMeta () {
