@@ -225,5 +225,6 @@ code {
 .time {
 	float: right;
 	font-size: 12px;
+	color: #999;
 	margin-left: 10px;
 }
