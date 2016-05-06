@@ -1,6 +1,6 @@
 'use strict'
 var Model = require("../model")
-, data = require("../data.json")
+, data = require("../data/data.json")
 , ps = []
 
 data.blogs.forEach(blog => {

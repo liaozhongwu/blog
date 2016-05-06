@@ -6,9 +6,12 @@
 .comment {
 	border-bottom: solid 1px #f6f6f6;
 }
+.comment-title {
+	overflow: hidden;
+	margin-bottom: 0;
+}
 .comment-label {
 	float: left;
-	width: 100px;
 	text-align: left;
 }
 .comment-content {
@@ -21,9 +24,9 @@
 @media screen
 and (max-width : 640px) {
 	
-	.time {
-		float: left;
-		margin-left: 0;
+	.comment-label {
+		float: none;
+		display: block;
 	}
 	.label {
 		display: block;
@@ -31,5 +34,9 @@ and (max-width : 640px) {
 		width: 100%;
 		text-align: left;
 		min-height: 0;
+	}
+	.time {
+		float: left;
+		margin-left: 0;
 	}
 }

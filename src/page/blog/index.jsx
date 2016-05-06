@@ -103,9 +103,11 @@ export default class Blog extends React.Component {
 					{
 						comments.map( (comment, i) => (
 							<li className="item comment" key={i}>
-								<span className="comment-label">{comment.name}:</span>
-								<span className="time">{comment.createTime.toString()}</span>
-								<span className="comment-content" dangerouslySetInnerHTML={{__html: comment.marked}} />
+								<p className="comment-title">
+									<span className="comment-label">{comment.name}:</span>
+									<span className="time">{comment.createTime.toString()}</span>
+								</p>
+								<article className="comment-content" dangerouslySetInnerHTML={{__html: comment.marked}} />
 							</li>
 						))
 					}
