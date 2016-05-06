@@ -11,6 +11,7 @@ var gulp = require("gulp")
 , webpack = require("webpack")
 , webpack_config = require("./webpack.config")
 , shelljs = require("shelljs")
+, config = require("config")
 , CDN = require("./lib/cdn")
 
 function cdn () {
@@ -99,6 +100,10 @@ gulp.task('watch', function () {
   gulp.watch('./src/layout/*.jsx', ['layout', 'webpack']).on('change', onChangeLog)
   gulp.watch('./src/component/**/*.jsx', ['component', 'webpack']).on('change', onChangeLog)
   gulp.watch('./src/entry/*.js', ['webpack']).on('change', onChangeLog)
-});
+})
 
 gulp.task("default", ["clean", "css", "page", "pagecss", "component", "layout", "webpack"]);
+
+gulp.task('upload', ["default"], function () {
+	require("./local/upload.cdn.js")()
+})

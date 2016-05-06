@@ -55,6 +55,7 @@
   },
   "scripts": {
     "develop": "NODE_ENV=develop node app.js",
-    "start": "./node_modules/.bin/pm2 startOrGracefulReload pm2.json"
+    "start": "./node_modules/.bin/pm2 startOrGracefulReload pm2.json",
+    "upload": "NODE_ENV=production ./node_modules/.bin/gulp upload"
   }
 }

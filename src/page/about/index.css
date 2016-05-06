@@ -1,9 +1,12 @@
+.form {
+	position: relative;
+}
 .qrcode-weixin {
 	display: block;
 	position: absolute;
-	right: 0;
 	top: 0;
-	width: 240px;
+	right: 0;
+	width: 220px;
 }
 @media screen
 and (max-width : 640px) {
