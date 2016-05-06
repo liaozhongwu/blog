@@ -1,4 +1,5 @@
 import React from "react";
+import CDN from "../../lib/cdn";
 
 export default class Base extends React.Component {
 	constructor () {
@@ -34,7 +35,7 @@ export default class Base extends React.Component {
 		}
 		if (this.props.cssFile) {
 			this.props.cssFile.map((path, i) => {
-				html.push(<link key={ i } rel="stylesheet" type="text/css" href={ path } />);
+				html.push(<link key={ i } rel="stylesheet" type="text/css" href={ CDN(path) } />);
 			});
 		}
 		return html;
@@ -47,7 +48,7 @@ export default class Base extends React.Component {
 		}
 		if (this.props.jsFile) {
 			this.props.jsFile.map((path, i) => {
-				html.push(<script key={ i } type="text/javascript" src={ path }></script>);
+				html.push(<script key={ i } type="text/javascript" src={ CDN(path) }></script>);
 			});
 		}
 		return html;
@@ -66,9 +67,9 @@ export default class Base extends React.Component {
 						{ this.renderMeta() }
 						<link rel="start" href="http://www.liaozhongwu.com" title="Home"/>
 	    			{ this.renderCss() }
-	    			<script type="text/javascript" src="/vendor/react.min.js"></script>
-	    			<script type="text/javascript" src="/vendor/react-dom.min.js"></script>
-	    			<script type="text/javascript" src="/vendor/ga.js"></script>
+	    			<script type="text/javascript" src={CDN("/vendor/react.min.js")}></script>
+	    			<script type="text/javascript" src={CDN("/vendor/react-dom.min.js")}></script>
+	    			<script type="text/javascript" src={CDN("/vendor/ga.js")}></script>
 	    		</head>
 	    		<body>
   					<div className="app" id="app"
