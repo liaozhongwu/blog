@@ -31,25 +31,6 @@ function _require (module) {
 	return require(module)
 }
 
-router.use(function* (next) {
-	try {
-		if (config.online) {
-			console.log(this.method + " " + this.href + " from " + this.ip)
-			if ( !(/www\.liaozhongwu\.com/.test(this.host)) ) {
-				this.status = 301
-				this.redirect(this.href.replace(this.host, "www.liaozhongwu.com"))
-				return
-			}	
-		}
-		yield next
-	} catch (err) {
-		console.log(this.method + " " + this.href + " errored")
-		console.error(err)
-		this.status = 301
-		this.redirect("/")
-	}
-})
-
 router.get("/", function* (next) {
 	let imgs = [
 		"/img/bg1.jpg",
@@ -181,15 +162,6 @@ router.get("/error", function* (next) {
 	, props = Object.assign({content}, Error.getMeta())
 	, Layout = _require("../build/layout/Base").default
 	this.body = ReactDOMServer.renderToString(React.createElement(Layout, props))
-	yield next
-})
-
-router.all("/*", function* (next) {
-	if (this.status === 404) {
-		console.log(this.method + " " + this.href + " was not found")
-		this.status = 301
-		this.redirect("/")
-	}
 	yield next
 })
 
