@@ -33,7 +33,6 @@
     "postcss-import": "^8.1.1",
     "postcss-nested": "^1.0.0",
     "postcss-url": "^5.1.2",
-    "qiniu": "^6.1.11",
     "shelljs": "^0.6.0",
     "webpack": "^1.13.0"
   },
@@ -56,6 +55,6 @@
   "scripts": {
     "develop": "NODE_ENV=develop node app.js",
     "start": "./node_modules/.bin/pm2 startOrGracefulReload pm2.json",
-    "upload": "NODE_ENV=production ./node_modules/.bin/gulp upload"
+    "deploy": "NODE_ENV=production ./node_modules/.bin/gulp deploy"
   }
 }

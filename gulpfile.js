@@ -104,6 +104,6 @@ gulp.task('watch', function () {
 
 gulp.task("default", ["clean", "css", "page", "pagecss", "component", "layout", "webpack"]);
 
-gulp.task('upload', ["default"], function () {
-	require("./local/upload.cdn.js")()
+gulp.task('deploy', ["default"], function () {
+	require("./local/upload.cdn.js")
 })
