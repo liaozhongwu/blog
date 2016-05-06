@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-mongorestore -u lzw -p lzw123 ./data/blog -d blog
+mongorestore -u lzw -p lzw123 ./local/blog -d blog

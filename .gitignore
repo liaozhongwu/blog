@@ -27,6 +27,5 @@ build/Release
 node_modules
 
 .DS_Store
-data/
-script/upload.cdn.js
+local
 urls.txt
