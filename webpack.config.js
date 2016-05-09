@@ -20,7 +20,8 @@ module.exports = {
     module: {
         loaders: [
             { test: /\.js$/, exclude: /node_modules/, loaders: ["babel"] },
-            { test: /\.jsx$/, exclude: /node_modules/, loaders: ["babel"] }
+            { test: /\.jsx$/, exclude: /node_modules/, loaders: ["babel"] },
+            { test: /\.json$/, exclude: /node_modules/, loaders: ["json"] }
         ]
     },
     externals: {

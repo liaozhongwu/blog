@@ -106,9 +106,12 @@ gulp.task('watch', function () {
 
 gulp.task("default", ["clean", "css", "page", "pagecss", "component", "layout", "webpack"]);
 
-gulp.task('deploy', ['default'], function () {
+gulp.task('hash', function () {
 	var hash = crypto.createHash('md5').update(crypto.randomBytes(256)).digest('hex').substr(0, 6)
 	fs.writeFileSync("./cdn/hash.json", JSON.stringify(hash))
+})
+
+gulp.task('deploy', ['hash', 'default'], function () {
 	require("./local/upload.cdn.js")()
 })
 
