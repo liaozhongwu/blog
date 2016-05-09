@@ -1,7 +1,7 @@
 var webpack = require("webpack")
 , glob = require("glob")
-, entry = {}
 
+var entry = {}
 glob.sync("./src/entry/*.js")
 .forEach(function (path) {
     var name = path.match(/^\.\/src\/entry\/(.*)\.js$/, '')[1]
@@ -28,6 +28,9 @@ module.exports = {
         "react-dom": "ReactDOM"
     },
     plugins: [
-        new webpack.optimize.UglifyJsPlugin({compress: {warnings: false}})
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {warnings: false}
+        }),
+        new webpack.EnvironmentPlugin(["NODE_ENV"])
     ]
 }

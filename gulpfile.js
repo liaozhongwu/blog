@@ -10,9 +10,11 @@ var gulp = require("gulp")
 , uglify = require("gulp-uglify")
 , webpack = require("webpack")
 , webpack_config = require("./webpack.config")
+, fs = require("fs")
 , shelljs = require("shelljs")
+, crypto = require("crypto")
 , config = require("config")
-, CDN = require("./lib/cdn")
+, CDN = require("./cdn")
 
 function cdn () {
 	return url({url: CDN})
@@ -104,6 +106,9 @@ gulp.task('watch', function () {
 
 gulp.task("default", ["clean", "css", "page", "pagecss", "component", "layout", "webpack"]);
 
-gulp.task('deploy', ["default"], function () {
-	require("./local/upload.cdn.js")
+gulp.task('deploy', ['default'], function () {
+	var hash = crypto.createHash('md5').update(crypto.randomBytes(256)).digest('hex').substr(0, 6)
+	fs.writeFileSync("./cdn/hash.json", JSON.stringify(hash))
+	require("./local/upload.cdn.js")()
 })
+

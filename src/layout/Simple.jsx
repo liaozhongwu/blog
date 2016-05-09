@@ -1,5 +1,5 @@
 import React from "react";
-import CDN from "../../lib/cdn";
+import CDN from "../../cdn";
 
 export default class Base extends React.Component {
 	constructor () {
