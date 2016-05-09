@@ -21,15 +21,10 @@ function uploadFile(key, path) {
   });
 }
 
-function _require (module) {
-  delete require.cache[require.resolve(module)]
-  return require(module);
-}
-
 module.exports = function (cb) {
   let dir = path.join(__dirname, "../public")
   let re = new RegExp("^" + dir + "\/")
-  let hash = _require("./hash.json")
+  let hash = require("./hash.json")
 
   glob.sync(dir + "/**/*.*")
   .forEach(path => {

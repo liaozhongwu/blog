@@ -1,6 +1,5 @@
 'use strict'
 const CDN_URL = "http://cdn.liaozhongwu.com"
-let hash = require("./hash.json")
 
 function CDN (path) {
 	path = path || ""
@@ -8,6 +7,7 @@ function CDN (path) {
 		path = "/" + path
 	}
 	if (typeof process !== undefined && process.env.NODE_ENV === "production") {
+		let hash = require("./hash.json")
 		if (/^\/(css|img|js)\//.test(path)) {
 	    path = path.replace(/\.[^\/]+$/, function (m) { return "." + hash + m})
 	  }
