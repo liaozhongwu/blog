@@ -33,6 +33,7 @@
     "postcss-import": "^8.1.1",
     "postcss-nested": "^1.0.0",
     "postcss-url": "^5.1.2",
+    "qiniu": "^6.1.11",
     "shelljs": "^0.6.0",
     "webpack": "^1.13.0"
   },
