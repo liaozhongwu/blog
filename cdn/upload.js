@@ -1,8 +1,8 @@
 'use strict'
 let qiniu = require("qiniu")
-let glob = require("glob")
-let path = require("path")
-let conf = require("../local/cdn.json")
+, glob = require("glob")
+, path = require("path")
+, conf = require("../local/cdn.json")
 
 qiniu.conf.ACCESS_KEY = conf.ACCESS_KEY
 qiniu.conf.SECRET_KEY = conf.SECRET_KEY
@@ -23,8 +23,8 @@ function uploadFile(key, path) {
 
 module.exports = function (cb) {
   let dir = path.join(__dirname, "../public")
-  let re = new RegExp("^" + dir + "\/")
-  let hash = require("./hash.json")
+  , re = new RegExp("^" + dir + "\/")
+  , hash = require("./hash.json")
 
   glob.sync(dir + "/**/*.*")
   .forEach(path => {
