@@ -112,6 +112,6 @@ gulp.task('hash', function () {
 })
 
 gulp.task('deploy', ['hash', 'default'], function () {
-	require("./local/upload.cdn.js")()
+	require("./cdn/upload.js")()
 })
 
