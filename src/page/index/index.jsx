@@ -39,7 +39,7 @@ export default class Index extends React.Component {
           index: this.random(),
           animationState: "enter"
         })
-      }, 800);
+      }, 500);
     });
   }
 
