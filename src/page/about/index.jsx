@@ -6,7 +6,7 @@ export default class About extends React.Component {
 		return {
 			title: "廖仲武的个人信息 - Liaozhongwu's Personal Infomation",
 			description: "廖仲武的个人信息 - Liaozhongwu's Personal Infomation",
-			cssFile: [ "/css/theme.css", "/css/about/index.css" ]
+			cssFile: [ "/css/theme.css", "/page/about/index.css" ]
 		}
 	}
 	renderList () {

@@ -1,4 +1,5 @@
 var webpack = require("webpack")
+, config = require("config")
 , glob = require("glob")
 
 var entry = {}
@@ -8,14 +9,14 @@ glob.sync("./src/entry/*.js")
     entry[name] = path
 })
 
-module.exports = {
+var webpack_config = {
     entry: entry,
     output: {
-        path: __dirname + "/public/js",
+        path: __dirname + "/public/page",
         filename: "/[name]/index.js"
     },
     resolve: {
-        extensions: ["", ".js", ".jsx"]
+        extensions: ["", ".js", ".jsx", ".json"]
     },
     module: {
         loaders: [
@@ -29,9 +30,15 @@ module.exports = {
         "react-dom": "ReactDOM"
     },
     plugins: [
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {warnings: false}
-        }),
+        new webpack.optimize.UglifyJsPlugin({compress: {warnings: false}}),
         new webpack.EnvironmentPlugin(["NODE_ENV"])
     ]
 }
+
+if (config.debug) {
+    webpack_config.plugins.push(
+        new webpack.SourceMapDevToolPlugin({filename: "[name]/index.js.map", append: "//# sourceMappingURL=index.js.map"})
+    )
+}
+
+module.exports = webpack_config

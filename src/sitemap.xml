@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>http://liaozhongwu.com</loc> 
+  </url>
+  <url>
+    <loc>http://liaozhongwu.com/blogs</loc> 
+  </url>
+  <url>
+    <loc>http://liaozhongwu.com/blog/xmlhttprequest</loc> 
+  </url>
+  <url>
+    <loc>http://liaozhongwu.com/blog/v8-cplusplus</loc> 
+  </url>
+  <url>
+    <loc>http://liaozhongwu.com/blog/node-addon</loc> 
+  </url>
+  <url>
+    <loc>http://liaozhongwu.com/blog/ecmascript6</loc> 
+  </url>
+  <url>
+    <loc>http://liaozhongwu.com/blog/promise</loc> 
+  </url>
+  <url>
+    <loc>http://liaozhongwu.com/blog/snow-song</loc> 
+  </url>
+  <url>
+    <loc>http://liaozhongwu.com/about</loc>
+  </url>
+</urlset>

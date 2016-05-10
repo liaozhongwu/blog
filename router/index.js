@@ -6,6 +6,7 @@ let React = require("react")
 , config = require("config")
 , md5 = require("md5")
 , Model = require("../model")
+, Random = require("../lib/random")
 , Remarkable = require("remarkable")
 , hljs = require("highlight.js")
 
@@ -40,8 +41,7 @@ router.get("/", function* (next) {
 		"/img/bg5.jpg",
 		"/img/bg6.jpg"
 	]
-	, index = Math.floor(imgs.length * Math.random())
-	, APP_PROPS = {imgs, index}
+	, APP_PROPS = {imgs}
 	, Index = _require("../build/page/index").default
 	, content = ReactDOMServer.renderToString(React.createElement(Index, APP_PROPS))
 	, props = Object.assign({content, APP_PROPS}, Index.getMeta())

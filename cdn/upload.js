@@ -21,7 +21,7 @@ function uploadFile(key, path) {
   });
 }
 
-module.exports = function (cb) {
+function start (cb) {
   let dir = path.join(__dirname, "../public")
   , re = new RegExp("^" + dir + "\/")
   , hash = require("./hash.json")
@@ -30,9 +30,20 @@ module.exports = function (cb) {
   .forEach(path => {
     let key = path.replace(re, "")
 
-    if (/^(css|img|js)\//.test(key)) {
+    // ignore baidu/google/sitemap
+    if (/^(baidu|google|sitemap)/.test(key)) {
+      return;
+    }
+    // add hash
+    if (/^(page|css|img|js)\//.test(key)) {
       key = key.replace(/\.[^\/]+$/, function (m) { return "." + hash + m})
     }
     uploadFile(key, path)
   })
+}
+
+if (module === require.main) {
+  start()
+} else {
+  module.exports = start
 }

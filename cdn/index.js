@@ -8,7 +8,7 @@ function CDN (path) {
 	}
 	if (typeof process !== undefined && process.env.NODE_ENV === "production") {
 		let hash = require("./hash.json")
-		if (/^\/(css|img|js)\//.test(path)) {
+		if (/^\/(page|css|img|js)\//.test(path)) {
 			path = path.replace(/\.[^\/]+$/, function (m) { return "." + hash + m})
 		}
 		return CDN_URL + path

@@ -41,15 +41,104 @@ body {
 		opacity: 0;
 	}
 }
+@keyframes scale-enter {
+	from {
+		transform: scale(0, 0);
+		opacity: 0;
+	}
+	to {
+		transform: scale(1, 1);
+		opacity: 1;
+	}
+}
+@keyframes scale-leave {
+	from {
+		transform: scale(1, 1);
+		opacity: 1;
+	}
+	to {
+		transform: scale(0, 0);
+		opacity: 0;
+	}
+}
+@keyframes scalex-enter {
+	from {
+		transform: scaleX(0);
+		opacity: 0;
+	}
+	to {
+		transform: scaleX(1);
+		opacity: 1;
+	}
+}
+@keyframes scalex-leave {
+	from {
+		transform: scaleX(1);
+		opacity: 1;
+	}
+	to {
+		transform: scaleX(0);
+		opacity: 0;
+	}
+}
+@keyframes scaley-enter {
+	from {
+		transform: scaleY(0);
+		opacity: 0;
+	}
+	to {
+		transform: scaleY(1);
+		opacity: 1;
+	}
+}
+@keyframes scaley-leave {
+	from {
+		transform: scaleY(1);
+		opacity: 1;
+	}
+	to {
+		transform: scaleY(0);
+		opacity: 0;
+	}
+}
 
 .background-fade-enter {
 	animation-name: fade-enter;
 	animation-duration: .5s;
 	opacity: 1;
 }
-
 .background-fade-leave {
 	animation-name: fade-leave;
+	animation-duration: .5s;
+	opacity: 0;
+}
+.background-scale-enter {
+	animation-name: scale-enter;
+	animation-duration: .5s;
+	opacity: 1;
+}
+.background-scale-leave {
+	animation-name: scale-leave;
+	animation-duration: .5s;
+	opacity: 0;
+}
+.background-scalex-enter {
+	animation-name: scalex-enter;
+	animation-duration: .5s;
+	opacity: 1;
+}
+.background-scalex-leave {
+	animation-name: scalex-leave;
+	animation-duration: .5s;
+	opacity: 0;
+}
+.background-scaley-enter {
+	animation-name: scaley-enter;
+	animation-duration: .5s;
+	opacity: 1;
+}
+.background-scaley-leave {
+	animation-name: scaley-leave;
 	animation-duration: .5s;
 	opacity: 0;
 }

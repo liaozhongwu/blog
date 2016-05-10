@@ -6,7 +6,7 @@ export default class Blogs extends React.Component {
 		return {
 			title: "廖仲武的博客 - Liaozhongwu's Blog",
 			description: "廖仲武的博客 - Liaozhongwu's Blog",
-			cssFile: [ "/vendor/font-awesome/css/font-awesome.min.css", "/css/theme.css", "/css/blogs/index.css" ]
+			cssFile: [ "/vendor/font-awesome/css/font-awesome.min.css", "/css/theme.css", "/page/blogs/index.css" ]
 		}
 	}
 	render() {

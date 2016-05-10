@@ -1,4 +1,5 @@
 import React from "react"
+import Random from "../../../lib/random"
 import CDN from "../../../cdn"
 
 export default class Index extends React.Component {	
@@ -6,37 +7,44 @@ export default class Index extends React.Component {
 		return {
 			title: "廖仲武的个人网站 - Liaozhongwu's Personal Website",
 			description: "廖仲武的个人网站 - Liaozhongwu's Personal Website",
-			cssFile: [ "/css/theme.css", "/css/index/index.css" ],
-      jsFile: [ "/js/index/index.js" ]
+			cssFile: [ "/css/theme.css", "/page/index/index.css" ],
+      jsFile: [ "/page/index/index.js" ]
 		}
 	}
 
   constructor (props) {
     super();
     this.state = {
-      index: props.index,
-      animationState: "enter"
-    }
-  }
-
-  random () {
-    let {imgs} = this.props;
-    let {index} = this.state;
-    while (true) {
-      let tmp = Math.floor(imgs.length * Math.random());
-      if (tmp !== index) {
-        return tmp;
-      }
+      img: Random(props.imgs),
+      animationType: null,
+      animationState: null
     }
   }
 
   onChange () {
+    let types = ["fade", "scale", "scalex", "scaley"]
+    let {imgs} = this.props
+    let {img, animationType} = this.state
+    let i, t
+    while (true) {
+      i = Random(imgs)
+      if (i !== img) {
+        break;
+      }
+    }
+    while (true) {
+      t = Random(types)
+      if (t !== animationType) {
+        break;
+      }
+    }
     this.setState({
+      animationType: t,
       animationState: "leave"
     }, () => {
       setTimeout(() => {
         this.setState({
-          index: this.random(),
+          img: i,
           animationState: "enter"
         })
       }, 500);
@@ -44,11 +52,15 @@ export default class Index extends React.Component {
   }
 
 	render() {
-    let {imgs} = this.props;
-    let {index, animationState} = this.state;
+    let {img, animationType, animationState} = this.state;
+
+    let bgClass = "background"
+    if (animationType && animationState) {
+      bgClass += " background-" + animationType + "-" + animationState
+    }
     return (
     	<div className="main" onClick={e => this.onChange()}>
-        <img className={"background background-fade-" + animationState} src={CDN(imgs[index])}/>
+        <img className={bgClass} src={CDN(img)}/>
         <div className="box" onClick={e => e.stopPropagation()}>
           <div className="avatar"/>
           <p>stay hungry. stay foolish.</p>

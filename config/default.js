@@ -5,6 +5,6 @@ module.exports = {
 		pass: "lzw123"
 	},
 	port: 80,
-	debug: false,
+	debug: true,
 	online: false
 }

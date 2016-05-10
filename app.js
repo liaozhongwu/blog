@@ -42,6 +42,6 @@ app
 
 	if (!config.online) {
 		require("./gulpfile")
-		require("gulp").start("watch").start("default")
+		require("gulp").start("default")
 	}
 })
