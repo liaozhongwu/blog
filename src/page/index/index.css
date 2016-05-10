@@ -25,6 +25,10 @@ body {
 	height: 100%;
 }
 
+.background-hidden {
+	display: none;
+}
+
 @keyframes fade-enter {
 	from {
 		opacity: 0;
@@ -38,26 +42,6 @@ body {
 		opacity: 1;
 	}
 	to {
-		opacity: 0;
-	}
-}
-@keyframes scale-enter {
-	from {
-		transform: scale(0, 0);
-		opacity: 0;
-	}
-	to {
-		transform: scale(1, 1);
-		opacity: 1;
-	}
-}
-@keyframes scale-leave {
-	from {
-		transform: scale(1, 1);
-		opacity: 1;
-	}
-	to {
-		transform: scale(0, 0);
 		opacity: 0;
 	}
 }
@@ -109,16 +93,6 @@ body {
 }
 .background-fade-leave {
 	animation-name: fade-leave;
-	animation-duration: .5s;
-	opacity: 0;
-}
-.background-scale-enter {
-	animation-name: scale-enter;
-	animation-duration: .5s;
-	opacity: 1;
-}
-.background-scale-leave {
-	animation-name: scale-leave;
 	animation-duration: .5s;
 	opacity: 0;
 }

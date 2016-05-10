@@ -15,36 +15,36 @@ export default class Index extends React.Component {
   constructor (props) {
     super();
     this.state = {
-      img: Random(props.imgs),
+      current: Random(props.imgs),
       animationType: null,
       animationState: null
     }
   }
 
   onChange () {
-    let types = ["fade", "scale", "scalex", "scaley"]
+    let types = ["fade", "scalex", "scaley"]
     let {imgs} = this.props
-    let {img, animationType} = this.state
-    let i, t
+    let {current, animationType} = this.state
+    let img, type
     while (true) {
-      i = Random(imgs)
-      if (i !== img) {
+      img = Random(imgs)
+      if (img !== current) {
         break;
       }
     }
     while (true) {
-      t = Random(types)
-      if (t !== animationType) {
+      type = Random(types)
+      if (type !== animationType) {
         break;
       }
     }
     this.setState({
-      animationType: t,
+      animationType: type,
       animationState: "leave"
     }, () => {
       setTimeout(() => {
         this.setState({
-          img: i,
+          current: img,
           animationState: "enter"
         })
       }, 500);
@@ -52,15 +52,24 @@ export default class Index extends React.Component {
   }
 
 	render() {
-    let {img, animationType, animationState} = this.state;
+    let {imgs} = this.props;
+    let {current, animationType, animationState} = this.state;
 
-    let bgClass = "background"
-    if (animationType && animationState) {
-      bgClass += " background-" + animationType + "-" + animationState
-    }
     return (
     	<div className="main" onClick={e => this.onChange()}>
-        <img className={bgClass} src={CDN(img)}/>
+        {
+          imgs.map((img , i) => {
+            let bgClass = "background"
+            if (img === current) {
+              if (animationType && animationState) {
+                bgClass += " background-" + animationType + "-" + animationState
+              }
+            } else {
+              bgClass += " background-hidden"
+            }
+            return (<img key={i} className={bgClass} src={CDN(img)}/>)
+          })
+        }
         <div className="box" onClick={e => e.stopPropagation()}>
           <div className="avatar"/>
           <p>stay hungry. stay foolish.</p>
