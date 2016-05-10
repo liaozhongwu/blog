@@ -37,8 +37,7 @@ router.get("/", function* (next) {
 		"/img/bg1.jpg",
 		"/img/bg2.jpg",
 		"/img/bg3.jpg",
-		"/img/bg4.jpg",
-		"/img/bg5.jpg"
+		"/img/bg4.jpg"
 	]
 	, APP_PROPS = {imgs}
 	, Index = _require("../build/page/index").default
