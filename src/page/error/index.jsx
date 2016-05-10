@@ -3,7 +3,7 @@ import React from "react";
 export default class Error extends React.Component {	
 	static getMeta () {
 		return {
-			cssFile: [ "/page/theme.css" ]
+			cssFile: [ "/css/theme.css" ]
 		}
 	}
 	render() {

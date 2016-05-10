@@ -8,7 +8,7 @@ export default class Blog extends React.Component {
 			title: "廖仲武的博客 - Liaozhongwu's Blog",
 			description: "廖仲武的博客 - Liaozhongwu's Blog",
 			cssFile: [ "/css/theme.css", "/css/highlight.css", "/page/blog/index.css" ],
-			jsFile: [ "/js/blog/index.js" ]
+			jsFile: [ "/page/blog/index.js" ]
 		}
 	}
 	constructor (props) {
