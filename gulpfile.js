@@ -1,4 +1,5 @@
 var gulp = require("gulp")
+, plumber = require("gulp-plumber")
 , postcss = require("gulp-postcss")
 , _import = require("postcss-import")
 , nested = require("postcss-nested")
@@ -38,6 +39,7 @@ function sourcemaps_write () {
 
 function css (src, dest) {
 	return gulp.src(src)
+		.pipe(plumber())
 		.pipe(sourcemaps_init())
 		.pipe(postcss([
 			_import(),
@@ -52,6 +54,7 @@ function css (src, dest) {
 
 function js (src, dest) {
 	return gulp.src(src)
+		.pipe(plumber())
 		.pipe(sourcemaps_init())
 		.pipe(babel())
 		.pipe(react())
