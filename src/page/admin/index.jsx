@@ -5,7 +5,7 @@ export default class Admin extends React.Component {
 		return {
 			title: "编辑 - 廖仲武的博客 - Liaozhongwu's Blog",
 			description: "编辑 - 廖仲武的博客 - Liaozhongwu's Blog",
-			cssFile: [ "/css/theme.css" ]
+			cssFile: [ "/css/theme.css", "page/admin/index.css" ]
 		}
 	}
 	renderInput () {
@@ -14,7 +14,7 @@ export default class Admin extends React.Component {
 		if (blog) {
 			html.push(
 				<div className="form-group" key="id">
-					<input className="input block-level" type="text" name="id" placeholder="id" defaultValue={blog.id} readOnly/>
+					<input className="input block-level" type="text" name="id" placeholder="id" defaultValue={blog._id} readOnly/>
 				</div>
 			);
 			html.push(
