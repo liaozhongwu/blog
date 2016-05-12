@@ -1,0 +1,225 @@
+<!doctype html>
+	<head>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<canvas id="canvas" width="720" height="480">Sorry, Your Broswer don't support canvas.</canvas>
+		<script type="text/javascript">
+			(function () {
+				var canvas = document.getElementById("canvas")
+				var context = canvas.getContext('2d')
+
+				var WIDTH = 720;
+				var HEIGHT = 480;
+				var WAY_TOP = 200;
+				var FRAME = 20;
+				var BAR_SPEED = 5;
+				var BAR_MAX_WIDTH = 25;
+				var BAR_MAX_HEIGHT = 50;
+				var BAR_RANDOM_STEP = 5;
+				var PLAYER_TOP = 160;
+				var PLAYER_LEFT = 160;
+				var PLAYER_WIDTH = 20;
+				var PLAYER_HEIGHT = 40;
+				var PLAYER_RISE_SPEED = 20;
+				var PLAYER_RISE_PLUS_SPEED = 2;
+				var player = null;
+				var bars = null;
+				var bar_speed = 0;
+				var runInterval = null;
+				var state = "";
+				var rate = 0;
+				var time = 0;
+
+				function renderWay () {
+					context.beginPath();
+					context.moveTo(0, WAY_TOP);
+					context.lineTo(WIDTH, WAY_TOP);
+					context.stroke();
+					context.closePath();
+				}
+
+				function renderPlayer () {
+					context.beginPath();
+					context.arc(player.left + 10, player.top + 10, 10, 0, Math.PI*2, true);
+
+					context.moveTo(player.left + 10, player.top + 20);
+					context.lineTo(player.left, player.top + 30);
+
+					context.moveTo(player.left + 10, player.top + 20);
+					context.lineTo(player.left + 10, player.top + 30);
+
+					context.moveTo(player.left + 10, player.top + 20);
+					context.lineTo(player.left + 20, player.top + 30);
+
+					context.moveTo(player.left + 10, player.top + 30);
+					context.lineTo(player.left, player.top + 40);
+
+					context.moveTo(player.left + 10, player.top + 30);
+					context.lineTo(player.left + 20, player.top + 40);
+					context.stroke();
+					context.closePath();
+
+					if (player.jumping) {
+						player.top -= player.rise_speed
+						player.rise_speed -= player.rise_plus_speed
+
+						if (player.rise_speed < 0 && player.top >= PLAYER_TOP) {
+							player.top = PLAYER_TOP
+							player.jumping = false
+							player.rise_speed = 0
+							player.rise_plus_speed = 0
+						}
+					}
+				}
+
+				function renderBar() {
+					bars.forEach(function(bar) {
+						context.fillRect(bar.left, bar.top, bar.width, bar.height);
+
+						if (crash(bar, player)) {
+							over();
+						}
+
+						bar.left -= bar_speed;
+
+						if (bar.left <= 0) {
+							rate++
+							var w = randomWidth()
+							var h = randomHeight()
+							bar.left = WIDTH
+							bar.top = WAY_TOP - h
+							bar.width = w
+							bar.height = h
+						}
+					})
+				}
+
+				function renderData () {
+					var data = ""
+					context.font = "20px serif";
+					context.fillText("按P暂停,按空格继续,按r重新开始,按↑或w跳跃", 20, 20)
+					context.fillText("游戏进度：" + state + "，当前分数：" + rate, 20, 40)
+				}
+
+				function randomWidth () {
+					return Math.ceil(Math.random() * BAR_MAX_WIDTH / BAR_RANDOM_STEP) * BAR_RANDOM_STEP
+				}
+
+				function randomHeight () {
+					return Math.ceil(Math.random() * BAR_MAX_HEIGHT / BAR_RANDOM_STEP) * BAR_RANDOM_STEP
+				}
+
+				function init () {
+					player = {
+						left: PLAYER_LEFT, 
+						top: PLAYER_TOP, 
+						width: PLAYER_WIDTH, 
+						height: PLAYER_HEIGHT,
+						jumping: false,
+						rise_speed: 0,
+						rise_plus_speed: 0
+					};
+					bars = [];
+					var i = 0;
+					while (i < 4) {
+						var w = randomWidth()
+						var h = randomHeight()
+						bars.push({
+							left: WIDTH + i * 180,
+							top: WAY_TOP - h,
+							width: w,
+							height: h
+						})
+						i++;
+					}
+					bar_speed = BAR_SPEED;
+					if (runInterval) {
+						clearInterval(runInterval);
+						runInterval = null;
+					}
+					state = "";
+					rate = 0;
+					time = 0;
+					start()
+				}
+
+				function jump () {
+					if (!player.jumping) {
+						player.jumping = true
+						player.rise_speed = PLAYER_RISE_SPEED
+						player.rise_plus_speed = PLAYER_RISE_PLUS_SPEED
+					}
+				}
+
+				function clear() {
+					context.clearRect(0, 0, WIDTH, HEIGHT);
+				}
+
+				function render () {
+					clear()
+					renderWay()
+					renderPlayer()
+					renderBar()
+					renderData()
+					time++
+
+					if (time % 1000 === 0) {
+						bar_speed++
+					}
+				}
+
+				function crash (rect1, rect2) {
+					var minx = Math.max(rect1.left, rect2.left)
+					var miny = Math.max(rect1.top, rect2.top)
+					var maxx = Math.min(rect1.left+rect1.width, rect2.left+rect2.width)
+					var maxy = Math.min(rect1.top+rect1.height, rect2.top+rect2.height)
+
+					if (minx <= maxx && miny <= maxy) return true
+					return false
+				}
+
+				function start () {
+					if (runInterval === null) {
+						state = "进行中";
+						runInterval = setInterval(render, FRAME);
+					}
+				}
+
+				function pause () {
+					if (runInterval) {
+						state = "暂停";
+						clearInterval(runInterval)
+						runInterval = null
+					}
+				}
+
+				function over () {
+					state = "结束";
+					clearInterval(runInterval)
+					runInterval = null
+				}
+
+				document.addEventListener("keydown", function (e) {
+					switch(e.keyCode) {
+						case 82:
+							init();
+							break;
+						case 80:
+							pause()
+							break;
+						case 32:
+							start()
+							break;
+						case 38:
+						case 87:
+							jump();
+							break;
+					}
+				})
+
+				init();
+			})()
+		</script>
+	</body>
+</html>
