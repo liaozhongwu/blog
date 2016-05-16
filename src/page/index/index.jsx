@@ -8,7 +8,7 @@ export default class Index extends React.Component {
 			title: "廖仲武的个人网站 - Liaozhongwu's Personal Website",
 			description: "廖仲武的个人网站 - Liaozhongwu's Personal Website",
 			cssFile: [ "/css/theme.css", "/page/index/index.css" ],
-      jsFile: [ "/page/index/index.js" ]
+      jsFile: [ "/page/index/index.js", "/js/canvas.js" ]
 		}
 	}
 
@@ -57,19 +57,21 @@ export default class Index extends React.Component {
 
     return (
     	<div className="main" onClick={e => this.onChange()}>
-        {
-          imgs.map((img , i) => {
-            let bgClass = "background"
-            if (img === current) {
-              if (animationType && animationState) {
-                bgClass += " background-" + animationType + "-" + animationState
+        <canvas id="canvas" className="background" width="800" height="600">
+          {
+            imgs.map((img , i) => {
+              let bgClass = "background"
+              if (img === current) {
+                if (animationType && animationState) {
+                  bgClass += " background-" + animationType + "-" + animationState
+                }
+              } else {
+                bgClass += " background-hidden"
               }
-            } else {
-              bgClass += " background-hidden"
-            }
-            return (<img key={i} className={bgClass} src={CDN(img)}/>)
-          })
-        }
+              return (<img key={i} className={bgClass} src={CDN(img)}/>)
+            })
+          }
+        </canvas>
         <div className="box" onClick={e => e.stopPropagation()}>
           <div className="avatar"/>
           <p>stay hungry. stay foolish.</p>

@@ -95,7 +95,7 @@ export default class Blog extends React.Component {
     return (
     	<div className="content">
   			<p className="title">
-  				{blog.title}
+  				<span className="title-content">{blog.title}</span>
   				<span className="time">{blog.createTime.toString()}</span>
   			</p>
 				<article className="article" dangerouslySetInnerHTML={{__html: blog.marked}}/>

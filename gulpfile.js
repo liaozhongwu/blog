@@ -83,6 +83,10 @@ gulp.task("layout", function () {
 	return js("./src/layout/*.jsx", "./build/layout")
 })
 
+gulp.task("js", function () {
+	return js("./src/js/*.js", "./public/js")
+})
+
 gulp.task("webpack", function () {
 	webpack(webpack_config, function (err, stat) {})
 })
@@ -106,6 +110,7 @@ gulp.task("clean", function () {
 
 gulp.task('watch', ["build"], function () {
   gulp.watch('./src/css/*.css', ['css'])
+  gulp.watch('./src/js/*.js', ['js'])
   gulp.watch('./src/page/**/*.jsx', ['page', 'webpack'])
   gulp.watch('./src/page/**/*.css', ['pagecss'])
   gulp.watch('./src/layout/*.jsx', ['layout', 'webpack'])
@@ -113,7 +118,7 @@ gulp.task('watch', ["build"], function () {
   gulp.watch('./src/entry/*.js', ['webpack'])
 })
 
-gulp.task("build", ["clean", "css", "pagecss", "page", "component", "layout", "webpack", "img", "vendor", "other"]);
+gulp.task("build", ["clean", "css", "pagecss", "page", "component", "layout", "js", "webpack", "img", "vendor", "other"]);
 
 gulp.task("default", ["watch"])
 

@@ -23,7 +23,9 @@
 
 @media screen
 and (max-width : 640px) {
-	
+	.title-content {
+		display: block;
+	}
 	.comment-label {
 		float: none;
 		display: block;
