@@ -4,15 +4,15 @@
 	var context = canvas.getContext('2d')
 
 	function resize (e) {
-		canvas.setAttribute("width", window.innerWidth || document.body.clientWidth)
-		canvas.setAttribute("height", window.innerHeight || document.body.clientWidth)				
+		canvas.width = window.innerWidth || document.body.clientWidth
+		canvas.height = window.innerHeight || document.body.clientWidth				
 	}
 
 	window.addEventListener("resize", resize)
 	resize()
 
 	var points = []
-	for (var i = 0; i < 100; ++i) {
+	for (var i = 0; i < canvas.width / 10; ++i) {
 		points.push({
 			x: random(0, rect.width),
 			y: random(0, rect.height),
@@ -143,18 +143,20 @@
 		}
 	})
 
-	canvas.addEventListener("touchmove", function (e) {
-		mouse = {
-			x: e.clientX,
-			y: e.clientY
-		}
-	})
-
 	canvas.addEventListener("mouseout", function (e) {
 		mouse = null
 	})
 
-	canvas.addEventListener("mouseleave", function (e) {
+	canvas.addEventListener("touchmove", function (e) {
+		if (e.changedTouches && e.changedTouches.length > 0) {
+			mouse = {
+				x: e.changedTouches[0].clientX,
+				y: e.changedTouches[0].clientY
+			}
+		}
+	})
+
+	canvas.addEventListener("touchend", function (e) {
 		mouse = null
 	})
 
