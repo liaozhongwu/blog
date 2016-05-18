@@ -11,7 +11,7 @@ app
 	try {
 		if (config.online) {
 			console.log(this.method + " " + this.href + " from " + this.ip)
-			if ( /www\.liaozhongwu\.cn/.test(this.host) ) {
+			if ( /liaozhongwu\.cn/.test(this.host) ) {
 				this.status = 404
 				this.body = "404 Not Found."
 				return
