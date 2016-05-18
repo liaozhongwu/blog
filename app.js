@@ -16,11 +16,11 @@ app
 			// 	this.body = "404 Not Found."
 			// 	return
 			// }
-			if ( !(/www\.liaozhongwu\.com/.test(this.host)) ) {
-				this.status = 301
-				this.redirect(this.href.replace(this.host, "www.liaozhongwu.com"))
-				return
-			}
+			// if ( !(/www\.liaozhongwu\.com/.test(this.host)) ) {
+			// 	this.status = 301
+			// 	this.redirect(this.href.replace(this.host, "www.liaozhongwu.com"))
+			// 	return
+			// }
 		}
 		yield next
 	} catch (err) {
