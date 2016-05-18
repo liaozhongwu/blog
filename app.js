@@ -11,15 +11,16 @@ app
 	try {
 		if (config.online) {
 			console.log(this.method + " " + this.href + " from " + this.ip)
-			// if ( !(/www\.liaozhongwu\.com/.test(this.host)) ) {
-			// 	this.status = 301
-			// 	this.redirect(this.href.replace(this.host, "www.liaozhongwu.com"))
-			// 	return
-			// }
-			// if ( /www\.liaozhongwu\.cn/.test(this.host) ) {
-			// 	this.status = 404
-			// 	return
-			// }
+			if ( /www\.liaozhongwu\.cn/.test(this.host) ) {
+				this.status = 404
+				this.body = "404 Not Found."
+				return
+			}
+			if ( !(/www\.liaozhongwu\.com/.test(this.host)) ) {
+				this.status = 301
+				this.redirect(this.href.replace(this.host, "www.liaozhongwu.com"))
+				return
+			}
 		}
 		yield next
 	} catch (err) {
