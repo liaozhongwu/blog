@@ -163,4 +163,16 @@ router.get("/error", function* (next) {
 	yield next
 })
 
+router.get("/baidu_verify_:hash.html", function* (next) {
+	this.type = "text/html"
+	this.body = this.params.hash
+	yield next
+})
+
+router.get("/google:hash.html", function* (next) {
+	this.type = "text/html"
+	this.body = "google-site-verification: google511141f6ed94bec8.html"
+	yield next
+})
+
 module.exports = router
