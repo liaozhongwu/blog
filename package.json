@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "my blog",
   "author": "liaozhongwu <liaozhongwu95@163.com>",
-  "homepage": "http://liaozhongwu.cn",
+  "homepage": "http://www.liaozhongwu.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/liaozhongwu95/blog.git"
+    "url": "https://github.com/liaozhongwu/blog.git"
   },
   "bugs": {
-    "url": "https://github.com/liaozhongwu95/blog.git/issues",
+    "url": "https://github.com/liaozhongwu/blog.git/issues",
     "email": "liaozhongwu95@163.com"
   },
   "lisence": "MIT",
