@@ -1,5 +1,5 @@
 import React from "react";
-import CDN from "../../../cdn";
+import CDN from "@cdn";
 
 export default class About extends React.Component {
 	static getMeta () {

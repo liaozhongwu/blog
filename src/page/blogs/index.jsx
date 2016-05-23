@@ -1,5 +1,5 @@
 import React from "react"
-import "../../../lib/date"
+import "@lib/date"
 
 export default class Blogs extends React.Component {	
 	static getMeta () {

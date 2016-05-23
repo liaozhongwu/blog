@@ -1,6 +1,6 @@
 import React from "react"
 import ajax from "client-ajax"
-import "../../../lib/date"
+import "@lib/date"
 
 export default class Blog extends React.Component {
 	static getMeta () {

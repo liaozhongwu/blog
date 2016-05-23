@@ -1,5 +1,6 @@
 var webpack = require("webpack")
 , config = require("config")
+, path = require("path")
 , glob = require("glob")
 
 var entry = {}
@@ -16,6 +17,11 @@ var webpack_config = {
         filename: "/[name]/index.js"
     },
     resolve: {
+        alias: {
+            "@app": path.resolve("."),
+            "@lib": path.resolve("./lib"),
+            "@cdn": path.resolve("./cdn")
+        },
         extensions: ["", ".js", ".jsx", ".json"]
     },
     module: {
