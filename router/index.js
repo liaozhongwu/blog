@@ -163,4 +163,38 @@ router.get("/error", function* (next) {
 	yield next
 })
 
+router.get("/secret", function* (next) {
+	let Secret = _require("../build/page/secret").default
+	, content = ReactDOMServer.renderToString(React.createElement(Secret))
+	, props = Object.assign({content}, Secret.getMeta())
+	, Layout = _require("../build/layout/Base").default
+	this.body = ReactDOMServer.renderToString(React.createElement(Layout, props))
+	yield next
+})
+
+router.get("/secret/query", function* (next) {
+	const lisence = this.request.query.lisence
+	, secret = yield Model.getSecretByLisence(lisence)
+	if (secret) {
+		this.body = { status: 400, success: false, msg: `查询成功，密码为${secret.password}`, data: secret };
+	} else {
+		this.body = { status: 200, success: true, msg: "查询失败，该车牌号尚未收录" };
+	}
+	yield next
+})
+
+router.post("/secret/save", body, function* (next) {
+	const lisence = this.request.body.lisence
+	, password = this.request.body.password
+	
+	let secret = yield Model.getSecretByLisence(lisence)
+	if (secret) {
+		this.body = { status: 400, success: false, msg: "收录失败，该车牌号已被收录" };
+	} else {
+		secret = yield Model.addSecret({lisence, password});
+		this.body = { status: 200, success: true, msg: "收录成功" };
+	}
+	yield next
+})
+
 module.exports = router

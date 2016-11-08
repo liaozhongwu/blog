@@ -20,7 +20,7 @@ app
 		yield next
 	} catch (err) {
 		console.log(this.method + " " + this.href + " errored")
-		console.error(err)
+		console.trace(err)
 		this.status = 301
 		this.redirect("/")
 	}
@@ -36,12 +36,9 @@ app
 	yield next
 })
 .listen(port, () => {
-  console.log('========================')
-  console.log('App is listening to ' + port)
-  console.log('========================')
-
-	if (!config.online) {
-		require("./gulpfile")
-		require("gulp").start("default")
-	}
+ 	console.log('App is listening to ' + port)
+	// if (!config.online) {
+	// 	require("./gulpfile")
+	// 	require("gulp").start("default")
+	// }
 })

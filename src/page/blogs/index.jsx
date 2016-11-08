@@ -10,9 +10,9 @@ export default class Blogs extends React.Component {
 		}
 	}
 	render() {
-		let {blogs} = this.props
-    return (
-    	<div className="content">
+		const {blogs} = this.props
+		return (
+			<div className="content">
 				<ul className="list">
 					{ 
 						blogs.map((blog, i) => (
@@ -33,6 +33,6 @@ export default class Blogs extends React.Component {
 					}
 				</ul>
 			</div>
-    );
+		);
 	}
 }

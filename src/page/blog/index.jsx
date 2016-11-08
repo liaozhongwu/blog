@@ -92,12 +92,12 @@ export default class Blog extends React.Component {
 	}
 	render() {
 		let {blog, comments, comment, commentMsg} = this.state
-    return (
-    	<div className="content">
-  			<p className="title">
-  				<span className="title-content">{blog.title}</span>
-  				<span className="time">{blog.createTime.toString()}</span>
-  			</p>
+		return (
+			<div className="content">
+				<p className="title">
+					<span className="title-content">{blog.title}</span>
+					<span className="time">{blog.createTime.toString()}</span>
+				</p>
 				<article className="article" dangerouslySetInnerHTML={{__html: blog.marked}}/>
 				<ul className="list">
 					{
@@ -141,15 +141,14 @@ export default class Blog extends React.Component {
 								value={comment.email} onChange={e => this.handleCommentValueChange("email", e.target.value)}/>
 						</div>
 					</div>
-	    		<div className="form-group">
-						<label className="label"></label>
+					<div className="form-group">
 						<div className="form-control">
-	    				<input className="btn" type="button" value="提交评论" onClick={e => this.handleSubmit()}/>
-	    				<span className="msg-btn">{ commentMsg }</span>
-	    			</div>
-	    		</div>
+						<input className="btn" type="button" value="提交评论" onClick={e => this.handleSubmit()}/>
+						<span className="form-static">{ commentMsg }</span>
+					</div>
+				</div>
 				</form>
 			</div>				
-    );
+		);
 	}
 }

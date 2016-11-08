@@ -14,20 +14,22 @@ export default class About extends React.Component {
 		var html = [];
 		abouts.map((about, i) => {
 			html.push(<div className="form-group" key={ i }>
-				<label className="label">{about.title}</label>
-				<span className="form-static" dangerouslySetInnerHTML={{__html: about.content}} />
+				<div className="form-static">
+					{about.title}
+					<span className="ml10" dangerouslySetInnerHTML={{__html: about.content}} />
+				</div>
 			</div>);
 		});
 		return html;
 	}
-  	render () {
-	    return (
-	    	<div className="content">
-	    		<form className="form">
-	    			{ this.renderList() }
-	    			<img className="qrcode-weixin" src={CDN("/img/weixin.png")}/>
-	    		</form>
-				</div>
-	    );
+	render () {
+		return (
+			<div className="content">
+				<img className="qrcode-weixin" src={CDN("/img/weixin.png")}/>
+				<form className="form">
+					{ this.renderList() }
+				</form>
+			</div>
+		);
 	}
 }

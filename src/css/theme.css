@@ -131,8 +131,6 @@ code {
 	overflow: hidden;
 }
 .form-static {
-	display: inline-block;
-	vertical-align: top;
 	line-height: 29px;
 }
 .block-level {
@@ -140,28 +138,27 @@ code {
 	width: 100%;
 }
 .label {
-	float: left;
-	width: 100px;
-	text-align: right;
+	display: block;
+	width: 100%;
+	text-align: left;
 	line-height: 29px;
+	font-weight: bold;
 	min-height: 29px;
-	padding-right: 10px;
 }
 .input {
-	display: inline-block;
-	vertical-align: top;
+	display: block;
 	width: 100%;
-	padding: 6px 8px;
+	padding: 8px 10px;
 	border-radius: 4px;
 	border: solid 1px #ccc;
 	outline: none;
 	color: #333;
 	-webkit-appearance: none;
-	transition: box-shadow 0.3s;
+	transition: box-shadow 0.2s;
 
 	&:focus {
 		border-color: #3ce;
-		box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(51,204,238,.6);
+		box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(51,204,238,.6);
 	}
 	&[readonly],
 	&[disabled] {
@@ -170,17 +167,16 @@ code {
 	}
 }
 .textarea {
-	display: inline-block;
-	vertical-align: top;
+	display: block;
 	width: 100%;
 	height: 60px;
-	padding: 6px 8px;
+	padding: 8px 10px;
 	border-radius: 4px;
 	border: solid 1px #ccc;
 	outline: none;
 	color: #333;
 	-webkit-appearance: none;
-	transition: box-shadow 0.3s;
+	transition: box-shadow 0.2s;
 
 	&:focus {
 		border-color: #3ce;
@@ -188,9 +184,9 @@ code {
 	}
 }
 .btn {
-	display: inline-block;
-	vertical-align: top;
-	padding: 6px 12px;
+	display: block;
+	width: 100%;
+	padding: 8px 10px;
 	border-radius: 4px;
 	border: solid 1px #ccc;
 	background: #fff;
@@ -198,7 +194,7 @@ code {
 	text-align: center;
 	cursor: pointer;
 	outline: none;
-	transition: 0.3s;
+	transition: 0.2s;
 	-webkit-appearance: none;
 
 	&:hover {
@@ -209,12 +205,6 @@ code {
 		border-color: #a1a1a1;
 		background: #e1e1e1;
 	}
-}
-.msg-btn {
-	display: inline-block;
-	vertical-align: top;
-	line-height: 29px;
-	margin-left: 10px;
 }
 .title {
 	font-weight: bold;

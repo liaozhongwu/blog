@@ -32,7 +32,7 @@ export default class Admin extends React.Component {
 					<textarea className="textarea block-level" name="content" placeholder="content" defaultValue={blog.content}></textarea>
 				</div>
 			);
-  	} else {
+		} else {
 			html.push(
 				<div className="form-group" key="key">
 					<input className="input block-level" type="text" name="key" placeholder="key"/>
@@ -52,18 +52,18 @@ export default class Admin extends React.Component {
 		return html;
 	}
 	render() {
-    return (
-    	<div className="content">
-    		<form className="form" action="/blog/save" method="post">
-    			{ this.renderInput() }
-    			<div className="form-group">
-    				<input className="input" type="password" name="password" placeholder="password" />
-    			</div>
-    			<div className="form-group">
-    				<input className="btn" type="submit" value="保存"/>
-    			</div>
-    		</form>
+		return (
+			<div className="content">
+				<form className="form" action="/blog/save" method="post">
+					{ this.renderInput() }
+					<div className="form-group">
+						<input className="input" type="password" name="password" placeholder="password" />
+					</div>
+					<div className="form-group">
+						<input className="btn" type="submit" value="保存"/>
+					</div>
+				</form>
 			</div>
-    );
+		);
 	}	
 }

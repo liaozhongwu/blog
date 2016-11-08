@@ -1,18 +1,18 @@
 'use strict'
-let mongoose = require('mongoose')
-,	config = require('config')
+const mongoose = require('mongoose')
+, config = require('config')
 
 mongoose.Promise = global.Promise || mongoose.Promise
 mongoose.connect(config.db.url, {user: config.db.user, pass: config.db.pass})
 
-let Schema = mongoose.Schema
-,	blogSchema = new Schema({
+const Schema = mongoose.Schema
+, blogSchema = new Schema({
 	title: {type: String, index: true}
 	, key: {type: String}
 	, content: {type: String}
 	, createTime: {type: Date, default: Date.now}
 })
-,	commentSchema = new Schema({
+, commentSchema = new Schema({
 	bid: {type: String, index: true}
 	, name: {type: String}
 	, phone: {type: String}
@@ -20,15 +20,21 @@ let Schema = mongoose.Schema
 	, content: {type: String}
 	, createTime: {type: Date, default: Date.now}
 })
-,	aboutSchema = new Schema({
+, aboutSchema = new Schema({
 	title: {type: String}
 	, content: {type: String}
 	, createTime: {type: Date, default: Date.now}
 })
+, secretSchema = new Schema({
+	lisence: {type: String}
+	, password: {type: String}
+	, createTime: {type: Date, default: Date.now}
+})
 
-let	BlogModel = mongoose.model('blog', blogSchema)
-,	CommentModel = mongoose.model('comment', commentSchema)
-,	AboutModel = mongoose.model('about', aboutSchema)
+const BlogModel = mongoose.model('blog', blogSchema)
+, CommentModel = mongoose.model('comment', commentSchema)
+, AboutModel = mongoose.model('about', aboutSchema)
+, SecretModel = mongoose.model('secret', secretSchema)
 
 function toObject (doc) {
 	return doc.toObject()
@@ -78,4 +84,10 @@ exports.addAbout = function (params) {
 }
 exports.removeAbouts = function () {
 	return AboutModel.remove().exec()
+}
+exports.getSecretByLisence = function (lisence) {
+	return SecretModel.findOne({lisence}).lean().exec()
+}
+exports.addSecret = function (params) {
+	return new SecretModel(params).save().then(toObject);
 }
