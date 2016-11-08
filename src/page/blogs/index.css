@@ -16,6 +16,10 @@
 	-webkit-line-clamp: 3;
 	-webkit-box-orient: vertical;
 	clear: both;
+
+	a {
+		color: #333333;
+	}
 }
 .blog-count {
 	text-align: right;

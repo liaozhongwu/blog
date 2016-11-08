@@ -22,7 +22,7 @@ export default class Blogs extends React.Component {
 									<span className="time">{blog.createTime.toString()}</span>
 								</p>
 								<div className="blog-preview">
-									{blog.content}
+									<a href={"/blog/" + blog.key}>{blog.content}</a>
 								</div>
 								<div className="blog-count">
 									<i className="fa fa-commenting-o"/>
