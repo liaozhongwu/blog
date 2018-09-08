@@ -1,5 +1,5 @@
 'use strict'
-const CDN_URL = "http://cdn.liaozhongwu.com"
+const CDN_URL = "http://static.liaozhongwu.com"
 
 function CDN (path) {
 	path = path || ""

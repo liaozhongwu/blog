@@ -25,6 +25,9 @@ app
 		this.redirect("/")
 	}
 })
+.use(function* (next) {
+	this.headers.set('X-Frame-Options', 'DENY');
+})
 .use(_static("public"))
 .use(router.routes())
 .use(function* (next) {
