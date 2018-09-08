@@ -26,7 +26,7 @@ app
 	}
 })
 .use(function* (next) {
-	this.headers.set('X-Frame-Options', 'DENY');
+	this.set('X-Frame-Options', 'DENY');
 	yield next;
 })
 .use(_static("public"))
