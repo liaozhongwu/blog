@@ -27,6 +27,7 @@ app
 })
 .use(function* (next) {
 	this.headers.set('X-Frame-Options', 'DENY');
+	yield next;
 })
 .use(_static("public"))
 .use(router.routes())
